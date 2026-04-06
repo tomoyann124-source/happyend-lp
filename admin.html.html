@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Massage Tokyo 管理</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+/* ═══════════ VARIABLES ═══════════ */
+:root {
+  --bg:      #f2f2f7;
+  --white:   #ffffff;
+  --dark:    #1c1c1e;
+  --dark2:   #2c2c2e;
+  --g1:      #3a3a3c;
+  --g2:      #636366;
+  --g3:      #8e8e93;
+  --g4:      #aeaeb2;
+  --g5:      #d1d1d6;
+  --g6:      #e5e5ea;
+  --gold:    #b8986a;
+  --gold-lt: #d4b98a;
+  --green:   #34c759;
+  --red:     #ff3b30;
+  --blue:    #007aff;
+  --r:       14px;
+  --safe:    env(safe-area-inset-bottom, 0px);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  font-family: 'Noto Sans JP', -apple-system, sans-serif;
+  font-weight: 400;
+  color: var(--dark);
+  min-height: 100dvh;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+  padding-bottom: calc(68px + var(--safe));
+}
+img { display: block; }
+button, input, select, textarea { font-family: inherit; }
+
+/* ═══════════ SCREENS ═══════════ */
+.screen { display: none; animation: fadeIn .22s ease; }
+.screen.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* ═══════════ HEADER ═══════════ */
+.logo-bar {
+  position: sticky; top: 0; z-index: 50;
+  height: 54px;
+  background: rgba(255,255,255,.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--g6);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1rem;
+}
+.logo-txt { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.05rem; color: var(--dark); }
+.logo-txt span { color: var(--gold); }
+.logo-right { display: flex; align-items: center; gap: .6rem; }
+.admin-chip { background: var(--dark); color: #fff; font-size: .65rem; font-weight: 700; letter-spacing: .1em; padding: .22rem .65rem; border-radius: 20px; }
+.lp-btn {
+  display: flex; align-items: center; gap: .3rem;
+  background: rgba(0,122,255,.1); border: none;
+  color: var(--blue); font-size: .75rem; font-weight: 700;
+  padding: .4rem .75rem; border-radius: 20px;
+  cursor: pointer; text-decoration: none;
+}
+.lp-btn svg { width: 14px; height: 14px; }
+
+.top-bar {
+  position: sticky; top: 0; z-index: 50;
+  height: 54px;
+  background: rgba(255,255,255,.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--g6);
+  display: flex; align-items: center;
+  padding: 0 1rem; gap: .5rem;
+}
+.back-btn {
+  display: flex; align-items: center; gap: .2rem;
+  background: none; border: none; cursor: pointer;
+  color: var(--blue); font-size: .9rem; font-weight: 600;
+  padding: .5rem 0; min-width: 48px; min-height: 44px;
+}
+.back-btn svg { width: 20px; height: 20px; }
+.top-bar-title { font-size: 1rem; font-weight: 700; color: var(--dark); flex: 1; text-align: center; }
+.top-bar-right { min-width: 48px; display: flex; justify-content: flex-end; }
+/* Sticky cast name in profile edit */
+.profile-sticky-name {
+  position: sticky; top: 54px; z-index: 40;
+  background: rgba(255,255,255,.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--g6);
+  padding: .5rem 1rem;
+  display: flex; align-items: center; gap: .75rem;
+}
+.profile-sticky-avatar { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; object-position: top; background: var(--g6); flex-shrink: 0; }
+.profile-sticky-label { font-size: .78rem; color: var(--g3); }
+.profile-sticky-name-txt { font-size: .9rem; font-weight: 700; color: var(--dark); }
+
+/* ═══════════ BOTTOM NAV ═══════════ */
+.bot-nav {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 40;
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--g6);
+  display: flex;
+  padding-bottom: var(--safe);
+}
+.nav-item {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  padding: .55rem .5rem .45rem;
+  border: none; background: none; cursor: pointer;
+  color: var(--g3); font-size: .6rem; font-weight: 600;
+  gap: .2rem; transition: color .15s; min-height: 54px;
+  position: relative;
+}
+.nav-item.active { color: var(--gold); }
+.nav-item svg { width: 24px; height: 24px; }
+/* Badge on nav item */
+.nav-badge {
+  position: absolute; top: .4rem; right: calc(50% - 20px);
+  min-width: 16px; height: 16px; border-radius: 8px;
+  background: var(--red); color: #fff;
+  font-size: .6rem; font-weight: 700;
+  display: none; align-items: center; justify-content: center;
+  padding: 0 4px; border: 1.5px solid var(--white);
+}
+.nav-badge.show { display: flex; }
+
+/* ═══════════ CONTENT ═══════════ */
+.content { padding: 1rem; display: flex; flex-direction: column; gap: .85rem; }
+
+/* ═══════════ CARD ═══════════ */
+.card { background: var(--white); border-radius: var(--r); overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+.card-hd {
+  padding: .85rem 1rem .65rem;
+  display: flex; align-items: center; gap: .6rem;
+  border-bottom: 1px solid var(--g6);
+}
+.card-icon { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.card-icon svg { width: 17px; height: 17px; }
+.card-icon.gold { background: rgba(184,152,106,.15); color: var(--gold); }
+.card-icon.green { background: rgba(52,199,89,.12); color: var(--green); }
+.card-icon.blue { background: rgba(0,122,255,.1); color: var(--blue); }
+.card-icon.red { background: rgba(255,59,48,.1); color: var(--red); }
+.card-title { font-size: .9rem; font-weight: 700; color: var(--dark); }
+.card-sub { font-size: .75rem; color: var(--g3); margin-top: .1rem; }
+
+/* ═══════════ HOME ═══════════ */
+.home-banner {
+  background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+  border-radius: var(--r); padding: 1.1rem 1.1rem;
+  display: flex; align-items: center; justify-content: space-between;
+  cursor: pointer;
+}
+.home-banner-left { }
+.home-banner-date { font-size: .72rem; color: rgba(255,255,255,.75); margin-bottom: .25rem; font-weight: 500; }
+.home-banner-count { font-size: 1.6rem; font-weight: 700; color: var(--white); line-height: 1; }
+.home-banner-label { font-size: .72rem; color: rgba(255,255,255,.75); margin-top: .15rem; }
+.home-banner-icon { width: 48px; height: 48px; background: rgba(255,255,255,.2); border-radius: 14px; display: flex; align-items: center; justify-content: center; }
+.home-banner-icon svg { width: 26px; height: 26px; color: white; }
+
+/* Today chips */
+.today-chips { display: flex; flex-wrap: wrap; gap: .45rem; padding: .75rem 1rem .85rem; }
+.today-chip {
+  display: flex; align-items: center; gap: .4rem;
+  padding: .35rem .75rem; border-radius: 20px;
+  background: var(--bg); font-size: .78rem; font-weight: 600; color: var(--dark);
+}
+.today-chip img { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; object-position: top; background: var(--g6); }
+.dot-g { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 5px var(--green); flex-shrink: 0; }
+.dot-gray { width: 6px; height: 6px; border-radius: 50%; background: var(--g4); flex-shrink: 0; }
+.today-empty { padding: .75rem 1rem .85rem; font-size: .82rem; color: var(--g4); }
+
+/* Home action cards */
+.hac {
+  background: var(--white); border-radius: var(--r); box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  cursor: pointer; -webkit-tap-highlight-color: transparent; transition: transform .15s;
+  display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1rem;
+}
+.hac:active { transform: scale(.97); }
+.hac-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.hac-icon svg { width: 26px; height: 26px; }
+.hac-icon.gold { background: linear-gradient(135deg, var(--gold), var(--gold-lt)); color: white; }
+.hac-icon.dark { background: var(--dark); color: white; }
+.hac-info { flex: 1; }
+.hac-title { font-size: .96rem; font-weight: 700; color: var(--dark); }
+.hac-sub { font-size: .75rem; color: var(--g3); margin-top: .12rem; line-height: 1.4; }
+.hac-arrow svg { width: 18px; height: 18px; color: var(--g5); }
+
+/* Last session reuse */
+.reuse-banner {
+  background: rgba(184,152,106,.08); border: 1.5px solid rgba(184,152,106,.25);
+  border-radius: var(--r); padding: .9rem 1rem;
+  display: flex; align-items: center; gap: .85rem;
+  cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.reuse-banner:active { opacity: .8; }
+.reuse-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; object-position: top; background: var(--g6); flex-shrink: 0; }
+.reuse-info { flex: 1; }
+.reuse-label { font-size: .68rem; font-weight: 700; color: var(--gold); letter-spacing: .04em; text-transform: uppercase; margin-bottom: .2rem; }
+.reuse-name { font-size: .92rem; font-weight: 700; color: var(--dark); }
+.reuse-detail { font-size: .75rem; color: var(--g3); margin-top: .1rem; }
+.reuse-btn {
+  display: flex; align-items: center; gap: .3rem;
+  background: var(--gold); color: white;
+  border: none; border-radius: 20px;
+  font-size: .72rem; font-weight: 700; padding: .45rem .85rem;
+  cursor: pointer; flex-shrink: 0;
+}
+.reuse-btn svg { width: 14px; height: 14px; }
+
+/* ═══════════ STEP FLOW ═══════════ */
+.step-flow {
+  display: flex; align-items: center;
+  padding: .65rem 1.25rem .55rem;
+  border-bottom: 1px solid var(--g6);
+  background: var(--white);
+  position: sticky; top: 54px; z-index: 40;
+}
+.step-node { display: flex; flex-direction: column; align-items: center; gap: .18rem; flex-shrink: 0; min-width: 52px; }
+.step-circle {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--g6); color: var(--g3);
+  font-size: .72rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .25s;
+}
+.step-circle.done { background: var(--green); color: white; }
+.step-circle.cur { background: var(--gold); color: white; }
+.step-lbl { font-size: .58rem; color: var(--g3); font-weight: 600; white-space: nowrap; }
+.step-lbl.cur { color: var(--gold); font-weight: 700; }
+.step-line { flex: 1; height: 2px; background: var(--g6); min-width: 16px; margin-bottom: 14px; transition: background .25s; }
+.step-line.done { background: var(--green); }
+
+/* ═══════════ CAST CHIPS ═══════════ */
+.chips-scroll {
+  padding: .65rem 1rem 1rem;
+  overflow-x: auto; display: flex; gap: .65rem;
+  -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.chips-scroll::-webkit-scrollbar { display: none; }
+.cast-chip {
+  flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: .3rem;
+  width: 70px; padding: .4rem;
+  border: 2.5px solid transparent; border-radius: 14px;
+  background: none; cursor: pointer; transition: all .18s; position: relative;
+}
+.cast-chip:active { transform: scale(.93); }
+.cast-chip.sel { border-color: var(--gold); background: rgba(184,152,106,.08); }
+.chip-wrap { position: relative; width: 52px; height: 52px; }
+.chip-img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; object-position: top; background: var(--g6); }
+.chip-check {
+  display: none; position: absolute; bottom: -1px; right: -1px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--gold); border: 2px solid var(--white);
+  align-items: center; justify-content: center;
+}
+.chip-check svg { width: 10px; height: 10px; }
+.cast-chip.sel .chip-check { display: flex; }
+.chip-name { font-size: .65rem; font-weight: 600; color: var(--dark); text-align: center; line-height: 1.2; }
+.cast-chip.sel .chip-name { color: var(--gold); font-weight: 700; }
+
+/* Selected pill */
+.sel-pill {
+  margin: 0 1rem .75rem;
+  padding: .65rem .9rem;
+  background: rgba(52,199,89,.1); border: 1px solid rgba(52,199,89,.25);
+  border-radius: 10px;
+  display: none; align-items: center; gap: .5rem;
+  font-size: .82rem; font-weight: 600; color: #1a6b2e;
+}
+.sel-pill.show { display: flex; }
+.sel-pill svg { width: 16px; height: 16px; color: var(--green); flex-shrink: 0; }
+
+/* ═══════════ DATE PICKER ═══════════ */
+.date-scroll {
+  padding: .6rem 1rem .8rem;
+  overflow-x: auto; display: flex; gap: .5rem;
+  -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.date-scroll::-webkit-scrollbar { display: none; }
+.date-btn {
+  flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: .1rem;
+  min-width: 58px; padding: .55rem .5rem;
+  border: 1.5px solid var(--g5); border-radius: 12px;
+  background: var(--white); cursor: pointer; transition: all .18s;
+}
+.date-btn:active { transform: scale(.95); }
+.date-btn.active { border-color: var(--gold); background: rgba(184,152,106,.1); }
+.date-btn-day { font-size: .65rem; font-weight: 700; color: var(--g3); }
+.date-btn-num { font-size: 1.1rem; font-weight: 700; color: var(--dark); line-height: 1.1; }
+.date-btn-dow { font-size: .65rem; color: var(--g3); font-weight: 500; }
+.date-btn.active .date-btn-day,
+.date-btn.active .date-btn-num,
+.date-btn.active .date-btn-dow { color: var(--gold); }
+.date-btn.today .date-btn-num { color: var(--blue); }
+.date-btn.active.today .date-btn-num { color: var(--gold); }
+
+/* ═══════════ TIME INPUT ═══════════ */
+.time-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .65rem; padding: .5rem 1rem .9rem; }
+.time-grp { display: flex; flex-direction: column; gap: .3rem; }
+.time-lbl { font-size: .72rem; font-weight: 700; color: var(--g3); }
+.time-inp {
+  height: 52px;
+  border: 1.5px solid var(--g5); border-radius: 10px;
+  padding: 0 .9rem;
+  font-size: 1.05rem; font-weight: 700; color: var(--dark);
+  background: var(--bg); text-align: center;
+  -webkit-appearance: none; transition: border-color .18s;
+}
+.time-inp:focus { outline: none; border-color: var(--gold); background: var(--white); }
+
+/* ═══════════ RANK PILLS ═══════════ */
+.rank-row { display: flex; gap: .5rem; padding: .5rem 1rem .9rem; }
+.rank-pill {
+  flex: 1; height: 44px;
+  border: 1.5px solid var(--g5); border-radius: 22px;
+  background: var(--white); color: var(--g2);
+  font-size: .78rem; font-weight: 700; cursor: pointer; transition: all .18s;
+}
+.rank-pill.active { border-color: var(--gold); background: rgba(184,152,106,.1); color: var(--gold); }
+
+/* ═══════════ TOGGLE ═══════════ */
+.toggle-row {
+  display: flex; align-items: center;
+  padding: .85rem 1rem; gap: 1rem;
+  border-top: 1px solid var(--g6);
+}
+.toggle-info { flex: 1; }
+.toggle-ttl { font-size: .9rem; font-weight: 600; color: var(--dark); }
+.toggle-sub { font-size: .75rem; color: var(--g3); margin-top: .12rem; }
+.ios-tog { position: relative; width: 52px; height: 30px; flex-shrink: 0; }
+.ios-tog input { opacity: 0; width: 0; height: 0; position: absolute; }
+.ios-track { position: absolute; inset: 0; background: var(--g5); border-radius: 15px; transition: background .25s; }
+.ios-tog input:checked + .ios-track { background: var(--green); }
+.ios-thumb { position: absolute; width: 26px; height: 26px; top: 2px; left: 2px; background: white; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,.22); transition: transform .25s cubic-bezier(.34,1.4,.64,1); }
+.ios-tog input:checked ~ .ios-thumb { transform: translateX(22px); }
+
+/* ═══════════ BUTTONS ═══════════ */
+.big-btn {
+  display: flex; align-items: center; justify-content: center; gap: .55rem;
+  width: calc(100% - 2rem); height: 56px; margin: .25rem 1rem;
+  background: var(--dark); color: white;
+  border: none; border-radius: 14px;
+  font-size: .95rem; font-weight: 700; cursor: pointer;
+  transition: all .18s;
+}
+.big-btn:active { transform: scale(.97); opacity: .85; }
+.big-btn.gold { background: linear-gradient(135deg, var(--gold), var(--gold-lt)); }
+.big-btn.gray { background: var(--g6); color: var(--dark); }
+.big-btn svg { width: 20px; height: 20px; }
+.btn-row { display: flex; gap: .6rem; padding: .5rem 1rem .85rem; }
+.btn-row .big-btn { margin: 0; flex: 1; }
+.btn-row .back-sm { flex: 0 0 auto; width: 52px; }
+
+/* ═══════════ CONFIRM CARD ═══════════ */
+.conf-row { display: flex; justify-content: space-between; align-items: center; padding: .7rem 0; border-bottom: 1px solid var(--g6); }
+.conf-row:last-child { border-bottom: none; }
+.conf-key { font-size: .82rem; color: var(--g3); }
+.conf-val { font-size: .88rem; font-weight: 700; color: var(--dark); }
+
+/* ═══════════ SCHED LIST ═══════════ */
+.sched-empty { padding: 2rem 1rem; display: flex; flex-direction: column; align-items: center; gap: .6rem; color: var(--g4); }
+.sched-empty svg { width: 38px; height: 38px; opacity: .4; }
+.sched-empty p { font-size: .82rem; }
+
+/* Swipe-to-delete */
+.sched-item-wrap { position: relative; overflow: hidden; }
+.sched-item-delete {
+  position: absolute; right: 0; top: 0; bottom: 0;
+  width: 80px; background: var(--red);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: .75rem; font-weight: 700;
+  transform: translateX(100%); transition: transform .25s;
+  cursor: pointer; flex-direction: column; gap: .2rem;
+  border-bottom: 1px solid rgba(255,255,255,.15);
+}
+.sched-item-delete svg { width: 18px; height: 18px; }
+.sched-item-wrap.swiped .sched-item-delete { transform: translateX(0); }
+.sched-item-wrap.swiped .sched-item { transform: translateX(-80px); }
+
+.sched-item {
+  display: flex; align-items: center; gap: .85rem;
+  padding: .9rem 1rem;
+  border-bottom: 1px solid var(--g6);
+  background: white; transition: transform .25s;
+  position: relative;
+}
+.sched-item:last-child { border-bottom: none; }
+.sched-avatar { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; object-position: top; background: var(--g6); flex-shrink: 0; }
+.sched-info { flex: 1; min-width: 0; }
+.sched-name { font-size: .9rem; font-weight: 700; color: var(--dark); }
+.sched-detail { font-size: .75rem; color: var(--g3); margin-top: .14rem; }
+.sched-badge {
+  display: inline-flex; align-items: center; gap: .3rem;
+  font-size: .65rem; font-weight: 700;
+  padding: .18rem .55rem; border-radius: 8px; margin-top: .25rem;
+}
+.sched-badge.on { background: rgba(52,199,89,.1); color: #1a6b2e; }
+.sched-badge.on::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--green); box-shadow: 0 0 5px var(--green); }
+.sched-badge.off { background: var(--bg); color: var(--g3); }
+.swipe-hint { font-size: .65rem; color: var(--g3); padding: .35rem 1rem; display: flex; align-items: center; gap: .3rem; }
+.swipe-hint svg { width: 12px; height: 12px; }
+
+/* ═══════════ CAST LIST ═══════════ */
+.cast-item {
+  display: flex; align-items: center; gap: .9rem;
+  padding: .9rem 1rem; border-bottom: 1px solid var(--g6);
+  cursor: pointer; transition: background .15s;
+}
+.cast-item:last-child { border-bottom: none; }
+.cast-item:active { background: var(--bg); }
+.cast-av { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; object-position: top; background: var(--g6); flex-shrink: 0; }
+.cast-nm { font-size: .92rem; font-weight: 700; color: var(--dark); }
+.cast-mt { font-size: .75rem; color: var(--g3); margin-top: .1rem; }
+.cast-chev svg { width: 16px; height: 16px; color: var(--g5); }
+
+.add-row {
+  display: flex; align-items: center; gap: .75rem;
+  padding: .9rem 1rem; cursor: pointer;
+  color: var(--blue); font-size: .9rem; font-weight: 700;
+  border-top: 1px solid var(--g6);
+}
+.add-row svg { width: 22px; height: 22px; }
+
+/* ═══════════ PROFILE PHOTO ═══════════ */
+.photo-hero { display: flex; flex-direction: column; align-items: center; padding: 1.5rem 1rem .85rem; gap: .85rem; }
+.photo-lg { width: 110px; height: 110px; border-radius: 55px; object-fit: cover; object-position: top; background: var(--g6); border: 3px solid var(--g6); }
+.photo-btns { display: flex; gap: .6rem; }
+.photo-upload-btn {
+  display: flex; align-items: center; gap: .4rem;
+  padding: .55rem 1rem;
+  border: 1.5px solid var(--gold); border-radius: 22px;
+  background: rgba(184,152,106,.08); color: var(--gold);
+  font-size: .78rem; font-weight: 700; cursor: pointer;
+  position: relative; overflow: hidden;
+}
+.photo-upload-btn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; font-size: 100px; }
+.photo-upload-btn svg { width: 15px; height: 15px; }
+.url-section { padding: .25rem 1rem .85rem; border-top: 1px solid var(--g6); }
+.url-label { font-size: .72rem; color: var(--g3); margin-bottom: .3rem; }
+.url-inp { width: 100%; height: 44px; border: 1.5px solid var(--g5); border-radius: 10px; padding: 0 .9rem; font-size: .85rem; color: var(--dark); background: var(--bg); -webkit-appearance: none; }
+.url-inp:focus { outline: none; border-color: var(--gold); }
+
+/* ═══════════ FORM ═══════════ */
+.form-sec { padding: .75rem 1rem; border-top: 1px solid var(--g6); }
+.fld { margin-bottom: .75rem; }
+.fld:last-child { margin-bottom: 0; }
+.fld-lbl { font-size: .75rem; font-weight: 700; color: var(--g2); margin-bottom: .32rem; display: block; }
+.fld-req { color: var(--red); }
+.fld-inp {
+  width: 100%; height: 50px;
+  border: 1.5px solid var(--g5); border-radius: 10px;
+  padding: 0 1rem; font-size: .92rem; color: var(--dark);
+  background: var(--bg); -webkit-appearance: none;
+  transition: border-color .18s;
+}
+.fld-inp:focus { outline: none; border-color: var(--gold); background: white; }
+.fld-row { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+.fld-ta {
+  width: 100%; min-height: 88px;
+  border: 1.5px solid var(--g5); border-radius: 10px;
+  padding: .75rem 1rem; font-size: .9rem; color: var(--dark);
+  background: var(--bg); resize: none; -webkit-appearance: none;
+  line-height: 1.6;
+}
+.fld-ta:focus { outline: none; border-color: var(--gold); background: white; }
+
+/* ═══════════ SAVE BAR ═══════════ */
+.save-bar {
+  position: sticky; bottom: 0; background: rgba(255,255,255,.96);
+  border-top: 1px solid var(--g6);
+  padding: .75rem 1rem calc(.75rem + var(--safe));
+}
+.save-bar .big-btn { margin: 0; width: 100%; height: 54px; }
+
+/* ═══════════ DANGER ROW ═══════════ */
+.danger-row {
+  display: flex; align-items: center; justify-content: center; gap: .4rem;
+  padding: .9rem 1rem; cursor: pointer;
+  color: var(--red); font-size: .88rem; font-weight: 600;
+  border-top: 1px solid var(--g6);
+}
+.danger-row svg { width: 16px; height: 16px; }
+
+/* ═══════════ INFO HINT ═══════════ */
+.info-hint {
+  display: flex; gap: .5rem; align-items: flex-start;
+  padding: .75rem 1rem;
+  background: rgba(0,122,255,.06);
+  border-top: 1px solid rgba(0,122,255,.1);
+  font-size: .78rem; color: var(--blue); line-height: 1.65;
+}
+.info-hint svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: .15rem; }
+
+/* ═══════════ MODAL (custom) ═══════════ */
+.modal-bg {
+  display: none; position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,.45); backdrop-filter: blur(4px);
+  align-items: flex-end; justify-content: center;
+}
+.modal-bg.open { display: flex; animation: fadeIn .2s ease; }
+.modal-sheet {
+  background: var(--white); width: 100%; max-width: 480px;
+  border-radius: 20px 20px 0 0;
+  padding-bottom: var(--safe);
+  animation: slideUp .3s cubic-bezier(.34,1.2,.64,1);
+}
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.modal-handle { display: flex; justify-content: center; padding: .75rem 0 .25rem; }
+.modal-handle div { width: 36px; height: 4px; background: var(--g5); border-radius: 2px; }
+.modal-title { font-size: 1rem; font-weight: 700; text-align: center; padding: .5rem 1.5rem 1rem; color: var(--dark); }
+.modal-body { padding: 0 1.25rem; }
+.modal-fld { margin-bottom: .85rem; }
+.modal-fld label { display: block; font-size: .75rem; font-weight: 700; color: var(--g2); margin-bottom: .32rem; }
+.modal-fld input {
+  width: 100%; height: 50px;
+  border: 1.5px solid var(--g5); border-radius: 10px;
+  padding: 0 1rem; font-size: .95rem; color: var(--dark);
+  background: var(--bg); -webkit-appearance: none;
+}
+.modal-fld input:focus { outline: none; border-color: var(--gold); background: white; }
+.modal-btns { display: flex; gap: .6rem; padding: .75rem 1.25rem 1.25rem; }
+.modal-btns button { flex: 1; height: 50px; border: none; border-radius: 12px; font-size: .9rem; font-weight: 700; cursor: pointer; }
+.modal-cancel { background: var(--g6); color: var(--dark); }
+.modal-ok { background: var(--gold); color: white; }
+/* Delete confirm modal */
+.del-modal-title { font-size: 1rem; font-weight: 700; text-align: center; padding: .25rem 1.5rem .5rem; color: var(--dark); }
+.del-modal-msg { font-size: .85rem; color: var(--g2); text-align: center; padding: 0 1.5rem .75rem; line-height: 1.6; }
+.del-modal-btns { display: flex; flex-direction: column; gap: 0; }
+.del-modal-btn {
+  height: 54px; border: none; border-top: 1px solid var(--g6);
+  font-size: .95rem; font-weight: 700; cursor: pointer; background: white;
+}
+.del-modal-btn.red { color: var(--red); }
+.del-modal-btn.cancel { color: var(--g3); font-weight: 500; }
+
+/* ═══════════ SECTION LABEL ═══════════ */
+.sec-lbl { padding: .65rem 1rem .25rem; font-size: .68rem; font-weight: 700; color: var(--g3); letter-spacing: .06em; text-transform: uppercase; }
+
+/* ═══════════ TOAST ═══════════ */
+.toast {
+  position: fixed; bottom: calc(68px + var(--safe) + .75rem); left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(28,28,30,.92); color: white;
+  padding: .7rem 1.25rem; border-radius: 22px;
+  font-size: .85rem; font-weight: 600; white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(0,0,0,.2);
+  opacity: 0; transition: all .3s cubic-bezier(.34,1.4,.64,1);
+  pointer-events: none; z-index: 300;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast.ok { background: rgba(22,68,35,.95); }
+.toast.err { background: rgba(68,22,22,.95); }
+/* ═══════════ NEWS TYPE PILLS ═══════════ */
+.type-row { display:flex;gap:.5rem;padding:.5rem 1rem .85rem; }
+.type-pill {
+  flex:1;height:42px;border:1.5px solid var(--g5);border-radius:22px;
+  background:var(--white);color:var(--g2);
+  font-size:.78rem;font-weight:700;cursor:pointer;transition:all .18s;
+}
+.type-pill.active-news   { border-color:var(--blue);  background:rgba(0,122,255,.1);  color:var(--blue); }
+.type-pill.active-coupon { border-color:var(--gold);  background:rgba(184,152,106,.1);color:var(--gold); }
+.type-pill.active-event  { border-color:var(--green); background:rgba(52,199,89,.1);  color:var(--green); }
+
+/* News list item */
+.news-item {
+  display:flex;align-items:flex-start;gap:.85rem;
+  padding:.9rem 1rem;border-bottom:1px solid var(--g6);
+}
+.news-item:last-child { border-bottom:none; }
+.news-type-badge {
+  font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:.22rem .6rem;border-radius:20px;flex-shrink:0;margin-top:.15rem;
+}
+.news-type-badge.news   { background:rgba(0,122,255,.1);  color:var(--blue); }
+.news-type-badge.coupon { background:rgba(184,152,106,.1);color:var(--gold); }
+.news-type-badge.event  { background:rgba(52,199,89,.1);  color:var(--green); }
+.news-item-info { flex:1;min-width:0; }
+.news-item-title { font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:.18rem; }
+.news-item-body  { font-size:.75rem;color:var(--g3);line-height:1.5;
+  overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical; }
+.news-item-exp   { font-size:.68rem;color:var(--g4);margin-top:.25rem; }
+.news-item-right { display:flex;flex-direction:column;align-items:flex-end;gap:.5rem;flex-shrink:0; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HOME ═══════════════════ -->
+<div class="screen active" id="sc-home">
+  <div class="logo-bar">
+    <div class="logo-txt"><span>Massage</span> Tokyo</div>
+    <div class="logo-right">
+      <div class="admin-chip">管理</div>
+      <a href="./index.html" target="_blank" class="lp-btn">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M1 7s2-4.5 6-4.5S13 7 13 7s-2 4.5-6 4.5S1 7 1 7z"/>
+          <circle cx="7" cy="7" r="1.8"/>
+        </svg>
+        LP確認
+      </a>
+    </div>
+  </div>
+  <div class="content">
+
+    <!-- 今日の出勤バナー -->
+    <div class="home-banner" onclick="go('sc-register')">
+      <div class="home-banner-left">
+        <div class="home-banner-date" id="homeDate"></div>
+        <div class="home-banner-count"><span id="homeCount">0</span>名</div>
+        <div class="home-banner-label">本日の出勤登録</div>
+      </div>
+      <div class="home-banner-icon">
+        <svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="4" width="20" height="20" rx="3"/>
+          <path d="M3 10h20M8 4V2M18 4V2" stroke-linecap="round"/>
+          <path d="M8 15h2m3 0h2M8 19h2" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- 今日のメンバー -->
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon green">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="card-title">本日の出勤メンバー</div>
+        </div>
+      </div>
+      <div id="homeChips"></div>
+    </div>
+
+    <!-- 前回設定の再利用 -->
+    <div id="reuseWrap" style="display:none">
+      <div class="sec-lbl">前回の出勤設定（タップで1人ずつ再利用）</div>
+      <div id="reuseCards" style="display:flex;flex-direction:column;gap:.6rem;"></div>
+    </div>
+
+    <!-- アクション -->
+    <div class="hac" onclick="go('sc-register')">
+      <div class="hac-icon gold">
+        <svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="4" width="20" height="20" rx="3"/>
+          <path d="M3 10h20M8 4V2M18 4V2M13 14v6M10 17h6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="hac-info">
+        <div class="hac-title">出勤を登録する</div>
+        <div class="hac-sub">女の子を選んで日時を設定するだけ</div>
+      </div>
+      <div class="hac-arrow"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+
+    <div class="hac" onclick="go('sc-cast')">
+      <div class="hac-icon dark">
+        <svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="10" cy="8" r="4"/><circle cx="19" cy="10" r="3"/>
+          <path d="M2 22c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke-linecap="round"/>
+          <path d="M19 15c2.5.5 5 2.5 5 5.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="hac-info">
+        <div class="hac-title">キャスト管理</div>
+        <div class="hac-sub">プロフィール・写真を編集 / 新規追加</div>
+      </div>
+      <div class="hac-arrow"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+
+    <div class="hac" onclick="go('sc-news')">
+      <div class="hac-icon" style="background:#5856d6;color:white;">
+        <svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="5" width="20" height="16" rx="3"/>
+          <path d="M7 10h12M7 14h8" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="hac-info">
+        <div class="hac-title">ニュース管理</div>
+        <div class="hac-sub">LPに表示されるお知らせを管理</div>
+      </div>
+      <div class="hac-arrow"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════ 出勤登録 ═══════════════════ -->
+<div class="screen" id="sc-register">
+  <div class="top-bar">
+    <button class="back-btn" onclick="go('sc-home')">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 16l-5-6 5-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      戻る
+    </button>
+    <div class="top-bar-title">出勤登録</div>
+    <div class="top-bar-right"></div>
+  </div>
+
+  <!-- Step flow (sticky) -->
+  <div class="step-flow" id="stepFlow">
+    <div class="step-node"><div class="step-circle cur" id="sc1">1</div><div class="step-lbl cur" id="sl1">選ぶ</div></div>
+    <div class="step-line" id="sln1"></div>
+    <div class="step-node"><div class="step-circle" id="sc2">2</div><div class="step-lbl" id="sl2">日時</div></div>
+    <div class="step-line" id="sln2"></div>
+    <div class="step-node"><div class="step-circle" id="sc3">3</div><div class="step-lbl" id="sl3">確認</div></div>
+  </div>
+
+  <!-- STEP 1 -->
+  <div id="stp1" class="content" style="padding-bottom:0">
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon gold">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke-linecap="round"/></svg>
+        </div>
+        <div><div class="card-title">女の子を選んでください</div><div class="card-sub">タップして選択します</div></div>
+      </div>
+      <div class="chips-scroll" id="chips1"></div>
+      <div class="sel-pill" id="selPill">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="8" cy="8" r="6"/><path d="M5.5 8l2 2 3-3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span id="selPillTxt"></span>
+      </div>
+      <button class="big-btn gold" style="margin-bottom:.85rem;" onclick="goStp(2)">
+        次へ：日時を設定する
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M8 4l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div id="stp2" style="display:none" class="content" style="padding-bottom:0">
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon gold">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="14" height="12" rx="2"/><path d="M1 7h14M5 1v3M11 1v3"/></svg>
+        </div>
+        <div><div class="card-title">日付を選んでください</div></div>
+      </div>
+      <div class="date-scroll" id="dateRow"></div>
+      <div class="card-hd" style="border-top:1px solid var(--g6);">
+        <div class="card-icon gold">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="6"/><path d="M8 4v4l2.5 2.5" stroke-linecap="round"/></svg>
+        </div>
+        <div><div class="card-title">時間を入力してください</div></div>
+      </div>
+      <div class="time-grid">
+        <div class="time-grp"><div class="time-lbl">出勤開始</div><input type="time" id="tStart" class="time-inp" value="15:00"></div>
+        <div class="time-grp"><div class="time-lbl">出勤終了</div><input type="time" id="tEnd" class="time-inp" value="22:00"></div>
+      </div>
+      <div class="card-hd" style="border-top:1px solid var(--g6);">
+        <div class="card-icon gold">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2l1.6 3.3L13 6.1l-2.5 2.4.6 3.4L8 10.4l-3.1 1.5.6-3.4L3 6.1l3.4-.8z"/></svg>
+        </div>
+        <div><div class="card-title">ランク</div></div>
+      </div>
+      <div class="rank-row">
+        <button class="rank-pill" data-r="sp" onclick="pickRank('sp')">Special</button>
+        <button class="rank-pill active" data-r="pr" onclick="pickRank('pr')">Premium</button>
+        <button class="rank-pill" data-r="nw" onclick="pickRank('nw')">New Face</button>
+      </div>
+      <div class="toggle-row">
+        <div class="toggle-info"><div class="toggle-ttl">今すぐ出勤中にする</div><div class="toggle-sub">ONにするとLPに「出勤中」と表示されます</div></div>
+        <label class="ios-tog"><input type="checkbox" id="tDuty" checked><div class="ios-track"></div><div class="ios-thumb"></div></label>
+      </div>
+      <div class="btn-row" style="margin-top:.25rem;">
+        <button class="big-btn gray back-sm" onclick="goStp(1)">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 4l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="big-btn gold" onclick="goStp(3)">
+          次へ：確認する
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M8 4l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div id="stp3" style="display:none" class="content" style="padding-bottom:0">
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon green">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="6"/><path d="M5.5 8l2 2 3-3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div><div class="card-title">確認してください</div><div class="card-sub" id="confCount"></div></div>
+      </div>
+      <!-- 選択した女の子一覧 -->
+      <div id="confMembers" style="padding:0 1rem;"></div>
+      <div style="padding:.5rem 1rem .85rem;">
+        <div class="conf-row"><span class="conf-key">日付</span><span class="conf-val" id="confDate"></span></div>
+        <div class="conf-row"><span class="conf-key">時間</span><span class="conf-val" id="confTime"></span></div>
+        <div class="conf-row"><span class="conf-key">ランク</span><span class="conf-val" id="confRank"></span></div>
+        <div class="conf-row" style="border-bottom:none"><span class="conf-key">出勤中バッジ</span><span class="conf-val" id="confDuty"></span></div>
+      </div>
+      <div class="info-hint">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5.5"/><path d="M7 6v4M7 5h.01"/></svg>
+        登録するとLPに即座に反映されます
+      </div>
+      <div class="btn-row">
+        <button class="big-btn gray back-sm" onclick="goStp(2)">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 4l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="big-btn gold" onclick="submitSchedule()">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="10" cy="10" r="7.5"/><path d="M10 7v6M7 10h6" stroke-linecap="round"/></svg>
+          登録してLPに反映する
+        </button>
+      </div>
+    </div>
+
+    <div class="sec-lbl">登録済みスケジュール</div>
+    <div class="card" id="schedCard">
+      <div id="schedList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ キャスト一覧 ═══════════════════ -->
+<div class="screen" id="sc-cast">
+  <div class="top-bar">
+    <button class="back-btn" onclick="go('sc-home')">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 16l-5-6 5-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      戻る
+    </button>
+    <div class="top-bar-title">キャスト管理</div>
+    <div class="top-bar-right"></div>
+  </div>
+  <div class="content">
+    <div class="card">
+      <div id="castList"></div>
+      <div class="add-row" onclick="showAddModal()">
+        <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="9"/><path d="M11 7v8M7 11h8" stroke-linecap="round"/></svg>
+        新しい女の子を追加する
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ プロフィール編集 ═══════════════════ -->
+<div class="screen" id="sc-profile">
+  <div class="top-bar">
+    <button class="back-btn" onclick="go('sc-cast')">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 16l-5-6 5-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      一覧
+    </button>
+    <div class="top-bar-title" id="profileScreenTitle">プロフィール編集</div>
+    <div class="top-bar-right"></div>
+  </div>
+  <!-- 常時表示：誰を編集中か -->
+  <div class="profile-sticky-name">
+    <img class="profile-sticky-avatar" id="psAvatar" src="" alt="">
+    <div>
+      <div class="profile-sticky-label">編集中</div>
+      <div class="profile-sticky-name-txt" id="psName">—</div>
+    </div>
+  </div>
+  <div class="content" style="padding-bottom:0">
+    <div class="card">
+      <div class="photo-hero">
+        <img class="photo-lg" id="pPhoto" src="" alt="">
+        <div class="photo-btns">
+          <label class="photo-upload-btn">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="3" width="14" height="11" rx="2"/><circle cx="8" cy="8.5" r="2.5"/><path d="M5 3V2h6v1" stroke-linecap="round"/></svg>
+            写真を選ぶ
+            <input type="file" accept="image/*" onchange="handleUpload(event)">
+          </label>
+        </div>
+      </div>
+      <div class="url-section">
+        <div class="url-label">またはURLを入力</div>
+        <input type="text" id="pUrl" class="url-inp" placeholder="https://example.com/photo.jpg" oninput="prevUrl(this.value)">
+      </div>
+
+      <div class="form-sec">
+        <div class="fld"><label class="fld-lbl">源氏名 <span class="fld-req">*</span></label><input type="text" id="pName" class="fld-inp" placeholder="例: Yuki"></div>
+        <div class="fld-row">
+          <div class="fld"><label class="fld-lbl">年齢</label><input type="number" id="pAge" class="fld-inp" placeholder="26" inputmode="numeric"></div>
+          <div class="fld"><label class="fld-lbl">身長 (cm)</label><input type="number" id="pHt" class="fld-inp" placeholder="155" inputmode="numeric"></div>
+        </div>
+        <div class="fld-row">
+          <div class="fld"><label class="fld-lbl">カップ</label>
+            <select id="pCup" class="fld-inp"><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select>
+          </div>
+          <div class="fld"><label class="fld-lbl">タグ (カンマ区切り)</label><input type="text" id="pTags" class="fld-inp" placeholder="Cute, Playful"></div>
+        </div>
+      </div>
+
+      <div class="form-sec" style="border-top:1px solid var(--g6)">
+        <div class="fld"><label class="fld-lbl">自己紹介文</label><textarea id="pBio" class="fld-ta" placeholder="例: 東京出身の26歳。笑顔が自慢です。"></textarea></div>
+        <div class="fld"><label class="fld-lbl">得意なサービス①</label><input type="text" id="pS1" class="fld-inp" placeholder="例: Full body oil massage"></div>
+        <div class="fld"><label class="fld-lbl">得意なサービス②</label><input type="text" id="pS2" class="fld-inp" placeholder="例: Relaxing aroma"></div>
+        <div class="fld" style="margin-bottom:0"><label class="fld-lbl">一言メッセージ（英語）</label><input type="text" id="pMsg" class="fld-inp" placeholder="例: I'll make every moment unforgettable."></div>
+      </div>
+
+      <div class="danger-row" onclick="showDelCastModal()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h12M5 4V2h6v2M4 4l.8 10h6.4L12 4"/></svg>
+        このキャストを削除する
+      </div>
+    </div>
+  </div>
+  <div class="save-bar">
+    <button class="big-btn gold" onclick="saveProfile()">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 13v3h12v-3M10 4v9M7 10l3 3 3-3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      保存してLPに反映する
+    </button>
+  </div>
+</div>
+
+<!-- ═══════ MODAL: 新規追加 ═══════ -->
+<div class="modal-bg" id="addModal">
+  <div class="modal-sheet">
+    <div class="modal-handle"><div></div></div>
+    <div class="modal-title">新しい女の子を追加</div>
+    <div class="modal-body">
+      <div class="modal-fld">
+        <label>源氏名（ロシア名など）</label>
+        <input type="text" id="newCastName" placeholder="例: Yuki" maxlength="20">
+      </div>
+    </div>
+    <div class="modal-btns">
+      <button class="modal-cancel" onclick="closeModal('addModal')">キャンセル</button>
+      <button class="modal-ok" onclick="confirmAdd()">追加する</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ MODAL: 削除確認 (cast) ═══════ -->
+<div class="modal-bg" id="delCastModal">
+  <div class="modal-sheet">
+    <div class="modal-handle"><div></div></div>
+    <div class="del-modal-title">キャストを削除しますか？</div>
+    <div class="del-modal-msg" id="delCastMsg">この操作は元に戻せません。</div>
+    <div class="del-modal-btns">
+      <button class="del-modal-btn red" onclick="confirmDelCast()">削除する</button>
+      <button class="del-modal-btn cancel" onclick="closeModal('delCastModal')">キャンセル</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ MODAL: 削除確認 (schedule) ═══════ -->
+<div class="modal-bg" id="delSchedModal">
+  <div class="modal-sheet">
+    <div class="modal-handle"><div></div></div>
+    <div class="del-modal-title">スケジュールを削除しますか？</div>
+    <div class="del-modal-msg" id="delSchedMsg"></div>
+    <div class="del-modal-btns">
+      <button class="del-modal-btn red" onclick="confirmDelSched()">削除する</button>
+      <button class="del-modal-btn cancel" onclick="closeModal('delSchedModal')">キャンセル</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ ニュース一覧 ═══════════════════ -->
+<div class="screen" id="sc-news">
+  <div class="top-bar">
+    <button class="back-btn" onclick="go('sc-home')">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 16l-5-6 5-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      戻る
+    </button>
+    <div class="top-bar-title">ニュース管理</div>
+    <div class="top-bar-right"></div>
+  </div>
+  <div class="content">
+    <div class="info-hint" style="border-radius:var(--r);border-top:none;">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5.5"/><path d="M7 6v4M7 5h.01"/></svg>
+      ONにした項目がLPのポップアップに表示されます。複数ある場合はスライドで切り替わります。
+    </div>
+    <div class="card">
+      <div id="newsList"></div>
+      <div class="add-row" onclick="openNewsEdit(null)">
+        <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="9"/><path d="M11 7v8M7 11h8" stroke-linecap="round"/></svg>
+        新しいお知らせを追加する
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ ニュース編集 ═══════════════════ -->
+<div class="screen" id="sc-news-edit">
+  <div class="top-bar">
+    <button class="back-btn" onclick="go('sc-news')">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 16l-5-6 5-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      一覧
+    </button>
+    <div class="top-bar-title" id="newsEditTitle">新規追加</div>
+    <div class="top-bar-right"></div>
+  </div>
+  <div class="content" style="padding-bottom:0;">
+    <div class="card">
+      <!-- タイプ選択 -->
+      <div class="card-hd">
+        <div class="card-icon" style="background:rgba(88,86,214,.12);color:#5856d6;">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="14" height="11" rx="2"/><path d="M1 7h14M4 3V1M12 3V1" stroke-linecap="round"/></svg>
+        </div>
+        <div><div class="card-title">種類を選んでください</div></div>
+      </div>
+      <div class="type-row">
+        <button class="type-pill active-news" data-t="news"   onclick="pickType('news')"  >ニュース</button>
+        <button class="type-pill"             data-t="event"  onclick="pickType('event')" >イベント</button>
+      </div>
+
+      <!-- 内容 -->
+      <div class="form-sec" style="border-top:1px solid var(--g6);">
+        <div class="fld">
+          <label class="fld-lbl">タイトル <span class="fld-req">*</span></label>
+          <input type="text" id="nTitle" class="fld-inp" placeholder="例: 新人キャスト入店！">
+        </div>
+        <div class="fld">
+          <label class="fld-lbl">内容</label>
+          <textarea id="nBody" class="fld-ta" placeholder="例: 今月から新しいキャストが仲間入りしました。初回限定割引あり！" style="min-height:100px;"></textarea>
+        </div>
+        <div class="fld" style="margin-bottom:0;">
+          <label class="fld-lbl">有効期限（任意）</label>
+          <input type="date" id="nExpires" class="fld-inp">
+        </div>
+      </div>
+
+      <!-- 表示設定 -->
+      <div class="toggle-row">
+        <div class="toggle-info">
+          <div class="toggle-ttl">LPに表示する</div>
+          <div class="toggle-sub">ONにするとポップアップに表示されます</div>
+        </div>
+        <label class="ios-tog">
+          <input type="checkbox" id="nActive" checked>
+          <div class="ios-track"></div>
+          <div class="ios-thumb"></div>
+        </label>
+      </div>
+
+      <!-- 削除ボタン（編集時のみ） -->
+      <div class="danger-row" id="newsDelRow" style="display:none;" onclick="deleteNews()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h12M5 4V2h6v2M4 4l.8 10h6.4L12 4"/></svg>
+        このお知らせを削除する
+      </div>
+    </div>
+  </div>
+  <div class="save-bar">
+    <button class="big-btn gold" onclick="saveNews()">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 13v3h12v-3M10 4v9M7 10l3 3 3-3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      保存してLPに反映する
+    </button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ═══════════════════════════════════════
+   DATA
+═══════════════════════════════════════ */
+const CK='mt_cast_data', SK='mt_schedule', LK='mt_last_session';
+const DC=[
+  {id:'paypay',name:'Paypay',age:24,height:153,cup:'D',tags:['Cute','Fresh'],photo:'https://best-massage-tokyo.com/wp-content/uploads/2026/01/1769063443347.webp',bio:'So charming you can\'t help but feel completely healed.',service1:'Aroma oil massage',service2:'Relaxing body course',message:"You'll feel completely healed.",rank:'nw'},
+  {id:'margaret',name:'Margaret',age:21,height:155,cup:'D',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/1745092578220.webp',bio:'Elegant slender idol with a pure aura.',service1:'Gentle aroma massage',service2:'Full relaxation',message:"Pure and genuine care, just for you.",rank:'nw'},
+  {id:'lilian',name:'Lilian',age:22,height:159,cup:'H',tags:['Fresh','Hot'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250324_190124806.webp',bio:'Fresh energy with an irresistible voluptuous figure.',service1:'Deep aroma oil massage',service2:'Premium body course',message:"I'll take you somewhere special.",rank:'pr'},
+  {id:'casablanca',name:'Casablanca',age:25,height:156,cup:'F',tags:['Cute','Glamorous'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/17386327067432.webp',bio:'A captivating therapist with a sweet smile. Lover-style hospitality filled with kindness.',service1:'Lover-style aroma massage',service2:'Full body course',message:"Once you experience my care, you'll be captivated.",rank:'nw'},
+  {id:'salamander',name:'Salamander',age:20,height:159,cup:'B',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_203010978.webp',bio:'Young and fresh energy that will melt your stress away.',service1:'Gentle body massage',service2:'Relaxing aroma course',message:"Let me take all your stress away.",rank:'nw'},
+  {id:'murasaki',name:'Murasaki',age:24,height:163,cup:'E',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/17412255138022.webp',bio:'Graceful beauty with a refreshing personality.',service1:'Aroma oil course',service2:'Full relaxation',message:"I'll make you forget everything.",rank:'nw'},
+  {id:'blair',name:'Blair',age:26,height:153,cup:'C',tags:['Fresh','Glamorous'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/1735052534887.webp',bio:'Refined elegance with a fresh and captivating charm.',service1:'Luxury aroma massage',service2:'Premium full course',message:"Elegance and warmth, all for you.",rank:'pr'},
+  {id:'suzanne',name:'Suzanne',age:26,height:162,cup:'E',tags:['Glamorous','Gorgeous'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/1737710418647.webp',bio:'The perfect mixed-beauty with looks, aura, and style in one.',service1:'Special luxury course',service2:'VIP full experience',message:"Beauty and grace — I'm all yours.",rank:'sp'},
+  {id:'sophia',name:'Sophia',age:27,height:159,cup:'H',tags:['Glamorous'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/1731254097017.webp',bio:'Mature glamour with a voluptuous figure. Her skilled touch will envelop you completely.',service1:'Deep relaxation course',service2:'Special premium course',message:"Mature elegance — your total satisfaction.",rank:'pr'},
+  {id:'nicola',name:'Nicola',age:22,height:152,cup:'D',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250113_100903465.webp',bio:'Adorable and attentive with a caring heart. Her gentle touch will put you at ease instantly.',service1:'Gentle aroma massage',service2:'Caring full course',message:"Every detail matters to me.",rank:'nw'},
+  {id:'juliana',name:'Juliana',age:28,height:170,cup:'G',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/17319165635063-1-1.webp',bio:'Tall and elegant with a fresh charm that captivates.',service1:'Full body aroma course',service2:'Premium relaxation',message:"Let me be your perfect companion.",rank:'pr'},
+  {id:'angerme',name:'Angerme',age:0,height:0,cup:'',tags:['Cute','Hot'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/17311613981632.webp',bio:'For Hello! Project fans — a living lookalike of Moe Kamikokuryo.',service1:'Aroma oil massage',service2:'Full relaxation course',message:"Your favorite idol, just for you.",rank:'pr'},
+  {id:'rosemary',name:'Rosemary',age:28,height:160,cup:'C',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/we6cgl.webp',bio:'Warm and gentle with a calming presence.',service1:'Relaxing aroma course',service2:'Gentle full body',message:"I'll wrap you in warmth.",rank:'pr'},
+  {id:'alexander',name:'Alexander',age:23,height:168,cup:'C',tags:['Glamorous','Hot'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/20241228_122134.webp',bio:'Tall and glamorous with a passionate edge.',service1:'Premium aroma course',service2:'Luxury full experience',message:"Passion and glamour — all yours.",rank:'pr'},
+  {id:'coco',name:'Coco',age:28,height:165,cup:'G',tags:['Glamorous','Gorgeous'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_203110905.webp',bio:'Gorgeous and confident. Once you experience her luxury course, you\'ll be completely hooked.',service1:'Luxury full course',service2:'VIP premium experience',message:"Let me take you somewhere extraordinary.",rank:'nw'},
+  {id:'christina',name:'Christina',age:22,height:163,cup:'E',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_202208066.webp',bio:'Fresh and youthful with a captivating smile.',service1:'Gentle aroma massage',service2:'Full relaxation',message:"My smile will light up your day.",rank:'nw'},
+  {id:'amagifu',name:'Amagifu',age:19,height:158,cup:'D',tags:['Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_202427061.webp',bio:'The youngest fresh face. Her genuine warmth and bright smile will put you completely at ease.',service1:'Gentle aroma oil massage',service2:'Full body relaxation',message:"My smile will put you completely at ease.",rank:'nw'},
+  {id:'marcy',name:'Marcy',age:24,height:165,cup:'D',tags:['Cute','Gorgeous'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_202319259.webp',bio:'Tall and graceful with a cute charm.',service1:'Aroma oil course',service2:'Premium relaxation',message:"A moment with me is unforgettable.",rank:'nw'},
+  {id:'mountain_dew',name:'Mountain Dew',age:23,height:160,cup:'E',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_201844668.webp',bio:'Refreshing energy and a naturally sweet personality.',service1:'Relaxing aroma massage',service2:'Gentle full body',message:"Refreshing and real — just for you.",rank:'nw'},
+  {id:'andrew',name:'Andrew',age:18,height:152,cup:'C',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_202057155.webp',bio:'The youngest face — innocent and genuine.',service1:'Gentle body massage',service2:'Soft aroma course',message:"Let me be your special discovery.",rank:'nw'},
+  {id:'charlotte',name:'Charlotte',age:24,height:162,cup:'E',tags:['Cute','Gorgeous'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/B612_20241118_172854_792.webp',bio:'Cute and gorgeous — a rare combination of elegance and warmth.',service1:'Premium aroma course',service2:'Full body luxury',message:"Gorgeous and gentle, entirely yours.",rank:'pr'},
+  {id:'milky',name:'Milky',age:24,height:152,cup:'C',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/B612_20241231_035628_624.webp',bio:'Petite and adorable with a milky-soft personality.',service1:'Gentle aroma massage',service2:'Relaxing full course',message:"Small but perfectly formed — just for you.",rank:'pr'},
+  {id:'linda',name:'Linda',age:25,height:165,cup:'E',tags:['Fresh','Glamorous'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/B612_20241118_173746_222-2.jpg',bio:'Fresh elegance with a glamorous touch.',service1:'Luxury aroma massage',service2:'Premium full body',message:"Fresh beauty, warm heart.",rank:'pr'},
+  {id:'tenga',name:'Tenga',age:25,height:158,cup:'D',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/B612_20241118_172513_258.jpg',bio:'Cute and charming with an effortlessly warm presence.',service1:'Aroma oil massage',service2:'Caring full course',message:"I'll give you my everything.",rank:'pr'},
+  {id:'daniel',name:'Daniel',age:25,height:160,cup:'C',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/B612_20241118_173109_112.jpg',bio:'Gentle and fresh with a sweet, caring touch.',service1:'Gentle aroma course',service2:'Relaxing full body',message:"Let me be your perfect moment.",rank:'pr'},
+  {id:'saki',name:'Saki',age:32,height:156,cup:'F',tags:['Glamorous','Hot'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/a5.jpg',bio:'Mature beauty with a glamorous allure and experienced touch.',service1:'Deep luxury course',service2:'Special aroma treatment',message:"Experience true maturity and grace.",rank:'pr'},
+];
+const g=k=>{try{const r=localStorage.getItem(k);return r?JSON.parse(r):null;}catch(e){return null;}};
+const s=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+const getCasts=()=>g(CK)||DC;
+const setCasts=v=>s(CK,v);
+const getScheds=()=>g(SK)||[];
+const setScheds=v=>s(SK,v);
+
+/* ═══════════════════════════════════════
+   ROUTER
+═══════════════════════════════════════ */
+function go(id){
+  document.querySelectorAll('.screen').forEach(el=>el.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+  if(id==='sc-home'){renderHome();}
+  if(id==='sc-cast'){renderCastList();}
+  if(id==='sc-news'){renderNewsList();}
+  if(id==='sc-register'){
+    // 必ずゼロから始める
+    selIds=[]; selRank='pr'; selDate=todayStr();
+    renderChips(); updateSelPill(); renderSchedList(); initDates(); setStep(1);
+  }
+}
+
+/* ═══════════════════════════════════════
+   HOME
+═══════════════════════════════════════ */
+function renderHome(){
+  const today=todayStr();
+  const scheds=getScheds().filter(s=>s.date===today);
+  const casts=getCasts();
+  // 日付
+  const dt=new Date();
+  const dow=['日','月','火','水','木','金','土'];
+  document.getElementById('homeDate').textContent=`${dt.getMonth()+1}月${dt.getDate()}日(${dow[dt.getDay()]})`;
+  document.getElementById('homeCount').textContent=scheds.length;
+  // 今日のメンバー
+  const el=document.getElementById('homeChips');
+  if(!scheds.length){
+    el.innerHTML='<div class="today-empty">まだ登録されていません</div>';
+  } else {
+    el.innerHTML='<div class="today-chips">'+scheds.map(s=>{
+      const c=casts.find(x=>x.id===s.castId);
+      return `<div class="today-chip"><img src="${c?c.photo:''}" onerror="this.style.display='none'"><div class="${s.onDuty?'dot-g':'dot-gray'}"></div>${s.castName}</div>`;
+    }).join('')+'</div>';
+  }
+  // reuse：前回選んだ人を1人ずつカードで表示
+  const last=g(LK);
+  const rw=document.getElementById('reuseWrap');
+  if(last){
+    const ids=last.castIds||(last.castId?[last.castId]:[]);
+    const rlMap={sp:'Special',pr:'Premium',nw:'New Face'};
+    const timeLabel=`${last.start}–${last.end}`;
+    const rankLabel=rlMap[last.rank]||last.rank;
+    const cards=ids.map(id=>{
+      const lc=casts.find(x=>x.id===id);
+      if(!lc) return '';
+      return `
+      <div class="reuse-banner" onclick="reuseOneCast('${id}')">
+        <img class="reuse-avatar" src="${lc.photo}" alt="${lc.name}" onerror="this.style.opacity='.3'">
+        <div class="reuse-info">
+          <div class="reuse-label">ワンタップで再利用</div>
+          <div class="reuse-name">${lc.name}</div>
+          <div class="reuse-detail">${timeLabel} / ${rankLabel}</div>
+        </div>
+        <button class="reuse-btn" onclick="event.stopPropagation();reuseOneCast('${id}')">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M2 7a5 5 0 1 0 5-5 5 5 0 0 0-3.5 1.5L2 5" stroke-linecap="round"/>
+            <path d="M2 3v2h2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          再利用
+        </button>
+      </div>`;
+    }).filter(Boolean).join('');
+    if(cards){ document.getElementById('reuseCards').innerHTML=cards; rw.style.display=''; }
+    else rw.style.display='none';
+  } else rw.style.display='none';
+}
+
+// 1人だけ選んで登録画面へ
+function reuseOneCast(castId){
+  const last=g(LK);
+  if(!last) return;
+  selIds=[castId];
+  selRank=last.rank||'pr';
+  selDate=todayStr();
+  document.getElementById('tStart').value=last.start;
+  document.getElementById('tEnd').value=last.end;
+  document.getElementById('tDuty').checked=true;
+  go('sc-register');
+  setTimeout(()=>{renderChips();updateSelPill();goStp(3);},100);
+}
+
+// 全員まとめて再利用（後方互換用）
+function reuseLastSession(){
+  const last=g(LK);
+  if(!last) return;
+  const ids=last.castIds||(last.castId?[last.castId]:[]);
+  selIds=ids;
+  selRank=last.rank||'pr';
+  selDate=todayStr();
+  document.getElementById('tStart').value=last.start;
+  document.getElementById('tEnd').value=last.end;
+  document.getElementById('tDuty').checked=true;
+  go('sc-register');
+  setTimeout(()=>{renderChips();updateSelPill();goStp(3);},100);
+}
+
+/* ═══════════════════════════════════════
+   STEP WIZARD
+═══════════════════════════════════════ */
+let selIds=[], selRank='pr', selDate=todayStr();
+
+function setStep(n){
+  [1,2,3].forEach(i=>{
+    document.getElementById('stp'+i).style.display=i===n?'':'none';
+    const circ=document.getElementById('sc'+i);
+    const lbl=document.getElementById('sl'+i);
+    const line=document.getElementById('sln'+i);
+    if(i<n){
+      circ.className='step-circle done';
+      circ.innerHTML='<svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3 3 7-6" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      lbl.className='step-lbl';
+      if(line) line.className='step-line done';
+    } else if(i===n){
+      circ.className='step-circle cur'; circ.textContent=i;
+      lbl.className='step-lbl cur';
+      if(line) line.className='step-line';
+    } else {
+      circ.className='step-circle'; circ.textContent=i;
+      lbl.className='step-lbl';
+      if(line) line.className='step-line';
+    }
+  });
+}
+
+function goStp(n){
+  if(n===2&&selIds.length===0){showToast('女の子を選んでください','err');return;}
+  if(n===3){
+    if(!document.getElementById('tStart').value||!document.getElementById('tEnd').value){showToast('時間を入力してください','err');return;}
+    buildConf();
+  }
+  setStep(n);
+  window.scrollTo(0,0);
+}
+
+function buildConf(){
+  const casts=getCasts();
+  const selected=selIds.map(id=>casts.find(x=>x.id===id)).filter(Boolean);
+  if(!selected.length) return;
+  const rl={sp:'Special',pr:'Premium',nw:'New Face'};
+  const start=document.getElementById('tStart').value;
+  const end=document.getElementById('tEnd').value;
+  // Build member list HTML
+  const membersHtml=selected.map(c=>`
+    <div style="display:flex;align-items:center;gap:.75rem;padding:.65rem 0;border-bottom:1px solid var(--g6);">
+      <img src="${c.photo}" onerror="this.style.opacity='.3'" style="width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:top;background:var(--g6);flex-shrink:0;">
+      <div>
+        <div style="font-size:.92rem;font-weight:700;color:var(--dark);">${c.name}</div>
+        <div style="font-size:.72rem;color:var(--g3);margin-top:.08rem;">AGE ${c.age} · T${c.height} · (${c.cup})</div>
+      </div>
+    </div>
+  `).join('');
+  document.getElementById('confMembers').innerHTML=membersHtml;
+  document.getElementById('confCount').textContent=`${selected.length}名まとめて登録`;
+  document.getElementById('confDate').textContent=formatDate(selDate);
+  document.getElementById('confTime').textContent=`${start} – ${end}`;
+  document.getElementById('confRank').textContent=rl[selRank]||'Premium';
+  document.getElementById('confDuty').textContent=document.getElementById('tDuty').checked?'表示する':'表示しない';
+}
+
+function submitSchedule(){
+  const start=document.getElementById('tStart').value;
+  const end=document.getElementById('tEnd').value;
+  const onDuty=document.getElementById('tDuty').checked;
+  const casts=getCasts();
+  const scheds=getScheds();
+  const names=[];
+  selIds.forEach(id=>{
+    const c=casts.find(x=>x.id===id); if(!c) return;
+    const idx=scheds.findIndex(x=>x.castId===id&&x.date===selDate);
+    const entry={castId:id,castName:c.name,date:selDate,start,end,rank:selRank,onDuty};
+    if(idx>=0) scheds[idx]=entry; else scheds.push(entry);
+    names.push(c.name);
+  });
+  setScheds(scheds);
+  // 前回セッション保存（選んだ全員分）
+  if(selIds.length>0) s(LK,{castIds:selIds,start,end,rank:selRank});
+  // リセット
+  selIds=[]; selRank='pr'; selDate=todayStr();
+  renderChips(); updateSelPill();
+  renderSchedList(); renderHome();
+  const msg=names.length===1?`${names[0]} の出勤を登録しました`:`${names.join('・')} の出勤を登録しました`;
+  showToast(msg,'ok');
+  setStep(1); initDates();
+}
+
+/* ═══════════════════════════════════════
+   CAST CHIPS
+═══════════════════════════════════════ */
+function renderChips(){
+  const casts=getCasts();
+  const el=document.getElementById('chips1');
+  el.innerHTML=casts.map(c=>`
+    <button class="cast-chip ${selIds.includes(c.id)?'sel':''}" onclick="pickCast('${c.id}')">
+      <div class="chip-wrap">
+        <img class="chip-img" src="${c.photo}" alt="${c.name}" onerror="this.style.opacity='.3'">
+        <div class="chip-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <div class="chip-name">${c.name}</div>
+    </button>
+  `).join('');
+}
+
+function updateSelPill(){
+  const pill=document.getElementById('selPill');
+  const txt=document.getElementById('selPillTxt');
+  if(selIds.length===0){
+    pill.classList.remove('show');
+  } else {
+    const casts=getCasts();
+    const names=selIds.map(id=>casts.find(x=>x.id===id)?.name||'').filter(Boolean);
+    txt.textContent=names.length===1?`${names[0]} を選択中`:`${names.join('・')} を選択中（${names.length}名）`;
+    pill.classList.add('show');
+  }
+}
+
+function pickCast(id){
+  // トグル：すでに選択済みなら外す、なければ追加
+  const idx=selIds.indexOf(id);
+  if(idx>=0) selIds.splice(idx,1);
+  else selIds.push(id);
+  renderChips();
+  updateSelPill();
+  // ランクは最後に選んだキャストのデフォルトに合わせる
+  if(selIds.length>0){
+    const c=getCasts().find(x=>x.id===selIds[selIds.length-1]);
+    if(c) pickRank(c.rank||'pr');
+  }
+}
+
+function pickRank(r){
+  selRank=r;
+  document.querySelectorAll('.rank-pill').forEach(b=>b.classList.toggle('active',b.dataset.r===r));
+}
+
+/* ═══════════════════════════════════════
+   DATE PICKER
+═══════════════════════════════════════ */
+function initDates(){
+  const el=document.getElementById('dateRow');
+  const today=new Date(); const dow=['日','月','火','水','木','金','土'];
+  const btns=[];
+  for(let i=0;i<7;i++){
+    const d=new Date(today); d.setDate(today.getDate()+i);
+    const str=d.toISOString().split('T')[0];
+    const isToday=i===0; const isTomorrow=i===1;
+    const lbl=isToday?'今日':isTomorrow?'明日':dow[d.getDay()];
+    btns.push(`<button class="date-btn ${selDate===str?'active':''} ${isToday?'today':''}" data-d="${str}" onclick="pickDate('${str}')">
+      <div class="date-btn-day">${lbl}</div>
+      <div class="date-btn-num">${d.getDate()}</div>
+      <div class="date-btn-dow">${dow[d.getDay()]}</div>
+    </button>`);
+  }
+  el.innerHTML=btns.join('');
+}
+
+function pickDate(d){
+  selDate=d;
+  document.querySelectorAll('.date-btn').forEach(b=>b.classList.toggle('active',b.dataset.d===d));
+}
+
+/* ═══════════════════════════════════════
+   SCHEDULE LIST (with swipe-to-delete)
+═══════════════════════════════════════ */
+let pendingDelIdx=null;
+
+function renderSchedList(){
+  const scheds=getScheds();
+  const casts=getCasts();
+  const el=document.getElementById('schedList');
+  if(!scheds.length){
+    el.innerHTML=`<div class="sched-empty">
+      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+        <rect x="5" y="9" width="30" height="26" rx="3"/><path d="M5 15h30M12 7v5M28 7v5M14 22h4M22 22h4M14 28h4"/>
+      </svg><p>まだ登録されていません</p></div>`;
+    return;
+  }
+  const sorted=[...scheds].sort((a,b)=>a.date.localeCompare(b.date));
+  el.innerHTML='<div class="swipe-hint"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 6H3M3 6l2-2M3 6l2 2"/></svg>左にスワイプすると削除できます</div>'+
+  sorted.map((s,i)=>{
+    const c=casts.find(x=>x.id===s.castId);
+    return `<div class="sched-item-wrap" id="sw${i}">
+      <div class="sched-item" id="si${i}">
+        <img class="sched-avatar" src="${c?c.photo:''}" alt="${s.castName}" onerror="this.style.opacity='.3'">
+        <div class="sched-info">
+          <div class="sched-name">${s.castName}</div>
+          <div class="sched-detail">${formatDate(s.date)} &nbsp; ${s.start}–${s.end}</div>
+          <div class="sched-badge ${s.onDuty?'on':'off'}">${s.onDuty?'出勤中':'登録済み'}</div>
+        </div>
+      </div>
+      <div class="sched-item-delete" onclick="askDelSched(${i})">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 5h14M6 5V3h6v2M5 5l.9 10h6.2L13 5"/></svg>
+        削除
+      </div>
+    </div>`;
+  }).join('');
+  // Swipe gesture
+  sorted.forEach((_,i)=>{
+    addSwipe(document.getElementById('sw'+i), i);
+  });
+}
+
+function addSwipe(wrap, idx){
+  if(!wrap) return;
+  let startX=0, dx=0, swiped=false;
+  wrap.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;swiped=false;},{passive:true});
+  wrap.addEventListener('touchmove',e=>{
+    dx=e.touches[0].clientX-startX;
+    if(dx<-20&&!swiped){wrap.classList.add('swiped');swiped=true;}
+    if(dx>20&&swiped){wrap.classList.remove('swiped');swiped=false;}
+  },{passive:true});
+}
+
+function askDelSched(i){
+  const scheds=getScheds();
+  const sorted=[...scheds].sort((a,b)=>a.date.localeCompare(b.date));
+  const s=sorted[i];
+  pendingDelIdx=i;
+  document.getElementById('delSchedMsg').textContent=`${s.castName}（${formatDate(s.date)} ${s.start}–${s.end}）を削除しますか？この操作は元に戻せません。`;
+  openModal('delSchedModal');
+}
+function confirmDelSched(){
+  if(pendingDelIdx===null) return;
+  const scheds=getScheds();
+  const sorted=[...scheds].sort((a,b)=>a.date.localeCompare(b.date));
+  const t=sorted[pendingDelIdx];
+  const ri=scheds.findIndex(x=>x.castId===t.castId&&x.date===t.date);
+  scheds.splice(ri,1); setScheds(scheds);
+  renderSchedList(); renderHome();
+  closeModal('delSchedModal');
+  pendingDelIdx=null;
+  showToast('削除しました');
+}
+
+/* ═══════════════════════════════════════
+   CAST LIST
+═══════════════════════════════════════ */
+function renderCastList(){
+  const casts=getCasts();
+  const el=document.getElementById('castList');
+  if(!casts.length){el.innerHTML='<div class="sched-empty"><p>キャストが登録されていません</p></div>';return;}
+  el.innerHTML=casts.map(c=>`
+    <div class="cast-item" onclick="openProfile('${c.id}')">
+      <img class="cast-av" src="${c.photo}" alt="${c.name}" onerror="this.style.opacity='.3'">
+      <div style="flex:1">
+        <div class="cast-nm">${c.name}</div>
+        <div class="cast-mt">AGE ${c.age} · T${c.height} · (${c.cup}) · ${c.tags.join(', ')}</div>
+      </div>
+      <div class="cast-chev"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+  `).join('');
+}
+
+/* ═══════════════════════════════════════
+   ADD NEW CAST (custom modal)
+═══════════════════════════════════════ */
+function showAddModal(){
+  document.getElementById('newCastName').value='';
+  openModal('addModal');
+  setTimeout(()=>document.getElementById('newCastName').focus(),300);
+}
+function confirmAdd(){
+  const name=document.getElementById('newCastName').value.trim();
+  if(!name){showToast('名前を入力してください','err');return;}
+  const id='cast_'+Date.now();
+  const casts=getCasts();
+  casts.push({id,name,age:20,height:158,cup:'C',tags:['Cute'],photo:'',bio:'',service1:'',service2:'',message:'',rank:'nw'});
+  setCasts(casts);
+  closeModal('addModal');
+  renderCastList();
+  showToast(`${name} を追加しました`,'ok');
+  setTimeout(()=>openProfile(id),300);
+}
+document.getElementById('newCastName').addEventListener('keydown',e=>{if(e.key==='Enter')confirmAdd();});
+
+/* ═══════════════════════════════════════
+   PROFILE EDIT
+═══════════════════════════════════════ */
+let editId=null;
+function openProfile(id){
+  editId=id;
+  const c=getCasts().find(x=>x.id===id);
+  if(!c) return;
+  // sticky header + title bar
+  document.getElementById('profileScreenTitle').textContent=c.name;
+  document.getElementById('psName').textContent=c.name;
+  document.getElementById('psAvatar').src=c.photo||'';
+  // form
+  document.getElementById('pPhoto').src=c.photo||'';
+  document.getElementById('pUrl').value=c.photo||'';
+  document.getElementById('pName').value=c.name;
+  document.getElementById('pAge').value=c.age;
+  document.getElementById('pHt').value=c.height;
+  document.getElementById('pCup').value=c.cup;
+  document.getElementById('pTags').value=c.tags.join(', ');
+  document.getElementById('pBio').value=c.bio||'';
+  document.getElementById('pS1').value=c.service1||'';
+  document.getElementById('pS2').value=c.service2||'';
+  document.getElementById('pMsg').value=c.message||'';
+  go('sc-profile');
+}
+function handleUpload(e){
+  const f=e.target.files[0]; if(!f) return;
+  if(!f.type.startsWith('image/')){showToast('画像ファイルを選んでください','err');return;}
+  const r=new FileReader();
+  r.onload=ev=>{
+    const d=ev.target.result;
+    document.getElementById('pPhoto').src=d;
+    document.getElementById('pUrl').value=d;
+    // update sticky
+    document.getElementById('psAvatar').src=d;
+    showToast('写真を読み込みました','ok');
+  };
+  r.readAsDataURL(f);
+}
+function prevUrl(url){
+  document.getElementById('pPhoto').src=url;
+  document.getElementById('psAvatar').src=url;
+}
+function saveProfile(){
+  if(!editId) return;
+  const casts=getCasts(); const i=casts.findIndex(c=>c.id===editId);
+  if(i<0) return;
+  const name=document.getElementById('pName').value.trim();
+  if(!name){showToast('名前を入力してください','err');return;}
+  const photo=document.getElementById('pUrl').value;
+  casts[i]={...casts[i],name,age:parseInt(document.getElementById('pAge').value)||casts[i].age,height:parseInt(document.getElementById('pHt').value)||casts[i].height,cup:document.getElementById('pCup').value,tags:document.getElementById('pTags').value.split(',').map(t=>t.trim()).filter(Boolean),photo,bio:document.getElementById('pBio').value,service1:document.getElementById('pS1').value,service2:document.getElementById('pS2').value,message:document.getElementById('pMsg').value};
+  setCasts(casts);
+  document.getElementById('profileScreenTitle').textContent=name;
+  document.getElementById('psName').textContent=name;
+  document.getElementById('psAvatar').src=photo;
+  showToast(`${name} を保存しました`,'ok');
+}
+
+/* ═══════════════════════════════════════
+   DELETE CAST
+═══════════════════════════════════════ */
+function showDelCastModal(){
+  if(!editId) return;
+  const c=getCasts().find(x=>x.id===editId);
+  if(!c) return;
+  document.getElementById('delCastMsg').textContent=`「${c.name}」を削除しますか？この操作は元に戻せません。`;
+  openModal('delCastModal');
+}
+function confirmDelCast(){
+  if(!editId) return;
+  const c=getCasts().find(x=>x.id===editId);
+  setCasts(getCasts().filter(x=>x.id!==editId));
+  closeModal('delCastModal');
+  showToast(`${c?c.name:'キャスト'} を削除しました`);
+  go('sc-cast');
+}
+
+/* ═══════════════════════════════════════
+   MODAL HELPERS
+═══════════════════════════════════════ */
+function openModal(id){ document.getElementById(id).classList.add('open'); }
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+// Close on backdrop tap
+document.querySelectorAll('.modal-bg').forEach(m=>{
+  m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');});
+});
+
+/* ═══════════════════════════════════════
+   UTILS
+═══════════════════════════════════════ */
+function todayStr(){ return new Date().toISOString().split('T')[0]; }
+function formatDate(d){
+  const dt=new Date(d+'T00:00:00');
+  return `${dt.getMonth()+1}/${dt.getDate()}(${'日月火水木金土'[dt.getDay()]})`;
+}
+let toastT;
+function showToast(msg,type=''){
+  clearTimeout(toastT);
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.className='toast'+(type?' '+type:'')+' show';
+  toastT=setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+/* ═══════════════════════════════════════
+   NEWS
+═══════════════════════════════════════ */
+const NK = 'mt_news';
+const getNews = () => g(NK) || [];
+const setNews = v => s(NK, v);
+
+let editNewsId = null;
+let editNewsType = 'news';
+
+// go()にsc-news/sc-news-editを追加
+
+function renderNewsList() {
+  const items = getNews();
+  const el = document.getElementById('newsList');
+  const typeLabel = { news:'ニュース', coupon:'特典', event:'イベント' };
+  if (!items.length) {
+    el.innerHTML = `<div class="sched-empty">
+      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+        <rect x="4" y="8" width="32" height="24" rx="3"/><path d="M4 14h32M10 8V5M30 8V5M10 20h12M10 26h8"/>
+      </svg><p>まだ登録されていません</p></div>`;
+    return;
+  }
+  el.innerHTML = items.map((n, i) => `
+    <div class="news-item" onclick="openNewsEdit('${n.id}')">
+      <span class="news-type-badge ${n.type||'news'}">${typeLabel[n.type||'news']}</span>
+      <div class="news-item-info">
+        <div class="news-item-title">${n.title||'（タイトルなし）'}</div>
+        <div class="news-item-body">${n.body||''}</div>
+        ${n.expires?`<div class="news-item-exp">期限：${n.expires}</div>`:''}
+      </div>
+      <div class="news-item-right">
+        <label class="ios-tog" style="width:46px;height:26px;" onclick="event.stopPropagation()">
+          <input type="checkbox" ${n.active?'checked':''} onchange="toggleNews('${n.id}',this.checked)">
+          <div class="ios-track"></div>
+          <div class="ios-thumb" style="width:22px;height:22px;top:2px;left:2px;"></div>
+        </label>
+        <div class="cast-list-chevron"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleNews(id, active) {
+  const items = getNews();
+  const i = items.findIndex(n => n.id === id);
+  if (i < 0) return;
+  items[i].active = active;
+  setNews(items);
+  showToast(active ? '表示をONにしました' : '表示をOFFにしました', 'ok');
+}
+
+function openNewsEdit(id) {
+  editNewsId = id;
+  const items = getNews();
+  const n = id ? items.find(x => x.id === id) : null;
+
+  document.getElementById('newsEditTitle').textContent = n ? '編集' : '新規追加';
+  document.getElementById('nTitle').value = n?.title || '';
+  document.getElementById('nBody').value = n?.body || '';
+  document.getElementById('nExpires').value = n?.expires || '';
+  document.getElementById('nActive').checked = n ? !!n.active : true;
+  document.getElementById('newsDelRow').style.display = n ? '' : 'none';
+  pickType(n?.type || 'news');
+
+  // go()を直接呼ぶと再帰するのでscreenを直接切り替え
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('sc-news-edit').classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function pickType(t) {
+  editNewsType = t;
+  document.querySelectorAll('.type-pill').forEach(b => {
+    b.className = 'type-pill' + (b.dataset.t === t ? ` active-${t}` : '');
+  });
+}
+
+function saveNews() {
+  const title = document.getElementById('nTitle').value.trim();
+  if (!title) { showToast('タイトルを入力してください', 'err'); return; }
+  const items = getNews();
+  const entry = {
+    id: editNewsId || 'news_' + Date.now(),
+    type: editNewsType,
+    title,
+    body: document.getElementById('nBody').value,
+    expires: document.getElementById('nExpires').value,
+    active: document.getElementById('nActive').checked,
+  };
+  if (editNewsId) {
+    const i = items.findIndex(n => n.id === editNewsId);
+    if (i >= 0) items[i] = entry; else items.push(entry);
+  } else {
+    items.push(entry);
+  }
+  setNews(items);
+  showToast(`「${title}」を保存しました`, 'ok');
+  go('sc-news');
+}
+
+function deleteNews() {
+  if (!editNewsId) return;
+  const items = getNews().filter(n => n.id !== editNewsId);
+  setNews(items);
+  showToast('削除しました');
+  go('sc-news');
+}
+
+/* ═══════════════════════════════════════
+   INIT
+═══════════════════════════════════════ */
+(()=>{
+  if(!localStorage.getItem(CK)) setCasts(DC);
+  renderHome();
+})();
+</script>
+</body>
+</html>
