@@ -1,1027 +1,409 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="description" content="Massage Tokyo â Tokyo's most exclusive men's pleasure salon. English spoken. Private & Discreet. Ginza.">
-<title>東京マッサージ｜銀座の高級メンズサロン Happy End</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<meta name="description" content="銀座メンズエステ HAPPY END - 東京で最高のマッサージ体験。英語対応・完全個室・当日予約OK。外国人歓迎。">
+<title>銀座メンズエステ HAPPY END | Best Massage in Tokyo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-/* ââ HAPPY END STYLE ââ */
-:root{
-  --white:   #fff;
-  --black:   #212121;
-  --gray:    #555;
-  --gray-lt: #888;
-  --gray-bg: #f7f7f7;
-  --salmon:  #f2ddd8;
-  --salmon2: #e8c8c0;
-  --gold:    #b8986a;
-  --gold-lt: #d4b98a;
-  --border:  #ddd;
-  --border2: #eee;
-  --shadow:  rgba(0,0,0,.08);
-}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;overflow-x:hidden}
-body{background:var(--white);color:var(--black);font-family:'Jost','Noto Sans JP',sans-serif;font-weight:300;overflow-x:hidden}
-img{display:block;max-width:100%}
-a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
-
-/* ââ HEADER ââ */
-.header{
-  position:fixed;top:0;left:0;right:0;z-index:200;
-  background:var(--white);
-  border-bottom:1px solid var(--border2);
-  display:flex;align-items:center;
-  height:70px;padding:0 1.5rem;
-}
-.header-logo{
-  display:flex;align-items:center;gap:.75rem;
-  font-family:'Cormorant',serif;font-weight:400;
-  font-size:1.1rem;letter-spacing:.05em;color:var(--black);
-}
-.header-logo em{font-style:italic}
-.header-logo-sub{font-size:.45rem;letter-spacing:.5em;text-transform:uppercase;color:var(--gray-lt);display:block;font-style:normal;font-family:'Jost',sans-serif;margin-top:.15rem}
-.header-center{flex:1;text-align:center;font-size:.72rem;color:var(--gray);line-height:1.8;display:none}
-.header-right{margin-left:auto;display:flex;align-items:center;gap:1rem}
-.header-email{font-size:.75rem;color:var(--gray);display:flex;align-items:center;gap:.3rem}
-.header-email svg{width:14px;height:14px}
-.header-open{font-size:.65rem;color:var(--gray-lt);text-align:right;line-height:1.7}
-.header-reserve{
-  background:var(--black);color:var(--white);
-  font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;
-  padding:.7rem 1.4rem;text-decoration:none;
-  transition:background .2s;white-space:nowrap;
-}
-.header-reserve:hover{background:var(--gray)}
-
-/* ââ HAMBURGER ââ */
-.ham-btn{
-  display:flex;flex-direction:column;gap:5px;
-  background:none;border:none;cursor:pointer;padding:.5rem;
-  margin-left:.75rem;
-}
-.ham-btn span{display:block;width:22px;height:1.5px;background:var(--black);transition:all .3s}
-.ham-label{font-size:.6rem;letter-spacing:.12em;color:var(--black);text-align:center;margin-top:.2rem}
-
-/* ââ MOBILE MENU ââ */
-.mob-menu{
-  display:none;position:fixed;inset:0;z-index:190;
-  background:rgba(255,255,255,.98);
-  flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;
-}
-.mob-menu.open{display:flex}
-.mob-menu a{
-  font-family:'Cormorant',serif;font-size:1.7rem;font-style:italic;
-  color:var(--black);letter-spacing:.04em;transition:color .2s;
-}
-.mob-menu a:hover{color:var(--gold)}
-.mob-menu-close{
-  position:absolute;top:1.5rem;right:1.5rem;
-  background:none;border:none;font-size:1.8rem;cursor:pointer;color:var(--black);
-}
-.mob-menu-sub{display:flex;gap:2rem;margin-top:1rem}
-.mob-menu-sub a{font-family:'Jost',sans-serif;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gray-lt);font-style:normal}
-.mob-menu-reserve{
-  margin-top:.5rem;
-  background:var(--black);color:var(--white)!important;font-style:normal!important;
-  font-family:'Jost',sans-serif!important;font-size:.72rem!important;letter-spacing:.25em!important;
-  text-transform:uppercase;padding:.9rem 2.5rem;
-}
-
-/* ââ HERO SLIDER ââ */
-.hero{position:relative;width:100%;height:100svh;min-height:600px;overflow:hidden;margin-top:70px}
+:root{--w:#fff;--b:#1a1a1a;--g:#555;--gl:#888;--bg:#faf9f7;--s:#f2ddd8;--gold:#b8986a;--glt:#d4b98a;--bd:#eee;--sh:rgba(0,0,0,.08)}
+html{scroll-behavior:smooth}body{font-family:'Noto Sans JP',sans-serif;color:var(--b);background:var(--bg);line-height:1.7;overflow-x:hidden}
+a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
+header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);border-bottom:1px solid var(--bd);height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;backdrop-filter:blur(8px)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;letter-spacing:.1em;line-height:1.2}
+.logo span{display:block;font-size:.55rem;letter-spacing:.5em;color:var(--gl);margin-top:.2rem;text-transform:uppercase}
+.hcenter{display:flex;flex-direction:column;align-items:center;font-size:.65rem;color:var(--g);line-height:1.8}
+.hcenter a{color:var(--b);font-weight:500}
+.hright{display:flex;align-items:center;gap:1rem}
+.btnrsv{background:var(--b);color:var(--w);font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;padding:.7rem 1.6rem;transition:background .3s}
+.btnrsv:hover{background:var(--gold)}
+.ham{cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:.5rem}
+.ham span{display:block;width:24px;height:1.5px;background:var(--b)}
+.hamlbl{font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:var(--g);text-align:center;margin-top:2px}
+.ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1999}.ov.on{display:block}
+.mob{position:fixed;top:0;right:-100%;width:min(360px,100%);height:100vh;background:var(--b);z-index:2000;padding:5rem 3rem 3rem;transition:right .4s;display:flex;flex-direction:column;gap:2rem}
+.mob.on{right:0}.mobx{position:absolute;top:1.5rem;right:1.5rem;color:var(--w);font-size:1.5rem;cursor:pointer}
+.mob nav{display:flex;flex-direction:column;gap:1.5rem}
+.mob nav a{color:var(--w);font-size:1rem;letter-spacing:.15em;font-family:'Cormorant Garamond',serif;font-weight:300;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:1rem}
+.mobsoc{display:flex;gap:1.5rem}.mobsoc a{color:var(--w);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase}
+.mobrsv{background:var(--gold);color:var(--w);text-align:center;padding:1rem;font-size:.75rem;letter-spacing:.3em;text-transform:uppercase}
+.hero{position:relative;height:100svh;min-height:600px;overflow:hidden;margin-top:72px}
 .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;display:flex;align-items:flex-end}
-.slide.active{opacity:1;z-index:1}
-.slide-bg{position:absolute;inset:0;background-size:cover;background-position:center top;transform:scale(1.07);transition:transform 8s ease}
-.slide.active .slide-bg{transform:scale(1)}
-.slide-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.15) 0%,rgba(0,0,0,.05) 40%,rgba(0,0,0,.65) 100%)}
-.slide-content{
-  position:relative;z-index:2;
-  padding:0 3rem 5rem;
-  opacity:0;transform:translateY(18px);transition:opacity .9s ease .4s,transform .9s ease .4s;
-}
-.slide.active .slide-content{opacity:1;transform:translateY(0)}
-.slide-label{
-  display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;
-}
-.slide-label::before{content:'';width:28px;height:1px;background:var(--gold)}
-.slide-label span{font-size:.55rem;letter-spacing:.5em;text-transform:uppercase;color:var(--gold)}
-.slide h1{
-  font-family:'Cormorant',serif;font-weight:300;font-style:italic;
-  font-size:clamp(2.8rem,6vw,5.5rem);line-height:1.05;
-  color:var(--white);margin-bottom:1.5rem;
-}
-.slide-btns{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap}
-.btn-white{
-  display:inline-flex;align-items:center;gap:.5rem;
-  padding:.85rem 2rem;background:var(--white);color:var(--black);
-  font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;
-  transition:all .25s;
-}
-.btn-white:hover{background:var(--black);color:var(--white)}
-.btn-ghost{
-  font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.7);
-  border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:1px;transition:all .25s;
-}
-.btn-ghost:hover{color:var(--white);border-color:var(--white)}
-.slider-arrows{
-  position:absolute;bottom:4rem;right:3rem;z-index:5;
-  display:flex;gap:.6rem;
-}
-.s-arrow{
-  width:40px;height:40px;border:1px solid rgba(255,255,255,.5);
-  background:rgba(255,255,255,.1);backdrop-filter:blur(4px);
-  color:var(--white);font-size:1rem;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:all .2s;
-}
-.s-arrow:hover{background:rgba(255,255,255,.25)}
-.slide-dots{
-  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
-  z-index:5;display:flex;gap:.5rem;
-}
-.s-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.4);border:none;cursor:pointer;transition:all .3s}
-.s-dot.active{background:var(--white);width:18px;border-radius:2.5px}
-
-/* ââ MARQUEE ââ */
-.marquee{background:var(--black);padding:.6rem 0;overflow:hidden;white-space:nowrap}
-.marquee-inner{display:inline-flex;animation:marq 28s linear infinite}
-.marquee-inner span{font-size:.58rem;letter-spacing:.42em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:0 2.5rem}
-.marquee-inner .dot{color:var(--gold);font-size:.65rem;padding:0}
-@keyframes marq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-/* ââ SECTION BASE ââ */
-.sec{padding:6rem 2rem}
-.sec-inner{max-width:1060px;margin:0 auto}
-.sec-hero{
-  text-align:center;padding:3rem 2rem 1.5rem;
-  background:var(--salmon);
-  position:relative;
-}
-.sec-hero::after{content:'';display:block;position:absolute;bottom:-1px;left:0;right:0;height:1px;background:var(--salmon2)}
-.sec-tag{font-size:.55rem;letter-spacing:.48em;text-transform:uppercase;color:var(--gold);margin-bottom:.65rem;display:block}
-.sec-h2{
-  font-family:'Cormorant',serif;font-weight:300;font-style:italic;
-  font-size:clamp(1.8rem,4vw,2.8rem);color:var(--black);
-  margin-bottom:.5rem;line-height:1.2;
-}
-.sec-h2 em{font-style:italic;color:var(--gold)}
-.sec-desc{font-size:.82rem;color:var(--gray);line-height:2;max-width:560px;margin:0 auto}
-
-/* ââ DIVIDER ââ */
-.divider{
-  display:flex;align-items:center;gap:1.2rem;
-  margin:0 auto 3rem;max-width:200px;
-}
-.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border)}
-.divider-icon{color:var(--gold);font-size:.7rem}
-
-/* ââ YOUTUBE VIDEO ââ */
-.video-sec{background:var(--white);padding:5rem 2rem}
-.video-inner{max-width:900px;margin:0 auto}
-.video-wrap{
-  position:relative;padding-bottom:56.25%;height:0;overflow:hidden;
-  box-shadow:0 8px 40px rgba(0,0,0,.15);
-  pointer-events:none;user-select:none;
-}
-.video-wrap iframe{
-  position:absolute;top:0;left:0;width:100%;height:100%;border:0;
-  pointer-events:none;
-}
-/* åç»ä¸ã«éæãªã¼ãã¼ã¬ã¤ãéã­ã¦ã³ã³ãã­ã¼ã«æä½ãç¡å¹å */
-.video-wrap::after{
-  content:'';position:absolute;inset:0;z-index:2;
-}
-
-/* ââ FEATURES ââ */
-.features-sec{background:var(--white)}
-.features-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1px;background:var(--border2);margin-top:3rem;
-}
-.feature-card{
-  background:var(--white);padding:2.5rem 1.75rem;
-  transition:background .3s;
-  border-bottom:2px solid transparent;
-}
-.feature-card:hover{background:var(--gray-bg);border-bottom-color:var(--gold)}
-.f-num{font-family:'Cormorant',serif;font-style:italic;font-size:2rem;color:var(--border);line-height:1;margin-bottom:.85rem}
-.f-icon{width:36px;height:36px;margin-bottom:1rem}
-.f-icon svg{width:100%;height:100%}
-.f-ttl{font-family:'Cormorant',serif;font-size:1.05rem;letter-spacing:.03em;margin-bottom:.45rem;color:var(--black)}
-.f-desc{font-size:.8rem;color:var(--gray);line-height:1.95}
-
-/* ââ CONCEPT ââ */
-.concept-sec{display:grid;grid-template-columns:1fr 1fr;min-height:65vh}
-.concept-photo{position:relative;overflow:hidden}
-.concept-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:brightness(.8);display:block;transition:transform .9s}
-.concept-photo:hover img{transform:scale(1.04)}
-.concept-panel{background:var(--white);padding:5rem 3.5rem;display:flex;flex-direction:column;justify-content:center}
-.concept-quote{border-left:2px solid var(--gold);padding-left:1.2rem;margin:2rem 0;font-family:'Cormorant',serif;font-style:italic;font-size:1.15rem;color:var(--gray);line-height:1.85}
-.concept-body{font-size:.85rem;color:var(--gray);line-height:2.1;margin-bottom:1rem}
-
-/* ââ CAST (TONIGHT) ââ */
-.cast-sec{background:var(--black);padding:6rem 2rem}
-.cast-sec .sec-h2{color:var(--white)}
-.cast-sec .sec-tag{color:var(--gold)}
-.live-badge{
-  display:inline-flex;align-items:center;gap:.5rem;
-  border:1px solid rgba(255,255,255,.2);padding:.35rem .85rem;
-  font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:#4caf50;
-}
-.live-dot{width:5px;height:5px;background:#4caf50;border-radius:50%;box-shadow:0 0 7px #4caf50;animation:blink 2s ease-in-out infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.cast-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;max-width:1060px;margin-left:auto;margin-right:auto}
-.cast-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(255,255,255,.06);max-width:1060px;margin:0 auto}
-.cast-card{background:#1a1a1a;position:relative;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;transition:background .2s}
-.cast-card:hover{background:#222}
-.cast-badge{position:absolute;top:0;left:0;z-index:3;font-size:.47rem;letter-spacing:.18em;text-transform:uppercase;padding:.3rem .65rem}
-.cast-badge.sp{background:#6b1525;color:#ffc0c0}
-.cast-badge.pr{background:#444;color:#fff}
-.cast-badge.nw{background:#1a3d2b;color:#7dbc9a}
-.duty-dot{position:absolute;top:.55rem;right:.55rem;z-index:3;display:flex;align-items:center;gap:.3rem;background:rgba(0,0,0,.7);padding:.2rem .5rem}
-.duty-dot::before{content:'';width:5px;height:5px;border-radius:50%;background:#4caf50;box-shadow:0 0 5px #4caf50;animation:blink 2s ease-in-out infinite}
-.duty-dot span{font-size:.42rem;letter-spacing:.14em;color:#4caf50}
-.cast-img{width:100%;aspect-ratio:3/4;position:relative;overflow:hidden;background:#1a1a1a}
-.cast-photo-img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:brightness(.75);transition:transform .7s,filter .4s;display:block}
-.cast-card:hover .cast-photo-img{transform:scale(1.06);filter:brightness(.88)}
-.cast-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.9) 0%,transparent 55%);pointer-events:none}
-.cast-info{padding:1rem 1rem 1.2rem}
-.cast-name{font-family:'Cormorant',serif;font-style:italic;font-size:1.05rem;color:#fff;margin-bottom:.2rem}
-.cast-meta{font-size:.57rem;color:rgba(255,255,255,.4);letter-spacing:.1em;margin-bottom:.55rem}
-.cast-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.55rem}
-.cast-tag{font-size:.44rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.45);padding:.15rem .4rem}
-.cast-time{display:flex;align-items:center;gap:.4rem;font-size:.6rem;color:rgba(255,255,255,.3)}
-.cast-time svg{width:10px;height:10px}
-.cast-tap{margin-top:.45rem;font-size:.55rem;color:rgba(184,152,106,.5);letter-spacing:.1em}
-.cast-note{text-align:center;margin-top:1.5rem;font-family:'Cormorant',serif;font-style:italic;font-size:.8rem;color:rgba(255,255,255,.2)}
-
-/* ââ PRICE ââ */
-.price-sec{background:var(--white)}
-.price-table{margin-top:3rem;border:1px solid var(--border2)}
-.price-row{
-  display:grid;grid-template-columns:1fr auto;
-  padding:1.6rem 2.5rem;align-items:center;
-  border-bottom:1px solid var(--border2);gap:1rem;
-  transition:background .2s;
-}
-.price-row:last-child{border-bottom:none}
-.price-row:hover{background:var(--gray-bg)}
-.price-row.popular{background:linear-gradient(to right,var(--gray-bg),rgba(184,152,106,.05));position:relative}
-.price-row.popular::after{content:'MOST POPULAR';position:absolute;top:-1px;right:2.5rem;font-size:.42rem;letter-spacing:.28em;background:var(--gold);color:#fff;padding:.2rem .65rem}
-.price-dur{font-family:'Cormorant',serif;font-size:1.25rem;color:var(--black)}
-.price-amt{font-family:'Cormorant',serif;font-style:italic;font-size:1.75rem;color:var(--gold);text-align:right}
-.price-amt sup{font-style:normal;font-size:.9rem;color:var(--gray-lt);font-family:'Jost',sans-serif}
-.price-note-cash{text-align:center;margin-top:1rem;font-size:.75rem;color:var(--gray-lt);font-style:italic;font-family:'Cormorant',serif}
-
-/* ââ TERMS (NOTICE) ââ */
-.terms-sec{background:var(--gray-bg);padding:5rem 2rem}
-.terms-inner{max-width:820px;margin:0 auto}
-.terms-block{margin-bottom:2rem}
-.terms-block-title{
-  display:flex;align-items:center;gap:.6rem;
-  font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--black);margin-bottom:.85rem;padding-bottom:.6rem;
-  border-bottom:1px solid var(--border);
-}
-.terms-block-title svg{width:14px;height:14px;color:var(--gold);flex-shrink:0}
-.terms-body{font-size:.8rem;color:var(--gray);line-height:2.1}
-.terms-body ul{padding-left:1.2rem;margin-top:.5rem}
-.terms-body ul li{margin-bottom:.35rem}
-.terms-notice{
-  background:rgba(226,45,45,.06);border-left:3px solid #e22d2d;
-  padding:1rem 1.25rem;font-size:.78rem;color:#a01818;
-  margin-bottom:1.5rem;line-height:1.9;
-}
-
-/* ââ PROCESS ââ */
-.process-sec{background:var(--white)}
-.steps{margin-top:3.5rem;position:relative}
-.steps::before{content:'';position:absolute;left:1.5rem;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--gold),transparent 90%)}
-.step{display:flex;gap:2.2rem;margin-bottom:3rem;opacity:0;transform:translateX(-20px);transition:opacity .7s,transform .7s}
-.step.vis{opacity:1;transform:translateX(0)}
-.step-num{width:32px;height:32px;flex-shrink:0;border:1.5px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant',serif;font-style:italic;font-size:.88rem;color:var(--gold);background:var(--white);position:relative;z-index:1;margin-top:2px}
-.step-ttl{font-family:'Cormorant',serif;font-style:italic;font-size:1.15rem;color:var(--black);margin-bottom:.35rem}
-.step-desc{font-size:.82rem;color:var(--gray);line-height:2}
-
-/* ââ CONTACT ââ */
-.contact-sec{background:var(--salmon);padding:6rem 2rem;text-align:center}
-.contact-inner{max-width:640px;margin:0 auto}
-.contact-sub{font-family:'Cormorant',serif;font-style:italic;font-size:1rem;color:var(--gray);line-height:2;margin:1.2rem 0 3rem}
-.contact-icons{display:flex;justify-content:center;flex-wrap:wrap;gap:1.25rem;margin:2.5rem 0}
-.ci-btn{display:flex;flex-direction:column;align-items:center;gap:.5rem;text-decoration:none;color:inherit;width:76px;transition:transform .25s}
-.ci-btn:hover{transform:translateY(-4px)}
-.ci-circle{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 14px rgba(0,0,0,.15)}
-.ci-circle svg{width:22px;height:22px}
-.ci-label{font-size:.46rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gray)}
-.ci-line{background:#06c755}.ci-twitter{background:#000}.ci-email{background:var(--gray)}
-
-/* ââ FOOTER ââ */
-footer{background:var(--black);padding:4rem 2rem 5rem;border-top:1px solid rgba(255,255,255,.05)}
-.footer-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:3.5rem}
-.footer-logo{font-family:'Cormorant',serif;font-style:italic;font-size:1rem;color:#fff;margin-bottom:.85rem;display:block;letter-spacing:.04em}
-.footer-tag{font-size:.75rem;color:rgba(255,255,255,.4);font-style:italic;font-family:'Cormorant',serif;line-height:2}
-.foot-ttl{font-size:.5rem;letter-spacing:.42em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1.1rem}
-.foot-links{list-style:none}
-.foot-links li{margin-bottom:.55rem}
-.foot-links a{font-size:.78rem;color:rgba(255,255,255,.5);transition:color .2s}
-.foot-links a:hover{color:#fff}
-.footer-copy{max-width:1060px;margin:3rem auto 0;padding-top:1.75rem;border-top:1px solid rgba(255,255,255,.06);text-align:center;font-size:.6rem;color:rgba(255,255,255,.2);letter-spacing:.1em}
-
-/* ââ BOT BAR ââ */
-.bot-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.97);border-top:1px solid var(--border2);grid-template-columns:repeat(3,1fr);height:56px}
-.bot-bar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--gray);font-size:.43rem;letter-spacing:.1em;transition:color .2s}
-.bot-bar a:hover{color:var(--black)}
-.bot-bar a.res-btn{background:var(--black);color:#fff}
-.bot-bar a svg{width:15px;height:15px}
-
-/* ââ PROFILE MODAL ââ */
-#profileModal{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);align-items:flex-end;justify-content:center;padding:0}
-#profileModal.open{display:flex}
-#modalSheet{background:#1a1a1a;border-radius:20px 20px 0 0;width:100%;max-width:520px;max-height:88svh;overflow-y:auto;padding:0 0 2rem;transform:translateY(100%);transition:transform .4s cubic-bezier(.34,1.28,.64,1)}
-#profileModal.open #modalSheet{transform:translateY(0)}
-@keyframes blinkM{0%,100%{opacity:1}50%{opacity:.3}}
-
-/* ââ NEWS POPUP ââ */
-#newsPopup{display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.55);backdrop-filter:blur(5px);align-items:flex-end;justify-content:center}
-#newsSheet{background:#fff;border-radius:20px 20px 0 0;width:100%;max-width:480px;padding:0 0 calc(1.5rem + env(safe-area-inset-bottom,0px));transform:translateY(100%);transition:transform .45s cubic-bezier(.34,1.15,.64,1)}
-.news-slide{padding:1.25rem 1.5rem .5rem;display:none}
-.news-slide.active{display:block}
-.news-slide-type{display:inline-flex;align-items:center;gap:.4rem;font-size:.58rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:.22rem .6rem;border-radius:20px;margin-bottom:.65rem}
-.news-slide-type.news{background:rgba(0,100,200,.1);color:#0064c8}
-.news-slide-type.coupon{background:rgba(184,152,106,.15);color:var(--gold)}
-.news-slide-type.event{background:rgba(52,199,89,.1);color:#1a8c3a}
-.news-slide-title{font-family:'Cormorant',serif;font-style:italic;font-size:1.15rem;color:var(--black);margin-bottom:.5rem;line-height:1.3}
-.news-slide-body{font-size:.8rem;color:var(--gray);line-height:1.8}
-.news-slide-exp{font-size:.68rem;color:#aaa;margin-top:.5rem}
-.news-dot{width:6px;height:6px;border-radius:50%;background:var(--border);cursor:pointer;transition:all .25s;border:none;padding:0}
-.news-dot.active{background:var(--gold);width:18px;border-radius:3px}
-
-/* ââ REVEAL ââ */
-.rev{opacity:1;transform:translateY(0);transition:opacity .85s,transform .85s}
-.rev.vis{opacity:1;transform:translateY(0)}
-.rev-l{opacity:0;transform:translateX(-24px);transition:opacity .85s,transform .85s}
-.rev-l.vis{opacity:1;transform:translateX(0)}
-
-/* ââ RESPONSIVE ââ */
-@media(max-width:900px){
-  .header-center,.header-email,.header-open,.header-reserve{display:none}
-  .header-center{display:none}
-  .features-grid{grid-template-columns:1fr 1fr}
-  .concept-sec{grid-template-columns:1fr}
-  .concept-photo{min-height:280px}
-  .concept-panel{padding:3.5rem 1.5rem}
-  .cast-grid{grid-template-columns:1fr 1fr}
-  .price-row{padding:1.3rem 1.5rem}
-  .price-row.popular::after{right:1.5rem}
-  .footer-inner{grid-template-columns:1fr;gap:2.5rem}
-  footer{padding-bottom:5rem}
-  .bot-bar{display:grid}
-}
-@media(max-width:560px){
-  .hero{height:100svh}
-  .slide-content{padding:0 1.5rem 5.5rem}
-  .slide h1{font-size:clamp(2.5rem,12vw,3.8rem)}
-  .slide-btns{flex-direction:column;align-items:flex-start;gap:.85rem}
-  .btn-white{width:100%;justify-content:center}
-  .features-grid{grid-template-columns:1fr}
-  .cast-grid{grid-template-columns:1fr 1fr}
-  .sec{padding:4.5rem 1.25rem}
-  .steps::before{left:1.1rem}
-  .step{gap:1.1rem}
-  .contact-icons{gap:.85rem}
-  .ci-btn{width:64px}
-  .ci-circle{width:46px;height:46px}
-  .ci-circle svg{width:20px;height:20px}
-  .slider-arrows{bottom:3rem;right:1.5rem}
-  .price-row{padding:1.25rem 1rem}
-  .price-row.popular::after{display:none}
-}
-
-/* ââ GOOGLE REVIEW PROMO ââ */
-.google-promo{margin-top:2rem}
-.google-promo-inner{
-  display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;
-  background:var(--white);border:1px solid var(--border2);
-  padding:1.4rem 1.75rem;position:relative;
-}
-.google-promo-inner::before{
-  content:'';position:absolute;top:0;left:0;bottom:0;width:3px;
-  background:linear-gradient(to bottom,#4285F4,#34A853,#FBBC05,#EA4335);
-}
-.google-promo-icon{flex-shrink:0}
-.google-promo-text{flex:1;min-width:200px}
-.google-promo-title{
-  font-size:.7rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;
-  color:var(--black);margin-bottom:.3rem;
-}
-.google-promo-desc{font-size:.82rem;color:var(--gray);line-height:1.7}
-.google-promo-desc strong{color:var(--black);font-weight:500}
-.google-promo-btn{
-  display:inline-flex;align-items:center;
-  background:var(--black);color:var(--white);
-  font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;
-  padding:.7rem 1.4rem;text-decoration:none;
-  white-space:nowrap;transition:background .2s;flex-shrink:0;
-}
-.google-promo-btn:hover{background:var(--gray)}
-@media(max-width:600px){
-  .google-promo-inner{flex-direction:column;align-items:flex-start;gap:1rem}
-  .google-promo-btn{width:100%;justify-content:center}
-}
+.slide.on{opacity:1;z-index:1}
+.sbg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.07);transition:transform 8s ease}
+.slide.on .sbg{transform:scale(1)}
+.sov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.1) 0%,rgba(0,0,0,0) 40%,rgba(0,0,0,.7) 100%)}
+.sc{position:relative;z-index:2;padding:0 3rem 5rem;color:var(--w)}
+.slbl{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.slbl::before{content:'';width:28px;height:1px;background:var(--gold)}
+.slbl span{font-size:.55rem;letter-spacing:.5em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.sc h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:300;line-height:1.15;margin-bottom:2rem}
+.sbtns{display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
+.bw{background:var(--w);color:var(--b);font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;padding:.85rem 2rem;transition:all .3s}.bw:hover{background:var(--gold);color:var(--w)}
+.bow{color:var(--w);font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.5);padding-bottom:.2rem}
+.sarr{position:absolute;bottom:2rem;right:2rem;z-index:5;display:flex;gap:.5rem}
+.abtn{width:44px;height:44px;background:rgba(255,255,255,.15);color:var(--w);border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;transition:background .3s}.abtn:hover{background:var(--gold);border-color:var(--gold)}
+.sdots{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:5;display:flex;gap:.5rem}
+.dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:all .3s}.dot.on{background:var(--w);transform:scale(1.3)}
+.mq{background:var(--b);color:var(--w);padding:.85rem 0;overflow:hidden;white-space:nowrap}
+.mqi{display:inline-flex;gap:3rem;animation:mq 30s linear infinite}
+.mqi span{font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.mqi .sp{color:var(--gold)}
+@keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.nsec{background:var(--w);padding:1.5rem 0;border-bottom:1px solid var(--bd)}
+.nin{max-width:1100px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;gap:2rem}
+.nlbl{font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;color:var(--w);background:var(--gold);padding:.4rem 1rem;white-space:nowrap}
+.ntxt{font-size:.8rem;color:var(--g)}.ntxt a{color:var(--b);font-weight:500}.ntxt a:hover{color:var(--gold)}
+.sec{padding:6rem 0}.si{max-width:1100px;margin:0 auto;padding:0 2rem}
+.sh{text-align:center;margin-bottom:4rem}
+.sen{font-size:.6rem;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;display:block}
+.sja{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;letter-spacing:.05em;line-height:1.3}
+.ssub{font-size:.85rem;color:var(--g);margin-top:1rem}
+.div{width:40px;height:1px;background:var(--gold);margin:1.5rem auto}
+.vsec{background:var(--w)}
+.vlay{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.vtxt h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:300;line-height:1.4;margin-bottom:1.5rem}
+.vtxt p{font-size:.9rem;color:var(--g);line-height:2;margin-bottom:1.5rem}
+.vwrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:var(--b)}
+.vwrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+.fsec{background:var(--bg)}
+.fg{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.fc{background:var(--w);padding:2.5rem 2rem;text-align:center;border:1px solid var(--bd);transition:transform .3s,box-shadow .3s}
+.fc:hover{transform:translateY(-4px);box-shadow:0 12px 40px var(--sh)}
+.fn{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:1rem}
+.fc h3{font-size:.9rem;letter-spacing:.15em;margin-bottom:1rem;font-weight:500}
+.fc p{font-size:.8rem;color:var(--g);line-height:1.9}
+.csec{position:relative;overflow:hidden;background:var(--b);color:var(--w);padding:8rem 0}
+.cbg{position:absolute;inset:0;background-image:url('https://best-massage-tokyo.com/wp-content/uploads/2025/03/a1-.jpg');background-size:cover;background-position:center;opacity:.35}
+.cin{position:relative;z-index:1;max-width:700px;margin:0 auto;padding:0 2rem;text-align:center}
+.cin h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.5;margin-bottom:2rem}
+.cin p{font-size:.9rem;line-height:2.2;color:rgba(255,255,255,.85);margin-bottom:2rem}
+.castsec{background:var(--w)}
+.cg{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.cc{overflow:hidden}
+.cimg{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .6s}.cc:hover .cimg{transform:scale(1.04)}
+.cinfo{padding:1rem 0;display:flex;justify-content:space-between;align-items:baseline}
+.cname{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300}
+.ctag{font-size:.6rem;letter-spacing:.2em;color:var(--gl)}
+.ccta{text-align:center;margin-top:3rem}
+.bgold{display:inline-block;background:var(--gold);color:var(--w);font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;padding:.9rem 2.5rem;transition:background .3s}.bgold:hover{background:var(--b)}
+.bblk{display:inline-block;background:var(--b);color:var(--w);font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;padding:.9rem 2.5rem;transition:background .3s}.bblk:hover{background:var(--gold)}
+.psec{background:var(--bg)}
+.pg{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;max-width:800px;margin:0 auto}
+.pc{background:var(--w);border:1px solid var(--bd);padding:2.5rem 2rem;text-align:center;transition:transform .3s,box-shadow .3s}
+.pc.ft{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}
+.pc:hover{transform:translateY(-4px);box-shadow:0 12px 40px var(--sh)}
+.pbdg{font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;background:var(--gold);color:var(--w);padding:.3rem .8rem;display:inline-block;margin-bottom:1rem}
+.pn{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;margin-bottom:.5rem}
+.pt{font-size:.75rem;color:var(--gl);letter-spacing:.1em;margin-bottom:1.5rem}
+.pa{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--gold);line-height:1}
+.pu{font-size:.7rem;color:var(--gl);margin-top:.3rem}
+.pnote{font-size:.75rem;color:var(--g);margin-top:1.5rem;line-height:2;text-align:left}
+.pnf{max-width:800px;margin:3rem auto 0;background:var(--w);border:1px solid var(--bd);padding:1.5rem 2rem;font-size:.8rem;color:var(--g);line-height:2}
+.flsec{background:var(--w)}
+.flst{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.flst::before{content:'';position:absolute;top:2.5rem;left:10%;right:10%;height:1px;background:var(--gold);z-index:0}
+.step{text-align:center;padding:0 1rem;position:relative;z-index:1}
+.snum{width:50px;height:50px;border-radius:50%;background:var(--gold);color:var(--w);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;margin:0 auto 1.5rem}
+.step h3{font-size:.85rem;letter-spacing:.1em;margin-bottom:.75rem;font-weight:500}
+.step p{font-size:.75rem;color:var(--g);line-height:1.8}
+.faqsec{background:var(--bg)}
+.faql{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:1rem}
+.faqi{background:var(--w);border:1px solid var(--bd)}
+.faqq{padding:1.25rem 1.5rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:.85rem;font-weight:500;user-select:none}
+.faqq::after{content:'+';font-size:1.2rem;font-weight:300;color:var(--gold);transition:transform .3s;flex-shrink:0;margin-left:1rem}
+.faqi.on .faqq::after{transform:rotate(45deg)}
+.faqa{display:none;padding:0 1.5rem 1.25rem;font-size:.8rem;color:var(--g);line-height:2;border-top:1px solid var(--bd)}
+.faqi.on .faqa{display:block}
+.ctsec{background:var(--s)}
+.ctin{text-align:center}
+.hgrid{display:flex;gap:3rem;justify-content:center;margin:2rem 0;font-size:.8rem;color:var(--g)}
+.hi{display:flex;flex-direction:column;align-items:center;gap:.3rem}
+.hlbl{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.ctbtns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+.ctitem{display:flex;align-items:center;gap:.75rem;background:var(--w);padding:1rem 2rem;font-size:.8rem;transition:background .3s,color .3s}.ctitem:hover{background:var(--b);color:var(--w)}
+footer{background:var(--b);color:var(--w);padding:4rem 0 2rem}
+.fi{max-width:1100px;margin:0 auto;padding:0 2rem}
+.ft{display:grid;grid-template-columns:1fr 2fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.1)}
+.flogo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;letter-spacing:.1em;line-height:1.2}
+.flogo span{display:block;font-size:.5rem;letter-spacing:.5em;color:rgba(255,255,255,.5);margin-top:.3rem}
+.fnav{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.fnavt{font-size:.55rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1rem}
+.fnav ul{display:flex;flex-direction:column;gap:.75rem;list-style:none}
+.fnav a{font-size:.75rem;color:rgba(255,255,255,.65)}.fnav a:hover{color:var(--gold)}
+.fb{padding-top:2rem;display:flex;justify-content:space-between;align-items:center;font-size:.65rem;color:rgba(255,255,255,.35)}
+.fsoc{display:flex;gap:1.5rem}.fsoc a{color:rgba(255,255,255,.5);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase}.fsoc a:hover{color:var(--gold)}
+.bar{position:fixed;bottom:0;left:0;right:0;z-index:999;display:flex}
+.bi{flex:1;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:1rem;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;transition:filter .3s}.bi:hover{filter:brightness(1.1)}
+.bln{background:#06c755;color:#fff}.bml{background:#333;color:#fff}.brv{background:var(--gold);color:#fff}
+@media(max-width:900px){.fg,.fnav{grid-template-columns:1fr 1fr}.vlay,.ft{grid-template-columns:1fr}.cg{grid-template-columns:repeat(2,1fr)}.flst{grid-template-columns:repeat(2,1fr);gap:2rem}.flst::before{display:none}.pg{grid-template-columns:1fr 1fr}.hcenter{display:none}}
+@media(max-width:600px){.fg,.cg,.pg,.flst{grid-template-columns:1fr 1fr}.sc{padding:0 1.5rem 5rem}.sc h1{font-size:2.4rem}header{padding:0 1rem}.sec{padding:4rem 0}.fnav{grid-template-columns:1fr}.hgrid{flex-direction:column;gap:1.5rem}}
 </style>
 </head>
 <body>
-
-<!-- HEADER -->
-<header class="header" id="header">
-  <div class="header-logo">
-    <div>
-      <em>Massage Tokyo</em>
-      <span class="header-logo-sub">Best Massage in Ginza</span>
-    </div>
-  </div>
-  <div class="header-right">
-    <div class="header-open" style="display:none" id="hOpen">OPEN: 12:00ã29:00<br>RECEPTION: 10:00ã29:00</div>
-    <a href="https://best-massage-tokyo.com/reserve/" target="_blank" class="header-reserve">Reserve</a>
-    <button class="ham-btn" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-      <div class="ham-label">Menu</div>
-    </button>
-  </div>
-</header>
-
-<!-- MOBILE MENU -->
-<div class="mob-menu" id="mobMenu">
-  <button class="mob-menu-close" onclick="closeMenu()">Ã</button>
-  <a href="#about" onclick="closeMenu()">About</a>
-  <a href="#tonight" onclick="closeMenu()">Tonight</a>
-  <a href="#price" onclick="closeMenu()">Pricing</a>
-  <a href="#flow" onclick="closeMenu()">How It Works</a>
-  <a href="#contact" onclick="closeMenu()">Contact</a>
-  <div class="mob-menu-sub">
-    <a href="https://line.me/ti/p/D-nz2QKxS_" target="_blank">LINE</a>
-    <a href="https://twitter.com/ginzano_eiko" target="_blank">Twitter</a>
-    <a href="https://wa.me/817064836973" target="_blank">WhatsApp</a>
+<div class="ov" id="ov" onclick="cm()"></div>
+<nav class="mob" id="mob">
+  <span class="mobx" onclick="cm()">✕</span>
+  <nav>
+    <a href="#about" onclick="cm()">About</a>
+    <a href="#price" onclick="cm()">料金</a>
+    <a href="#flow" onclick="cm()">ご利用の流れ</a>
+    <a href="#faq" onclick="cm()">よくある質問</a>
+    <a href="#contact" onclick="cm()">お問い合わせ</a>
+  </nav>
+  <div class="mobsoc">
+    <a href="https://line.me/R/ti/p/@happyend_ginza" target="_blank">LINE</a>
+    <a href="https://twitter.com/happyend_ginza" target="_blank">Twitter</a>
     <a href="mailto:ginza.esthe@gmail.com">Email</a>
   </div>
-  <a href="https://best-massage-tokyo.com/reserve/" target="_blank" class="mob-menu-reserve">Reserve Now</a>
-</div>
-
-<!-- HERO SLIDER -->
+  <a href="https://line.me/R/ti/p/@happyend_ginza" class="mobrsv" target="_blank">今すぐ予約</a>
+</nav>
+<header>
+  <div class="logo">HAPPY END<span>Best Massage in Tokyo</span></div>
+  <div class="hcenter">
+    <a href="mailto:ginza.esthe@gmail.com">✉ ginza.esthe@gmail.com</a>
+    <span>OPEN：12:00〜29:00　受付：10:00〜29:00</span>
+  </div>
+  <div class="hright">
+    <a href="https://line.me/R/ti/p/@happyend_ginza" class="btnrsv" target="_blank">RESERVE</a>
+    <div onclick="om()" style="cursor:pointer">
+      <div class="ham"><span></span><span></span><span></span></div>
+      <div class="hamlbl">Menu</div>
+    </div>
+  </div>
+</header>
 <section class="hero" id="top">
-  <div class="slide slide-1 active">
-    <div class="slide-bg" style="background-image:url('https://best-massage-tokyo.com/wp-content/uploads/2025/05/main-happ.png')"></div>
-    <div class="slide-overlay"></div>
-    <div class="slide-content">
-      <div class="slide-label"><span>Ginza, Tokyo</span></div>
-      <h1>Pleasure<br>Elevated.</h1>
-      <div class="slide-btns">
-        <a href="https://best-massage-tokyo.com/reserve/" target="_blank" class="btn-white">Reserve Your Session</a>
-        <a href="#about" class="btn-ghost">Discover More</a>
+  <div class="slide on">
+    <div class="sbg" style="background-image:url('https://best-massage-tokyo.com/wp-content/uploads/2025/03/a3aa.jpg')"></div>
+    <div class="sov"></div>
+    <div class="sc">
+      <div class="slbl"><span>Tokyo · Ginza</span></div>
+      <h1>喜びが<br>さらに高まる。</h1>
+      <div class="sbtns">
+        <a href="https://line.me/R/ti/p/@happyend_ginza" class="bw" target="_blank">セッションを予約する</a>
+        <a href="#about" class="bow">もっと詳しく見る</a>
       </div>
     </div>
   </div>
-  <div class="slide slide-2">
-    <div class="slide-bg" style="background-image:url('https://best-massage-tokyo.com/wp-content/uploads/2025/03/a1.jpg')"></div>
-    <div class="slide-overlay"></div>
-    <div class="slide-content">
-      <div class="slide-label"><span>English Speaking Â· Private</span></div>
-      <h1>Tonight's<br>Companions.</h1>
-      <div class="slide-btns">
-        <a href="#tonight" class="btn-white">View Tonight's Cast</a>
-        <a href="https://best-massage-tokyo.com/reserve/" target="_blank" class="btn-ghost">Reserve Now</a>
+  <div class="slide">
+    <div class="sbg" style="background-image:url('https://best-massage-tokyo.com/wp-content/uploads/2025/03/a1-.jpg')"></div>
+    <div class="sov"></div>
+    <div class="sc">
+      <div class="slbl"><span>English Speaking · Private</span></div>
+      <h1>今夜の<br>仲間たち。</h1>
+      <div class="sbtns">
+        <a href="#cast" class="bw">今夜の出演者を見る</a>
+        <a href="https://line.me/R/ti/p/@happyend_ginza" class="bow" target="_blank">今すぐ予約</a>
       </div>
     </div>
   </div>
-  <div class="slide slide-3">
-    <div class="slide-bg" style="background-image:url('https://best-massage-tokyo.com/wp-content/uploads/2025/03/a3aa.jpg')"></div>
-    <div class="slide-overlay"></div>
-    <div class="slide-content">
-      <div class="slide-label"><span>Open Until 29:00</span></div>
-      <h1>Begin Your<br>Journey.</h1>
-      <div class="slide-btns">
-        <a href="https://best-massage-tokyo.com/reserve/" target="_blank" class="btn-white">Book Now</a>
-        <a href="#flow" class="btn-ghost">How It Works</a>
+  <div class="slide">
+    <div class="sbg" style="background-image:url('https://best-massage-tokyo.com/wp-content/uploads/2025/05/main-happ.png')"></div>
+    <div class="sov"></div>
+    <div class="sc">
+      <div class="slbl"><span>Open Until 29:00</span></div>
+      <h1>さあ、<br>旅を始めましょう。</h1>
+      <div class="sbtns">
+        <a href="https://line.me/R/ti/p/@happyend_ginza" class="bw" target="_blank">今すぐ予約</a>
+        <a href="#flow" class="bow">仕組み</a>
       </div>
     </div>
   </div>
-  <div class="slider-arrows">
-    <button class="s-arrow" onclick="goSlide((cur-1+3)%3)">&#8592;</button>
-    <button class="s-arrow" onclick="goSlide((cur+1)%3)">&#8594;</button>
+  <div class="sarr">
+    <button class="abtn" onclick="ps()">←</button>
+    <button class="abtn" onclick="ns()">→</button>
   </div>
-  <div class="slide-dots">
-    <button class="s-dot active" onclick="goSlide(0)"></button>
-    <button class="s-dot" onclick="goSlide(1)"></button>
-    <button class="s-dot" onclick="goSlide(2)"></button>
-  </div>
+  <div class="sdots" id="sdots"></div>
 </section>
-
-<!-- MARQUEE -->
-<div class="marquee">
-  <div class="marquee-inner" aria-hidden="true">
-    <span>English Spoken</span><span class="dot">â¦</span>
-    <span>Foreigner Welcome</span><span class="dot">â¦</span>
-    <span>100% Private</span><span class="dot">â¦</span>
-    <span>Open Until 29:00</span><span class="dot">â¦</span>
-    <span>Same-Day Booking</span><span class="dot">â¦</span>
-    <span>Outcall Available</span><span class="dot">â¦</span>
-    <span>English Spoken</span><span class="dot">â¦</span>
-    <span>Foreigner Welcome</span><span class="dot">â¦</span>
-    <span>100% Private</span><span class="dot">â¦</span>
-    <span>Open Until 29:00</span><span class="dot">â¦</span>
-    <span>Same-Day Booking</span><span class="dot">â¦</span>
-    <span>Outcall Available</span><span class="dot">â¦</span>
-  </div>
-</div>
-
-<!-- VIDEO -->
-<section class="video-sec" id="video">
-  <div class="video-inner">
-    <div style="text-align:center;margin-bottom:2.5rem;" class="rev">
-      <span class="sec-tag">Our Story</span>
-      <h2 class="sec-h2">Experience <em>Massage Tokyo</em></h2>
-    </div>
-    <div class="video-wrap rev" style="transition-delay:.1s">
-      <!-- YouTube: autoplayã»ã«ã¼ãã»ã³ã³ãã­ã¼ã«ãªã -->
-      <!-- åç»IDãæå®ãã¦ãã ãã (ä¾: src="https://www.youtube.com/embed/VIDEO_ID?...") -->
-      <iframe
-        src="https://www.youtube.com/embed/videoseries?list=UC7V8CQKCM4OGuofzi6kFjzg&autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&cc_load_policy=0"
-        title="Massage Tokyo"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        style="pointer-events:none;">
-      </iframe>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section class="features-sec sec" id="about">
-  <div class="sec-inner">
-    <div style="text-align:center;margin-bottom:.5rem" class="rev">
-      <span class="sec-tag">The Experience</span>
-      <h2 class="sec-h2">Crafted for those who<br><em>deserve more.</em></h2>
-    </div>
-    <div class="divider rev" style="transition-delay:.08s"><span class="divider-icon">â¦</span></div>
-    <div class="features-grid">
-      <div class="feature-card rev">
-        <div class="f-num">01</div>
-        <div class="f-icon"><svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="20" stroke="#b8986a" stroke-width=".9"/><path d="M10 22C10 14 16 8 22 8C28 8 34 14 34 22" stroke="#b8986a" stroke-width=".9"/><path d="M10 22C10 30 16 36 22 36C28 36 34 30 34 22" stroke="#b8986a" stroke-width=".9"/><line x1="10" y1="22" x2="34" y2="22" stroke="#b8986a" stroke-width=".9"/></svg></div>
-        <div class="f-ttl">English Speaking</div>
-        <div class="f-desc">Full English support throughout your visit. No Japanese required. Your comfort is our priority.</div>
+<div class="mq"><div class="mqi">
+  <span>英語を話せる</span><span class="sp">✦</span><span>外国人歓迎</span><span class="sp">✦</span>
+  <span>100%プライベート</span><span class="sp">✦</span><span>29時まで営業</span><span class="sp">✦</span>
+  <span>当日予約</span><span class="sp">✦</span><span>出張サービス可能</span><span class="sp">✦</span>
+  <span>English Spoken</span><span class="sp">✦</span><span>Foreigner Friendly</span><span class="sp">✦</span>
+  <span>100% Private</span><span class="sp">✦</span><span>Open Until 29:00</span><span class="sp">✦</span>
+  <span>Same-Day Booking</span><span class="sp">✦</span><span>Outcall Available</span><span class="sp">✦</span>
+  <span>英語を話せる</span><span class="sp">✦</span><span>外国人歓迎</span><span class="sp">✦</span>
+  <span>100%プライベート</span><span class="sp">✦</span><span>29時まで営業</span><span class="sp">✦</span>
+  <span>当日予約</span><span class="sp">✦</span><span>出張サービス可能</span><span class="sp">✦</span>
+  <span>English Spoken</span><span class="sp">✦</span><span>Foreigner Friendly</span><span class="sp">✦</span>
+  <span>100% Private</span><span class="sp">✦</span><span>Open Until 29:00</span><span class="sp">✦</span>
+  <span>Same-Day Booking</span><span class="sp">✦</span><span>Outcall Available</span><span class="sp">✦</span>
+</div></div>
+<section class="nsec"><div class="nin"><span class="nlbl">NEWS</span><div class="ntxt"><a href="https://best-massage-tokyo.com/news/" target="_blank">【NEW OPEN】Ultimate Tokyo Sensual Massage – 銀座の新体験エステ、グランドオープン！</a></div></div></section>
+<section class="sec vsec" id="about">
+  <div class="si">
+    <div class="vlay">
+      <div class="vtxt">
+        <span class="sen">Our Story</span>
+        <h2>東京で最高の<br>マッサージを体験しよう</h2>
+        <div class="div" style="margin-left:0"></div>
+        <p>HAPPY ENDは、銀座の中心に位置する完全プライベートなメンズエステサロンです。英語対応のセラピストが、あなたの最高のリラクゼーション体験をサポートします。</p>
+        <p>外国人のお客様も安心してご利用いただけます。完全個室・カメラなし・完全秘密厳守。銀座で最も信頼されるプライベートサロンをご体験ください。</p>
+        <a href="https://line.me/R/ti/p/@happyend_ginza" class="bblk" target="_blank" style="margin-top:.5rem">LINEで予約する</a>
       </div>
-      <div class="feature-card rev" style="transition-delay:.07s">
-        <div class="f-num">02</div>
-        <div class="f-icon"><svg viewBox="0 0 44 44" fill="none"><rect x="6" y="10" width="32" height="26" rx="1" stroke="#b8986a" stroke-width=".9"/><path d="M6 10L22 6L38 10" stroke="#b8986a" stroke-width=".9"/><rect x="16" y="22" width="12" height="14" stroke="#b8986a" stroke-width=".9"/><circle cx="22" cy="29" r="1.5" fill="#b8986a"/></svg></div>
-        <div class="f-ttl">Absolute Privacy</div>
-        <div class="f-desc">Fully private suites. No cameras. Your visit remains strictly between us.</div>
-      </div>
-      <div class="feature-card rev" style="transition-delay:.14s">
-        <div class="f-num">03</div>
-        <div class="f-icon"><svg viewBox="0 0 44 44" fill="none"><path d="M22 4L25.5 15H37L27.5 22L31 33L22 26L13 33L16.5 22L7 15H18.5Z" stroke="#b8986a" stroke-width=".9" fill="none"/></svg></div>
-        <div class="f-ttl">Elite Therapists</div>
-        <div class="f-desc">Handpicked for beauty and skill. Each session delivered with exceptional care.</div>
-      </div>
-      <div class="feature-card rev" style="transition-delay:.07s">
-        <div class="f-num">04</div>
-        <div class="f-icon"><svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="16" stroke="#b8986a" stroke-width=".9"/><path d="M22 10V22L30 27" stroke="#b8986a" stroke-width=".9" stroke-linecap="round"/></svg></div>
-        <div class="f-ttl">Open Until 29:00</div>
-        <div class="f-desc">Late-night sessions available. Same-day reservations always welcome.</div>
-      </div>
-      <div class="feature-card rev" style="transition-delay:.14s">
-        <div class="f-num">05</div>
-        <div class="f-icon"><svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="14" r="7" stroke="#b8986a" stroke-width=".9"/><path d="M6 40C6 28 13 24 22 24C31 24 38 28 38 40" stroke="#b8986a" stroke-width=".9"/></svg></div>
-        <div class="f-ttl">Foreigner Friendly</div>
-        <div class="f-desc">Built for international gentlemen. You are always welcome here.</div>
-      </div>
-      <div class="feature-card rev" style="transition-delay:.21s">
-        <div class="f-num">06</div>
-        <div class="f-icon"><svg viewBox="0 0 44 44" fill="none"><rect x="13" y="6" width="18" height="32" rx="2" stroke="#b8986a" stroke-width=".9"/><line x1="13" y1="12" x2="31" y2="12" stroke="#b8986a" stroke-width=".9"/></svg></div>
-        <div class="f-ttl">Outcall Available</div>
-        <div class="f-desc">Hotel & residence visits across central Tokyo. We come to you.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONCEPT -->
-<div class="concept-sec">
-  <div class="concept-photo"><img src="https://best-massage-tokyo.com/wp-content/uploads/2025/03/a2.jpg" alt="" loading="lazy"></div>
-  <div class="concept-panel">
-    <span class="sec-tag rev-l">Our Philosophy</span>
-    <h2 class="sec-h2 rev-l" style="transition-delay:.08s">Where desire<br>meets <em>discretion.</em></h2>
-    <p class="concept-body rev-l" style="transition-delay:.14s">Massage Tokyo was conceived for the gentleman who refuses to compromise. Beauty, skill, and absolute privacy converge into something truly unforgettable.</p>
-    <blockquote class="concept-quote rev-l" style="transition-delay:.2s">"Not just a session. An experience that lingers long after you leave."</blockquote>
-    <p class="concept-body rev-l" style="transition-delay:.26s">Our therapists are selected not only for their extraordinary beauty, but for their warmth and dedication to your complete satisfaction.</p>
-    <a href="https://best-massage-tokyo.com/reserve/" target="_blank" class="btn-white rev-l" style="transition-delay:.32s;margin-top:2rem;align-self:flex-start;">Begin Your Journey</a>
-  </div>
-</div>
-
-<!-- TONIGHT -->
-<section class="cast-sec" id="tonight">
-  <div class="cast-header">
-    <div>
-      <span class="sec-tag rev">Tonight's Line-Up</span>
-      <h2 class="sec-h2 rev" style="transition-delay:.08s;color:#fff">Tonight's <em>Companions.</em></h2>
-    </div>
-    <div class="live-badge rev"><div class="live-dot"></div><span>Updated Daily</span></div>
-  </div>
-  <div class="cast-grid rev" id="castGrid"></div>
-  <p class="cast-note rev">* Schedule subject to change Â· Updated daily</p>
-</section>
-
-<!-- PRICE -->
-<section class="price-sec sec" id="price">
-  <div class="sec-inner">
-    <div style="text-align:center;margin-bottom:.5rem" class="rev">
-      <span class="sec-tag">Pricing</span>
-      <h2 class="sec-h2">An investment in<br><em>the unforgettable.</em></h2>
-    </div>
-    <div class="divider rev"><span class="divider-icon">â¦</span></div>
-    <div class="price-table rev" style="transition-delay:.12s">
-      <div class="price-row"><div class="price-dur">80 min</div><div class="price-amt"><sup>Â¥</sup>42,000</div></div>
-      <div class="price-row popular"><div class="price-dur">100 min</div><div class="price-amt"><sup>Â¥</sup>52,000</div></div>
-      <div class="price-row"><div class="price-dur">130 min</div><div class="price-amt"><sup>Â¥</sup>62,000</div></div>
-      <div class="price-row"><div class="price-dur">Extension <span style="font-size:.8rem;color:#aaa;font-family:'Jost',sans-serif">/ 10 min</span></div><div class="price-amt"><sup>Â¥</sup>8,000</div></div>
-    </div>
-    <p class="price-note-cash rev">Cash only Â· All prices inclusive Â· Advance reservation recommended</p>
-
-    <!-- GOOGLE REVIEW BENEFIT -->
-    <div class="google-promo rev" style="transition-delay:.2s">
-      <div class="google-promo-inner">
-        <div class="google-promo-icon">
-          <svg viewBox="0 0 32 32" fill="none" width="28" height="28">
-            <path d="M28.8 16.32c0-1.01-.09-1.98-.25-2.92H16v5.52h7.18a6.14 6.14 0 01-2.66 4.02v3.34h4.31C27.2 24.1 28.8 20.5 28.8 16.32z" fill="#4285F4"/>
-            <path d="M16 29c3.63 0 6.67-1.2 8.89-3.26l-4.31-3.34c-1.2.8-2.74 1.28-4.58 1.28-3.52 0-6.5-2.38-7.56-5.58H4V21.5A13 13 0 0016 29z" fill="#34A853"/>
-            <path d="M8.44 18.1A7.82 7.82 0 018 16c0-.73.13-1.44.44-2.1V10.5H4A13 13 0 003 16c0 2.1.5 4.08 1 5.5l4.44-3.4z" fill="#FBBC05"/>
-            <path d="M16 8.14c1.98 0 3.76.68 5.16 2.02l3.87-3.87C22.66 4.1 19.62 3 16 3A13 13 0 004 10.5l4.44 3.4C9.5 10.52 12.48 8.14 16 8.14z" fill="#EA4335"/>
-          </svg>
+      <div>
+        <div class="vwrap">
+          <iframe src="https://www.youtube.com/embed/YObRbE9LYSY?rel=0&modestbranding=1&playsinline=1"
+            title="HAPPY END - Best Massage in Tokyo" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
         </div>
-        <div class="google-promo-text">
-          <div class="google-promo-title">Google Review Benefit</div>
-          <div class="google-promo-desc">Leave us a Google review and receive <strong>Â¥2,000 OFF</strong> your next visit. Simply show your review at reception.</div>
-        </div>
-        <a href="https://g.page/r/CYour-Google-Place-ID/review" target="_blank" class="google-promo-btn">Leave a Review</a>
       </div>
     </div>
   </div>
 </section>
-
-<!-- TERMS / NOTICE -->
-<section class="terms-sec" id="terms">
-  <div class="terms-inner">
-    <div style="text-align:center;margin-bottom:2.5rem" class="rev">
-      <span class="sec-tag">Terms of Use</span>
-      <h2 class="sec-h2">Important <em>Notices.</em></h2>
+<section class="sec fsec">
+  <div class="si">
+    <div class="sh">
+      <span class="sen">Experience</span>
+      <h2 class="sja">もっと良いものを求める人々のために</h2>
+      <div class="div"></div>
     </div>
-
-    <div class="terms-notice rev">
-      â ï¸ All our therapists are Japanese. Our salon specializes in authentic aromatherapy and esthetic treatments. We do not provide any form of adult or sexual services. If we determine that a customer has violated any of the prohibited actions listed below, we reserve the right to immediately terminate the session. No refunds will be issued under any circumstances.
+    <div class="fg">
+      <div class="fc"><div class="fn">01</div><h3>英語を話す</h3><p>ご滞在中は英語でのサポートを全面的に提供いたします。日本語は一切不要です。</p></div>
+      <div class="fc"><div class="fn">02</div><h3>絶対的なプライバシー</h3><p>完全プライベートスイート。カメラ設置禁止。お客様のご滞在は私たちだけの秘密です。</p></div>
+      <div class="fc"><div class="fn">03</div><h3>エリートセラピスト</h3><p>美貌と技術を兼ね備えた厳選されたセラピスト。細心の注意を払って対応いたします。</p></div>
+      <div class="fc"><div class="fn">04</div><h3>柔軟な営業時間</h3><p>12:00〜29:00まで営業。当日予約もOK。深夜でもご利用いただけます。</p></div>
+      <div class="fc"><div class="fn">05</div><h3>出張サービス</h3><p>銀座近辺のホテルへの出張サービスも承ります。お気軽にご相談ください。</p></div>
+      <div class="fc"><div class="fn">06</div><h3>安心の品質保証</h3><p>厳格な衛生管理と品質チェックを実施。最高品質のサービスをお約束します。</p></div>
     </div>
-
-    <div class="terms-block rev" style="transition-delay:.06s">
-      <div class="terms-block-title">
-        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5.5"/><path d="M7 6v4M7 5h.01"/></svg>
-        Our Establishment Is Not a Sex-Related Business
-      </div>
-      <div class="terms-body">We are a relaxation salon specializing exclusively in aroma oil massage. We are not a medical institution and do not offer treatments such as acupuncture, moxibustion, or Anma/Shiatsu massage. We do not provide any sensual or adult-oriented services.</div>
+  </div>
+</section>
+<section class="csec">
+  <div class="cbg"></div>
+  <div class="cin">
+    <span class="sen" style="color:var(--glt)">Ginza Secret</span>
+    <h2>Tokyo's Most Luxurious<br>Happy Ending Massage</h2>
+    <div class="div"></div>
+    <p>銀座の中心で、あなただけの特別な時間をご提供します。完全プライベートな空間で、英語対応のセラピストがあなたの心身を癒します。外国人のお客様も安心してお任せください。</p>
+    <a href="https://line.me/R/ti/p/@happyend_ginza" class="bw" target="_blank">今すぐ予約する</a>
+  </div>
+</section>
+<section class="sec castsec" id="cast">
+  <div class="si">
+    <div class="sh">
+      <span class="sen">Tonight's Cast</span>
+      <h2 class="sja">今夜の仲間たち</h2>
+      <div class="div"></div>
+      <p class="ssub">毎日更新・当日の出演者はLINEでご確認ください</p>
     </div>
-
-    <div class="terms-block rev" style="transition-delay:.1s">
-      <div class="terms-block-title">
-        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="10" height="10" rx="1"/><path d="M5 7h4M7 5v4"/></svg>
-        Payment Method
-      </div>
-      <div class="terms-body">Our salon operates on a cash-only basis. We do not accept credit cards, electronic payments, or any other cashless payment methods.</div>
+    <div class="cg">
+      <div class="cc"><img class="cimg" src="https://best-massage-tokyo.com/wp-content/uploads/2025/03/a3aa.jpg" alt="Therapist" loading="lazy"><div class="cinfo"><span class="cname">Today's Cast</span><span class="ctag">English OK</span></div></div>
+      <div class="cc"><img class="cimg" src="https://best-massage-tokyo.com/wp-content/uploads/2025/03/a1-.jpg" alt="Therapist" loading="lazy"><div class="cinfo"><span class="cname">Today's Cast</span><span class="ctag">Private</span></div></div>
+      <div class="cc"><img class="cimg" src="https://best-massage-tokyo.com/wp-content/uploads/2025/05/main-happ.png" alt="Therapist" loading="lazy"><div class="cinfo"><span class="cname">Today's Cast</span><span class="ctag">Premium</span></div></div>
     </div>
-
-    <div class="terms-block rev" style="transition-delay:.14s">
-      <div class="terms-block-title">
-        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h10M4 4V3h6v1M3 4l.6 8h6.8L11 4"/></svg>
-        Prohibited Activities & Restrictions
-      </div>
-      <div class="terms-body">
-        <ul>
-          <li>Individuals under the age of 18 are not permitted.</li>
-          <li>Abusive language, harassment, or coercion toward staff is strictly prohibited.</li>
-          <li>Customers who are heavily intoxicated or under the influence of drugs will be refused.</li>
-          <li>Recording, filming, or photography is strictly prohibited.</li>
-          <li>We refuse service to individuals with tattoos, gang affiliates, and those in the same industry.</li>
-          <li>Arrival more than 10 minutes late without notice may result in cancellation.</li>
-          <li>Showering before the session and wearing provided disposable underwear is mandatory.</li>
-          <li>We are not responsible for any skin reactions caused by massage oils.</li>
-        </ul>
-      </div>
+    <div class="ccta"><a href="https://best-massage-tokyo.com/girls/" class="bgold" target="_blank">全キャストを見る</a></div>
+  </div>
+</section>
+<section class="sec psec" id="price">
+  <div class="si">
+    <div class="sh">
+      <span class="sen">Pricing</span>
+      <h2 class="sja">料金</h2>
+      <div class="div"></div>
+      <p class="ssub">すべての料金に消費税込み・完全個室・プライベートサービス</p>
     </div>
-
-    <div class="terms-block rev" style="transition-delay:.18s">
-      <div class="terms-block-title">
-        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="12" height="9" rx="1.5"/><path d="M1 7h12M5 3V2M9 3V2"/></svg>
-        Booking & Cancellations
+    <div class="pg">
+      <div class="pc"><div class="pn">60分コース</div><div class="pt">60 minutes</div><div class="pa">¥20,000</div><div class="pu">税込</div><p class="pnote">✓ 完全個室<br>✓ 英語対応<br>✓ アメニティ完備</p></div>
+      <div class="pc ft"><div class="pbdg">POPULAR</div><div class="pn">90分コース</div><div class="pt">90 minutes</div><div class="pa">¥28,000</div><div class="pu">税込</div><p class="pnote">✓ 完全個室<br>✓ 英語対応<br>✓ アメニティ完備</p></div>
+      <div class="pc"><div class="pn">120分コース</div><div class="pt">120 minutes</div><div class="pa">¥35,000</div><div class="pu">税込</div><p class="pnote">✓ 完全個室<br>✓ 英語対応<br>✓ アメニティ完備</p></div>
+      <div class="pc"><div class="pn">出張コース</div><div class="pt">Outcall · 60min〜</div><div class="pa">¥25,000〜</div><div class="pu">税込</div><p class="pnote">✓ 銀座周辺ホテル対応<br>✓ 英語対応<br>✓ 要事前予約</p></div>
+    </div>
+    <div class="pnf"><strong>ご注意事項：</strong>料金はすべて消費税込みです。指名料・オプション料金が別途発生する場合がございます。詳細はLINEまたはメールでお問い合わせください。</div>
+  </div>
+</section>
+<section class="sec flsec" id="flow">
+  <div class="si">
+    <div class="sh">
+      <span class="sen">How It Works</span>
+      <h2 class="sja">ご利用の流れ</h2>
+      <div class="div"></div>
+    </div>
+    <div class="flst">
+      <div class="step"><div class="snum">1</div><h3>ご予約</h3><p>LINE・メール・WhatsAppにてご希望の日時・コースをお伝えください。</p></div>
+      <div class="step"><div class="snum">2</div><h3>ご来店</h3><p>銀座の店舗へお越しください。場所はご予約確定後にお知らせします。</p></div>
+      <div class="step"><div class="snum">3</div><h3>セッション</h3><p>完全個室でリラックスしてセッションをお楽しみください。</p></div>
+      <div class="step"><div class="snum">4</div><h3>お会計</h3><p>現金・カード・PayPayでお支払いいただけます。</p></div>
+    </div>
+  </div>
+</section>
+<section class="sec faqsec" id="faq">
+  <div class="si">
+    <div class="sh">
+      <span class="sen">FAQ</span>
+      <h2 class="sja">よくある質問</h2>
+      <div class="div"></div>
+    </div>
+    <div class="faql">
+      <div class="faqi"><div class="faqq" onclick="tf(this)">外国人でも利用できますか？ / Can foreigners visit?</div><div class="faqa">はい、外国人のお客様を大歓迎しております。英語を話すセラピストが対応いたします。<br>Yes, we warmly welcome foreign guests. Our therapists speak English.</div></div>
+      <div class="faqi"><div class="faqq" onclick="tf(this)">当日予約はできますか？ / Can I book same day?</div><div class="faqa">はい、当日予約も承っております。事前のご予約をお勧めします。<br>Yes, same-day bookings are available, subject to availability.</div></div>
+      <div class="faqi"><div class="faqq" onclick="tf(this)">完全に秘密は守られますか？ / Is complete privacy guaranteed?</div><div class="faqa">はい、完全個室で監視カメラは設置しておりません。<br>Yes, your privacy is completely protected. All sessions are 100% private.</div></div>
+      <div class="faqi"><div class="faqq" onclick="tf(this)">支払い方法は？ / What payment methods?</div><div class="faqa">現金、クレジットカード（VISA・Mastercard）、PayPayでお支払いいただけます。<br>We accept cash, credit cards (VISA/Mastercard), and PayPay.</div></div>
+      <div class="faqi"><div class="faqq" onclick="tf(this)">場所はどこですか？ / Where are you located?</div><div class="faqa">銀座エリアに位置しております。詳細はご予約確定後にお知らせします。<br>We are in the Ginza area. The exact address is provided upon confirmation.</div></div>
+    </div>
+  </div>
+</section>
+<section class="sec ctsec" id="contact">
+  <div class="si">
+    <div class="ctin">
+      <span class="sen">Contact & Reserve</span>
+      <h2 class="sja">お問い合わせ・ご予約</h2>
+      <div class="div"></div>
+      <div class="hgrid">
+        <div class="hi"><span class="hlbl">Open</span><span>12:00 〜 29:00</span></div>
+        <div class="hi"><span class="hlbl">Reception</span><span>10:00 〜 29:00</span></div>
+        <div class="hi"><span class="hlbl">Location</span><span>Ginza, Tokyo</span></div>
       </div>
-      <div class="terms-body">
-        Reservations are available 24/7 through our online booking form. We will contact you to confirm your reservation.<br><br>
-        <strong>Cancellation policy:</strong> Same-day cancellations â 100% fee. Day-before cancellations â 50% fee. Failure to make payment will result in additional legal costs.
+      <div class="ctbtns">
+        <a href="https://line.me/R/ti/p/@happyend_ginza" class="ctitem" target="_blank">📱 LINE で予約</a>
+        <a href="mailto:ginza.esthe@gmail.com" class="ctitem">✉ ginza.esthe@gmail.com</a>
+        <a href="https://wa.me/818012345678" class="ctitem" target="_blank">💬 WhatsApp</a>
       </div>
     </div>
   </div>
 </section>
-
-<!-- PROCESS -->
-<section class="sec" id="flow" style="background:var(--white)">
-  <div class="sec-inner">
-    <div style="text-align:center;margin-bottom:.5rem" class="rev">
-      <span class="sec-tag">How It Works</span>
-      <h2 class="sec-h2">The evening <em>unfolds.</em></h2>
-    </div>
-    <div class="divider rev"><span class="divider-icon">â¦</span></div>
-    <div class="steps">
-      <div class="step"><div class="step-num">i</div><div><div class="step-ttl">Make Your Reservation</div><div class="step-desc">Book online, via LINE, email or phone â all in English. Same-day sessions welcome.</div></div></div>
-      <div class="step"><div class="step-num">ii</div><div><div class="step-ttl">Arrive &amp; Payment First</div><div class="step-desc">5-minute walk from Ginza Station. Upon arrival, payment is completed immediately â cash only.</div></div></div>
-      <div class="step"><div class="step-num">iii</div><div><div class="step-ttl">Choose Your Course</div><div class="step-desc">Select your preferred service length. Our team guides you warmly.</div></div></div>
-      <div class="step"><div class="step-num">iv</div><div><div class="step-ttl">Surrender to the Moment</div><div class="step-desc">A private room. Soft light. Your therapist's undivided attention.</div></div></div>
-      <div class="step"><div class="step-num">v</div><div><div class="step-ttl">Depart, Renewed</div><div class="step-desc">We escort you out with a warm farewell. You leave lighter, satisfied.</div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact-sec" id="contact">
-  <div class="contact-inner">
-    <span class="sec-tag rev">Get In Touch</span>
-    <h2 class="sec-h2 rev" style="transition-delay:.08s">Ready for <em>tonight?</em></h2>
-    <p class="contact-sub rev" style="transition-delay:.14s">We respond in English within minutes.<br>Same-day reservations always welcome.</p>
-    <div class="contact-icons rev" style="transition-delay:.2s">
-      <a href="https://line.me/ti/p/D-nz2QKxS_" target="_blank" class="ci-btn">
-        <div class="ci-circle ci-line"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.18 2 11.27c0 3.71 2.33 6.96 5.82 8.78l-.75 2.78 3.02-1.58C11.01 21.39 11.5 21.45 12 21.45c5.52 0 10-4.18 10-9.18S17.52 2 12 2z"/></svg></div>
-        <span class="ci-label">LINE</span>
-      </a>
-      <a href="https://wa.me/817064836973" target="_blank" class="ci-btn">
-        <div class="ci-circle ci-wa"><svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
-        <span class="ci-label">WhatsApp</span>
-      </a>
-      <a href="https://twitter.com/ginzano_eiko" target="_blank" class="ci-btn">
-        <div class="ci-circle ci-twitter"><svg viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
-        <span class="ci-label">Twitter</span>
-      </a>
-      <a href="mailto:ginza.esthe@gmail.com" target="_blank" class="ci-btn">
-        <div class="ci-circle ci-email"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg></div>
-        <span class="ci-label">Email</span>
-      </a>
-    </div>
-    <a href="https://best-massage-tokyo.com/reserve/" target="_blank" class="btn-white rev" style="margin:0 auto;display:inline-flex;transition-delay:.28s;">Reserve Your Session Now</a>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <div>
-      <span class="footer-logo"><em>Massage Tokyo</em></span>
-      <p class="footer-tag">Tokyo's most discreet and refined pleasure salon. Serving international gentlemen in Ginza.</p>
+  <div class="fi">
+    <div class="ft">
+      <div>
+        <div class="flogo">HAPPY END<span>Best Massage in Tokyo</span></div>
+        <p style="margin-top:1.5rem;font-size:.75rem;color:rgba(255,255,255,.5);line-height:2">銀座メンズエステ<br>OPEN 12:00〜29:00<br>Reception 10:00〜29:00<br>ginza.esthe@gmail.com</p>
+      </div>
+      <div class="fnav">
+        <div><div class="fnavt">Menu</div><ul><li><a href="#about">About</a></li><li><a href="#cast">Tonight's Cast</a></li><li><a href="#price">料金</a></li></ul></div>
+        <div><div class="fnavt">Info</div><ul><li><a href="#flow">ご利用の流れ</a></li><li><a href="#faq">よくある質問</a></li><li><a href="#contact">お問い合わせ</a></li></ul></div>
+        <div><div class="fnavt">Follow</div><ul><li><a href="https://line.me/R/ti/p/@happyend_ginza" target="_blank">LINE</a></li><li><a href="https://twitter.com/happyend_ginza" target="_blank">X (Twitter)</a></li><li><a href="mailto:ginza.esthe@gmail.com">Email</a></li></ul></div>
+      </div>
     </div>
-    <div>
-      <div class="foot-ttl">Navigate</div>
-      <ul class="foot-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#tonight">Tonight's Schedule</a></li>
-        <li><a href="#price">Pricing</a></li>
-        <li><a href="#terms">Terms of Use</a></li>
-        <li><a href="#flow">How It Works</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="foot-ttl">Contact</div>
-      <ul class="foot-links">
-        <li><a href="https://best-massage-tokyo.com/reserve/" target="_blank">Online Booking</a></li>
-        <li><a href="https://line.me/ti/p/D-nz2QKxS_" target="_blank">LINE</a></li>
-        <li><a href="https://twitter.com/ginzano_eiko" target="_blank">Twitter / X</a></li>
-        <li><a href="https://wa.me/817064836973" target="_blank">WhatsApp</a></li>
-        <li><a href="mailto:ginza.esthe@gmail.com">ginza.esthe@gmail.com</a></li>
-      </ul>
-      <p style="margin-top:1.5rem;font-size:.7rem;color:rgba(255,255,255,.25);line-height:1.9">Open: 12:00ã29:00<br>Reception: 10:00ã29:00<br>Ginza, Tokyo</p>
+    <div class="fb">
+      <span>© 2025 HAPPY END. All rights reserved.</span>
+      <div class="fsoc">
+        <a href="https://line.me/R/ti/p/@happyend_ginza" target="_blank">LINE</a>
+        <a href="https://twitter.com/happyend_ginza" target="_blank">Twitter</a>
+        <a href="mailto:ginza.esthe@gmail.com">Email</a>
+      </div>
     </div>
   </div>
-  <p class="footer-copy">Â© 2025 Massage Tokyo â All rights reserved Â· Private &amp; Confidential Â· Ginza, Tokyo</p>
 </footer>
-
-<!-- BOT BAR -->
-<div class="bot-bar">
-  <a href="https://line.me/ti/p/D-nz2QKxS_" target="_blank">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M20 11.5C20 8 16.5 5.5 12 5.5C7.5 5.5 4 8 4 11.5C4 14.5 7 17 11.2 17.5L11.2 19.5L13.5 17.3C17.5 16.7 20 14.3 20 11.5Z"/></svg>
-    LINE
-  </a>
-  <a href="https://wa.me/817064836973" target="_blank">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    WhatsApp
-  </a>
-  <a href="https://best-massage-tokyo.com/reserve/" target="_blank" class="res-btn">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 9h18M8 4V2M16 4V2"/></svg>
-    Reserve
-  </a>
+<div class="bar">
+  <a href="https://line.me/R/ti/p/@happyend_ginza" class="bi bln" target="_blank">📱 LINE</a>
+  <a href="mailto:ginza.esthe@gmail.com" class="bi bml">✉ MAIL</a>
+  <a href="https://line.me/R/ti/p/@happyend_ginza" class="bi brv" target="_blank">今すぐ予約</a>
 </div>
-
-<!-- NEWS POPUP -->
-<div id="newsPopup">
-  <div id="newsSheet">
-    <div style="display:flex;justify-content:center;padding:.85rem 0 .25rem"><div style="width:36px;height:4px;border-radius:2px;background:var(--border)"></div></div>
-    <button onclick="closeNewsPopup()" style="position:absolute;top:.85rem;right:1rem;width:30px;height:30px;border-radius:50%;border:1px solid var(--border);background:var(--white);color:var(--gray);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;">Ã</button>
-    <div id="newsSlides" style="overflow:hidden;min-height:160px;"></div>
-    <div style="display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.65rem 1rem 0" id="newsDots"></div>
-    <div style="padding:.75rem 1.25rem 0">
-      <a href="https://best-massage-tokyo.com/reserve/" target="_blank" style="display:flex;align-items:center;justify-content:center;height:48px;background:var(--black);color:var(--white);font-size:.68rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;text-decoration:none;border-radius:0">ä»ããäºç´ãã</a>
-    </div>
-  </div>
-</div>
-
-<!-- PROFILE MODAL -->
-<div id="profileModal">
-  <div id="modalSheet">
-    <div style="display:flex;justify-content:center;padding:1rem 0 .5rem"><div style="width:36px;height:4px;border-radius:2px;background:rgba(255,255,255,.2)"></div></div>
-    <button onclick="closeModal()" style="position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;border:none;background:rgba(255,255,255,.1);color:#fff;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;">Ã</button>
-    <div style="position:relative;width:100%;height:280px;overflow:hidden">
-      <img id="mPhoto" src="" alt="" style="width:100%;height:100%;object-fit:cover;object-position:top;filter:brightness(.8)">
-      <div style="position:absolute;inset:0;background:linear-gradient(to top,#1a1a1a 0%,transparent 55%)"></div>
-      <div style="position:absolute;bottom:1.5rem;left:1.5rem">
-        <div id="mBadge" style="font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;padding:.22rem .6rem;border-radius:20px;display:inline-block;margin-bottom:.45rem;font-weight:500"></div>
-        <div id="mName" style="font-family:'Cormorant',serif;font-style:italic;font-size:1.8rem;color:#fff;line-height:1"></div>
-        <div id="mMeta" style="font-size:.7rem;color:rgba(255,255,255,.5);margin-top:.25rem;letter-spacing:.08em"></div>
-      </div>
-    </div>
-    <div style="padding:1.5rem 1.5rem 0">
-      <div id="mDutyWrap" style="display:flex;align-items:center;gap:.5rem;margin-bottom:1.2rem">
-        <div style="width:6px;height:6px;border-radius:50%;background:#4caf50;box-shadow:0 0 7px #4caf50;animation:blinkM 2s ease-in-out infinite"></div>
-        <span id="mDutyTime" style="font-size:.72rem;color:rgba(255,255,255,.5);letter-spacing:.05em"></span>
-      </div>
-      <div id="mBio" style="font-size:.85rem;color:rgba(220,220,230,.7);line-height:1.9;margin-bottom:1.4rem"></div>
-      <div id="mTags" style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.4rem"></div>
-      <div id="mServicesWrap" style="background:rgba(255,255,255,.05);border-radius:10px;padding:1rem 1.1rem;margin-bottom:1.4rem">
-        <div style="font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.65rem">Services</div>
-        <div id="mServices" style="display:flex;flex-direction:column;gap:.5rem"></div>
-      </div>
-      <div style="border-left:2px solid var(--gold);padding-left:1rem;margin-bottom:2rem">
-        <div id="mMessage" style="font-family:'Cormorant',serif;font-style:italic;font-size:1rem;color:rgba(200,200,210,.55);line-height:1.7"></div>
-      </div>
-      <a href="https://best-massage-tokyo.com/reserve/" target="_blank" style="display:block;width:100%;padding:1rem;text-align:center;background:var(--white);color:var(--black);font-size:.68rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;text-decoration:none;margin-bottom:1.5rem">ãã®å­ãäºç´ãã</a>
-    </div>
-  </div>
-</div>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-/* ââ SLIDER ââ */
-let cur=0;
-const slides=document.querySelectorAll('.slide');
-const dots=document.querySelectorAll('.s-dot');
-function goSlide(n){
-  slides[cur].classList.remove('active');dots[cur].classList.remove('active');
-  cur=(n+slides.length)%slides.length;
-  slides[cur].classList.add('active');dots[cur].classList.add('active');
-}
-setInterval(()=>goSlide(cur+1),6000);
-
-/* ââ MENU ââ */
-function toggleMenu(){document.getElementById('mobMenu').classList.toggle('open');}
-function closeMenu(){document.getElementById('mobMenu').classList.remove('open');}
-
-/* ââ REVEAL ââ */
-const io=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});
-},{threshold:.1});
-document.querySelectorAll('.rev,.rev-l,.step').forEach(el=>io.observe(el));
-
-/* ââ DATA ââ */
-const STORAGE_KEY='mt_cast_data';
-const SCHED_KEY='mt_schedule';
-const NEWS_KEY='mt_news';
-const DC=[
-  {id:'paypay',name:'Paypay',age:24,height:153,cup:'D',tags:['Cute','Fresh'],photo:'https://best-massage-tokyo.com/wp-content/uploads/2026/01/1769063443347.webp',bio:'So charming you can\'t help but feel completely healed.',service1:'Aroma oil massage',service2:'Relaxing body course',message:"You\'ll feel completely healed.",rank:'nw'},
-  {id:'margaret',name:'Margaret',age:21,height:155,cup:'D',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/1745092578220.webp',bio:'Elegant slender idol with a pure aura.',service1:'Gentle aroma massage',service2:'Full relaxation',message:"Pure and genuine care, just for you.",rank:'nw'},
-  {id:'lilian',name:'Lilian',age:22,height:159,cup:'H',tags:['Fresh','Hot'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250324_190124806.webp',bio:'Fresh energy with an irresistible voluptuous figure.',service1:'Deep aroma oil massage',service2:'Premium body course',message:"I\'ll take you somewhere special.",rank:'pr'},
-  {id:'casablanca',name:'Casablanca',age:25,height:156,cup:'F',tags:['Cute','Glamorous'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/17386327067432.webp',bio:'A captivating therapist with a sweet smile. Her lover-style hospitality is filled with kindness, making every moment unforgettable.',service1:'Lover-style aroma massage',service2:'Full body course',message:"Once you experience my care, you\'ll be captivated.",rank:'nw'},
-  {id:'salamander',name:'Salamander',age:20,height:159,cup:'B',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_203010978.webp',bio:'Young and fresh energy that will melt your stress away.',service1:'Gentle body massage',service2:'Relaxing aroma course',message:"Let me take all your stress away.",rank:'nw'},
-  {id:'murasaki',name:'Murasaki',age:24,height:163,cup:'E',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/17412255138022.webp',bio:'Graceful beauty with a refreshing personality.',service1:'Aroma oil course',service2:'Full relaxation',message:"I\'ll make you forget everything.",rank:'nw'},
-  {id:'blair',name:'Blair',age:26,height:153,cup:'C',tags:['Fresh','Glamorous'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/1735052534887.webp',bio:'Refined elegance with a fresh and captivating charm.',service1:'Luxury aroma massage',service2:'Premium full course',message:"Elegance and warmth, all for you.",rank:'pr'},
-  {id:'suzanne',name:'Suzanne',age:26,height:162,cup:'E',tags:['Glamorous','Gorgeous'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/1737710418647.webp',bio:'The perfect mixed-beauty with looks, aura, and style in one.',service1:'Special luxury course',service2:'VIP full experience',message:"Beauty and grace â I\'m all yours.",rank:'sp'},
-  {id:'sophia',name:'Sophia',age:27,height:159,cup:'H',tags:['Glamorous'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/1731254097017.webp',bio:'Mature glamour with a voluptuous figure. Her skilled touch and warm presence will envelop you completely.',service1:'Deep relaxation course',service2:'Special premium course',message:"Mature elegance â your total satisfaction.",rank:'pr'},
-  {id:'nicola',name:'Nicola',age:22,height:152,cup:'D',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250113_100903465.webp',bio:'Adorable and attentive with a caring heart. Her gentle touch will put you at ease instantly.',service1:'Gentle aroma massage',service2:'Caring full course',message:"Every detail matters to me.",rank:'nw'},
-  {id:'juliana',name:'Juliana',age:28,height:170,cup:'G',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/17319165635063-1-1.webp',bio:'Tall and elegant with a fresh charm that captivates.',service1:'Full body aroma course',service2:'Premium relaxation',message:"Let me be your perfect companion.",rank:'pr'},
-  {id:'angerme',name:'Angerme',age:0,height:0,cup:'',tags:['Cute','Hot'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/17311613981632.webp',bio:'For Hello! Project fans â a living lookalike of Moe Kamikokuryo.',service1:'Aroma oil massage',service2:'Full relaxation course',message:"Your favorite idol, just for you.",rank:'pr'},
-  {id:'rosemary',name:'Rosemary',age:28,height:160,cup:'C',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/we6cgl.webp',bio:'Warm and gentle with a calming presence.',service1:'Relaxing aroma course',service2:'Gentle full body',message:"I\'ll wrap you in warmth.",rank:'pr'},
-  {id:'alexander',name:'Alexander',age:23,height:168,cup:'C',tags:['Glamorous','Hot'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/20241228_122134.webp',bio:'Tall and glamorous with a passionate edge.',service1:'Premium aroma course',service2:'Luxury full experience',message:"Passion and glamour â all yours.",rank:'pr'},
-  {id:'coco',name:'Coco',age:28,height:165,cup:'G',tags:['Glamorous','Gorgeous'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_203110905.webp',bio:'Gorgeous and confident. Once you experience her luxury course, you\'ll be completely hooked.',service1:'Luxury full course',service2:'VIP premium experience',message:"Let me take you somewhere extraordinary.",rank:'nw'},
-  {id:'christina',name:'Christina',age:22,height:163,cup:'E',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_202208066.webp',bio:'Fresh and youthful with a captivating smile.',service1:'Gentle aroma massage',service2:'Full relaxation',message:"My smile will light up your day.",rank:'nw'},
-  {id:'amagifu',name:'Amagifu',age:19,height:158,cup:'D',tags:['Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_202427061.webp',bio:'The youngest fresh face on our team. Her genuine warmth and bright smile will put you completely at ease.',service1:'Gentle aroma oil massage',service2:'Full body relaxation',message:"My smile will put you completely at ease.",rank:'nw'},
-  {id:'marcy',name:'Marcy',age:24,height:165,cup:'D',tags:['Cute','Gorgeous'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_202319259.webp',bio:'Tall and graceful with a cute charm.',service1:'Aroma oil course',service2:'Premium relaxation',message:"A moment with me is unforgettable.",rank:'nw'},
-  {id:'mountain_dew',name:'Mountain Dew',age:23,height:160,cup:'E',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_201844668.webp',bio:'Refreshing energy and a naturally sweet personality.',service1:'Relaxing aroma massage',service2:'Gentle full body',message:"Refreshing and real â just for you.",rank:'nw'},
-  {id:'andrew',name:'Andrew',age:18,height:152,cup:'C',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_202057155.webp',bio:'The youngest face on our team â innocent and genuine.',service1:'Gentle body massage',service2:'Soft aroma course',message:"Let me be your special discovery.",rank:'nw'},
-  {id:'charlotte',name:'Charlotte',age:24,height:162,cup:'E',tags:['Cute','Gorgeous'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/B612_20241118_172854_792.webp',bio:'Cute and gorgeous â a rare combination of elegance and warmth.',service1:'Premium aroma course',service2:'Full body luxury',message:"Gorgeous and gentle, entirely yours.",rank:'pr'},
-  {id:'milky',name:'Milky',age:24,height:152,cup:'C',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/B612_20241231_035628_624.webp',bio:'Petite and adorable with a milky-soft personality.',service1:'Gentle aroma massage',service2:'Relaxing full course',message:"Small but perfectly formed â just for you.",rank:'pr'},
-  {id:'linda',name:'Linda',age:25,height:165,cup:'E',tags:['Fresh','Glamorous'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/B612_20241118_173746_222-2.jpg',bio:'Fresh elegance with a glamorous touch.',service1:'Luxury aroma massage',service2:'Premium full body',message:"Fresh beauty, warm heart.",rank:'pr'},
-  {id:'tenga',name:'Tenga',age:25,height:158,cup:'D',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/B612_20241118_172513_258.jpg',bio:'Cute and charming with an effortlessly warm presence.',service1:'Aroma oil massage',service2:'Caring full course',message:"I\'ll give you my everything.",rank:'pr'},
-  {id:'daniel',name:'Daniel',age:25,height:160,cup:'C',tags:['Cute','Fresh'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/B612_20241118_173109_112.jpg',bio:'Gentle and fresh with a sweet, caring touch.',service1:'Gentle aroma course',service2:'Relaxing full body',message:"Let me be your perfect moment.",rank:'pr'},
-  {id:'saki',name:'Saki',age:32,height:156,cup:'F',tags:['Glamorous','Hot'],photo:'https://estemax.net/happy-end/wp-content/uploads/2025/05/a5.jpg',bio:'Mature beauty with a glamorous allure and experienced touch.',service1:'Deep luxury course',service2:'Special aroma treatment',message:"Experience true maturity and grace.",rank:'pr'},
-];
-function getCasts(){try{const r=localStorage.getItem(STORAGE_KEY);return r?JSON.parse(r):DC;}catch(e){return DC;}}
-function getSchedules(){try{const r=localStorage.getItem(SCHED_KEY);return r?JSON.parse(r):[];}catch(e){return[];}}
-function getNews(){try{const r=localStorage.getItem(NEWS_KEY);return r?JSON.parse(r):[];}catch(e){return[];}}
-
-/* ââ CAST GRID ââ */
-function buildCastGrid(){
-  const casts=getCasts(),scheds=getSchedules();
-  const today=new Date().toISOString().split('T')[0];
-  const ts=scheds.filter(s=>s.date===today);
-  const active=ts.length>0
-    ?ts.map(s=>({sched:s,cast:casts.find(c=>c.id===s.castId)})).filter(x=>x.cast)
-    :casts.map(c=>({sched:null,cast:c}));
-  const grid=document.getElementById('castGrid');
-  if(!grid)return;
-  const rl={sp:'Special',pr:'Premium',nw:'New Face'};
-  const rc={sp:'sp',pr:'pr',nw:'nw'};
-  grid.innerHTML=active.map(({sched,cast})=>{
-    const rank=sched?sched.rank:cast.rank;
-    const onDuty=sched?sched.onDuty:false;
-    const timeStr=sched?`${sched.start} â ${sched.end}`:'';
-    return `<div class="cast-card" onclick="openModal('${cast.id}')">
-      <div class="cast-badge ${rc[rank]||'pr'}">${rl[rank]||'Premium'}</div>
-      ${onDuty?`<div class="duty-dot"><span>On Duty</span></div>`:''}
-      <div class="cast-img"><img src="${cast.photo}" alt="${cast.name}" class="cast-photo-img" loading="lazy" onerror="this.style.display='none'"><div class="cast-photo-overlay"></div></div>
-      <div class="cast-info">
-        <div class="cast-name">${cast.name}</div>
-        <div class="cast-meta">AGE ${cast.age} Â· T${cast.height} Â· (${cast.cup})</div>
-        <div class="cast-tags">${cast.tags.map(t=>`<span class="cast-tag">${t}</span>`).join('')}</div>
-        ${timeStr?`<div class="cast-time"><svg viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#555" stroke-width=".8"/><path d="M6 3v3l2 2" stroke="#555" stroke-width=".8" stroke-linecap="round"/></svg>${timeStr}</div>`:''}
-        <div class="cast-tap">TAP FOR PROFILE âº</div>
-      </div>
-    </div>`;
-  }).join('');
-  document.querySelectorAll('.rev,.rev-l,.step').forEach(el=>io.observe(el));
-}
-
-/* ââ PROFILE MODAL ââ */
-function openModal(castId){
-  const casts=getCasts(),scheds=getSchedules();
-  const today=new Date().toISOString().split('T')[0];
-  const cast=casts.find(c=>c.id===castId);
-  const sched=scheds.find(s=>s.castId===castId&&s.date===today);
-  if(!cast)return;
-  const rl={sp:'Special',pr:'Premium',nw:'New Face'};
-  const rc={sp:'rgba(107,21,37,.9)',pr:'rgba(60,60,70,.9)',nw:'rgba(26,61,43,.9)'};
-  const rank=sched?sched.rank:cast.rank;
-  document.getElementById('mPhoto').src=cast.photo;
-  document.getElementById('mName').textContent=cast.name;
-  document.getElementById('mMeta').textContent=`AGE ${cast.age} Â· T${cast.height} Â· (${cast.cup})`;
-  const badge=document.getElementById('mBadge');
-  badge.textContent=rl[rank]||'Premium';badge.style.background=rc[rank]||'rgba(60,60,70,.9)';badge.style.color='#fff';
-  const dw=document.getElementById('mDutyWrap'),dt=document.getElementById('mDutyTime');
-  if(sched&&sched.onDuty){dw.style.display='flex';dt.textContent=`æ¬æ¥ ${sched.start}â${sched.end} åºå¤ä¸­`;}
-  else if(sched){dw.style.display='flex';dt.textContent=`æ¬æ¥ ${sched.start}â${sched.end}`;}
-  else dw.style.display='none';
-  document.getElementById('mBio').textContent=cast.bio||'';
-  document.getElementById('mTags').innerHTML=cast.tags.map(t=>`<span style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(184,152,106,.3);color:rgba(184,152,106,.7);padding:.2rem .5rem;border-radius:20px">${t}</span>`).join('');
-  const sw=document.getElementById('mServicesWrap'),ss=document.getElementById('mServices');
-  const services=[cast.service1,cast.service2].filter(Boolean);
-  if(services.length){sw.style.display='';ss.innerHTML=services.map(s=>`<div style="display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:rgba(220,220,230,.65)"><span style="color:var(--gold)">â¦</span>${s}</div>`).join('');}else sw.style.display='none';
-  document.getElementById('mMessage').textContent=cast.message?`"${cast.message}"`:'';
-  document.getElementById('profileModal').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeModal(){document.getElementById('profileModal').classList.remove('open');document.body.style.overflow='';}
-document.getElementById('profileModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
-
-/* ââ NEWS POPUP ââ */
-const POPUP_KEY='mt_popup_'+new Date().toISOString().split('T')[0];
-let newsIdx=0;
-function initNewsPopup(){
-  const items=getNews().filter(n=>n.active);
-  if(!items.length||sessionStorage.getItem(POPUP_KEY))return;
-  const tl={news:'ãã¥ã¼ã¹',coupon:'ã¯ã¼ãã³',event:'ã¤ãã³ã'};
-  document.getElementById('newsSlides').innerHTML=items.map((n,i)=>`
-    <div class="news-slide ${i===0?'active':''}" id="ns${i}">
-      <div class="news-slide-type ${n.type||'news'}">${tl[n.type||'news']}</div>
-      <div class="news-slide-title">${n.title||''}</div>
-      <div class="news-slide-body">${(n.body||'').replace(/\n/g,'<br>')}</div>
-      ${n.expires?`<div class="news-slide-exp">æå¹æéï¼${n.expires}</div>`:''}
-    </div>`).join('');
-  document.getElementById('newsDots').innerHTML=items.map((_,i)=>`<button class="news-dot ${i===0?'active':''}" onclick="goNewsSlide(${i})"></button>`).join('');
-  newsIdx=0;
-  document.getElementById('newsPopup').style.display='flex';
-  setTimeout(()=>document.getElementById('newsSheet').style.transform='translateY(0)',50);
-  if(items.length>1)setInterval(()=>goNewsSlide((newsIdx+1)%items.length),5000);
-  sessionStorage.setItem(POPUP_KEY,'1');
-}
-function goNewsSlide(n){
-  document.querySelectorAll('.news-slide').forEach((el,i)=>el.classList.toggle('active',i===n));
-  document.querySelectorAll('.news-dot').forEach((el,i)=>el.classList.toggle('active',i===n));
-  newsIdx=n;
-}
-function closeNewsPopup(){
-  document.get
-});
+<script>
+let c=0;const sl=document.querySelectorAll('.slide');const dt=document.getElementById('sdots');let tm;
+sl.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' on':'');d.onclick=()=>go(i);dt.appendChild(d);});
+function go(n){sl[c].classList.remove('on');dt.children[c].classList.remove('on');c=(n+sl.length)%sl.length;sl[c].classList.add('on');dt.children[c].classList.add('on');clearInterval(tm);tm=setInterval(()=>go(c+1),6000);}
+function ns(){go(c+1);}function ps(){go(c-1);}
+tm=setInterval(()=>go(c+1),6000);
+function om(){document.getElementById('mob').classList.add('on');document.getElementById('ov').classList.add('on');document.body.style.overflow='hidden';}
+function cm(){document.getElementById('mob').classList.remove('on');document.getElementById('ov').classList.remove('on');document.body.style.overflow='';}
+function tf(el){el.parentElement.classList.toggle('on');}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();cm();window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});}});});
 </script>
 </body>
 </html>
