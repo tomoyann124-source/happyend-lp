@@ -9,8 +9,6 @@
 :root{--b:#1a1a1a;--b2:#252525;--b3:#2f2f2f;--gold:#b8986a;--glt:#d4b98a;--w:#fff;--g:#888;--gl:#666;--s:#f2ddd8;--green:#4caf50;--red:#e53935;--bd:rgba(255,255,255,.1)}
 body{font-family:'Segoe UI','Noto Sans JP',sans-serif;background:var(--b);color:var(--w);min-height:100vh}
 a{color:inherit;text-decoration:none}
-
-/* SIDEBAR */
 .sidebar{position:fixed;top:0;left:0;width:220px;height:100vh;background:var(--b2);border-right:1px solid var(--bd);display:flex;flex-direction:column;z-index:100}
 .sidebar-logo{padding:1.5rem;border-bottom:1px solid var(--bd)}
 .sidebar-logo h1{font-size:.95rem;letter-spacing:.2em;color:var(--gold);font-weight:400}
@@ -20,13 +18,8 @@ a{color:inherit;text-decoration:none}
 .nav-item:hover,.nav-item.active{background:rgba(184,152,106,.1);color:var(--gold)}
 .nav-item .icon{font-size:1rem;width:20px;text-align:center}
 .sidebar-footer{padding:1rem 1.5rem;border-top:1px solid var(--bd)}
-.sidebar-footer a{font-size:.7rem;color:var(--g);letter-spacing:.1em}
-.sidebar-footer a:hover{color:var(--gold)}
-
-/* MAIN */
+.sidebar-footer a{font-size:.7rem;color:var(--g);letter-spacing:.1em}.sidebar-footer a:hover{color:var(--gold)}
 .main{margin-left:220px;min-height:100vh}
-
-/* TOP BAR */
 .topbar{background:var(--b2);border-bottom:1px solid var(--bd);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:99}
 .topbar-title{font-size:1rem;letter-spacing:.1em;color:var(--w)}
 .topbar-actions{display:flex;gap:.75rem;align-items:center}
@@ -35,56 +28,32 @@ a{color:inherit;text-decoration:none}
 .btn-outline{background:transparent;color:var(--gold);border:1px solid var(--gold)}.btn-outline:hover{background:var(--gold);color:var(--w)}
 .btn-danger{background:var(--red);color:var(--w)}.btn-danger:hover{filter:brightness(1.1)}
 .btn-sm{padding:.4rem .9rem;font-size:.65rem}
-
-/* CONTENT */
 .content{padding:2rem}
-
-/* TABS */
-.tabs{display:flex;gap:0;border-bottom:1px solid var(--bd);margin-bottom:2rem}
-.tab{padding:.75rem 1.5rem;font-size:.75rem;letter-spacing:.1em;cursor:pointer;color:var(--g);border-bottom:2px solid transparent;transition:all .2s}
-.tab.active{color:var(--gold);border-bottom-color:var(--gold)}
 .tab-panel{display:none}.tab-panel.active{display:block}
-
-/* STATS */
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem}
 .stat-card{background:var(--b2);border:1px solid var(--bd);padding:1.5rem;text-align:center}
 .stat-num{font-size:2rem;font-weight:300;color:var(--gold);line-height:1}
 .stat-label{font-size:.65rem;letter-spacing:.3em;color:var(--g);margin-top:.5rem;text-transform:uppercase}
-
-/* SEARCH / FILTER */
 .cast-controls{display:flex;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap;align-items:center}
-.search-box{flex:1;min-width:200px;background:var(--b3);border:1px solid var(--bd);color:var(--w);padding:.65rem 1rem;font-size:.8rem;font-family:inherit}
-.search-box::placeholder{color:var(--g)}
-.search-box:focus{outline:none;border-color:var(--gold)}
-.filter-btn{padding:.6rem 1.2rem;font-size:.7rem;cursor:pointer;border:1px solid var(--bd);background:var(--b3);color:var(--g);letter-spacing:.1em;transition:all .2s}
+.search-box{flex:1;min-width:200px;background:var(--b3);border:1px solid var(--bd);color:var(--w);padding:.65rem 1rem;font-size:.8rem;font-family:inherit}.search-box::placeholder{color:var(--g)}.search-box:focus{outline:none;border-color:var(--gold)}
+.filter-btn{padding:.6rem 1.2rem;font-size:.7rem;cursor:pointer;border:1px solid var(--bd);background:var(--b3);color:var(--g);letter-spacing:.1em;transition:all .2s;font-family:inherit}
 .filter-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(184,152,106,.1)}
-
-/* CAST GRID */
-.cast-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.25rem}
-.cast-card{background:var(--b2);border:1px solid var(--bd);overflow:hidden;transition:border-color .2s}
-.cast-card:hover{border-color:var(--gold)}
-.cast-card.inactive{opacity:.5}
+.cast-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:1.25rem}
+.cast-card{background:var(--b2);border:1px solid var(--bd);overflow:hidden;transition:border-color .2s}.cast-card:hover{border-color:var(--gold)}.cast-card.inactive{opacity:.45}
 .cast-img-wrap{position:relative;overflow:hidden}
-.cast-img-wrap img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;display:block;transition:transform .4s}
-.cast-card:hover .cast-img-wrap img{transform:scale(1.04)}
+.cast-img-wrap .cbgi{width:100%;aspect-ratio:3/4;background-size:cover;background-position:center top;display:block;transition:transform .4s}.cast-card:hover .cast-img-wrap .cbgi{transform:scale(1.04)}
 .cast-rank{position:absolute;top:.6rem;left:.6rem;font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;padding:.25rem .6rem;font-weight:600}
-.cast-rank.nf{background:#4caf50;color:#fff}
-.cast-rank.pm{background:var(--gold);color:#fff}
-.cast-rank.sp{background:#9c27b0;color:#fff}
+.cast-rank.nf{background:#4caf50;color:#fff}.cast-rank.pm{background:var(--gold);color:#fff}.cast-rank.sp{background:#9c27b0;color:#fff}
 .cast-overlay{position:absolute;inset:0;background:rgba(0,0,0,.6);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;opacity:0;transition:opacity .2s}
 .cast-card:hover .cast-overlay{opacity:1}
 .cast-edit-btn,.cast-toggle-btn{padding:.5rem 1rem;font-size:.65rem;letter-spacing:.1em;cursor:pointer;border:none;font-family:inherit;width:120px}
-.cast-edit-btn{background:var(--gold);color:#fff}
-.cast-toggle-btn{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.3)}
+.cast-edit-btn{background:var(--gold);color:#fff}.cast-toggle-btn{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.3)}
 .cast-info{padding:.85rem}
 .cast-name-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:.3rem}
 .cast-name{font-size:.9rem;letter-spacing:.05em}
 .cast-active{font-size:.55rem;letter-spacing:.1em;padding:.2rem .5rem}
-.cast-active.on{color:#4caf50;background:rgba(76,175,80,.1)}
-.cast-active.off{color:var(--g);background:rgba(255,255,255,.05)}
+.cast-active.on{color:#4caf50;background:rgba(76,175,80,.1)}.cast-active.off{color:var(--g);background:rgba(255,255,255,.05)}
 .cast-meta{font-size:.7rem;color:var(--g);letter-spacing:.05em}
-
-/* MODAL */
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:1000;align-items:center;justify-content:center}
 .modal-bg.show{display:flex}
 .modal{background:var(--b2);border:1px solid var(--bd);width:min(520px,95vw);max-height:90vh;overflow-y:auto}
@@ -93,102 +62,57 @@ a{color:inherit;text-decoration:none}
 .modal-close{background:none;border:none;color:var(--g);font-size:1.2rem;cursor:pointer}
 .modal-body{padding:1.5rem;display:grid;gap:1rem}
 .modal-preview{text-align:center;margin-bottom:.5rem}
-.modal-preview img{width:120px;height:160px;object-fit:cover;object-position:top;border:1px solid var(--bd)}
+.modal-preview .prev-img{width:100px;height:133px;background-size:cover;background-position:center top;margin:0 auto;border:1px solid var(--bd)}
 .form-group{display:flex;flex-direction:column;gap:.4rem}
 .form-group label{font-size:.65rem;letter-spacing:.2em;color:var(--g);text-transform:uppercase}
-.form-group input,.form-group select,.form-group textarea{background:var(--b3);border:1px solid var(--bd);color:var(--w);padding:.65rem;font-size:.8rem;font-family:inherit}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--gold)}
-.form-group textarea{resize:vertical;min-height:80px}
+.form-group input,.form-group select,.form-group textarea{background:var(--b3);border:1px solid var(--bd);color:var(--w);padding:.65rem;font-size:.8rem;font-family:inherit}.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--gold)}
+.form-group textarea{resize:vertical;min-height:70px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .modal-foot{padding:1rem 1.5rem;border-top:1px solid var(--bd);display:flex;justify-content:flex-end;gap:.75rem}
-
-/* TOAST */
 .toast{position:fixed;bottom:2rem;right:2rem;background:var(--gold);color:var(--w);padding:.85rem 1.5rem;font-size:.8rem;letter-spacing:.1em;z-index:9999;transform:translateY(100px);opacity:0;transition:all .3s}
 .toast.show{transform:translateY(0);opacity:1}
-
-/* LP PREVIEW */
-.preview-wrap{background:var(--b3);border:1px solid var(--bd);padding:1.5rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.preview-wrap{background:var(--b3);border:1px solid var(--bd);padding:1.25rem 1.5rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
 .preview-wrap .lp-url{font-size:.8rem;color:var(--gold);flex:1}
-.preview-wrap p{font-size:.75rem;color:var(--g)}
-
-/* SCHEDULE */
 .schedule-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:.5rem;margin-bottom:1.5rem}
 .day-col{background:var(--b3);border:1px solid var(--bd);padding:.75rem .5rem;text-align:center}
 .day-col .day-label{font-size:.6rem;letter-spacing:.2em;color:var(--g);margin-bottom:.75rem;text-transform:uppercase}
-.day-cast-name{font-size:.65rem;color:var(--w);background:rgba(184,152,106,.2);border:1px solid rgba(184,152,106,.3);padding:.25rem .4rem;margin-bottom:.3rem;border-radius:2px}
-
-@media(max-width:768px){
-  .sidebar{width:60px}.sidebar-logo h1,.sidebar-logo span,.nav-item span{display:none}
-  .main{margin-left:60px}.stats-grid{grid-template-columns:repeat(2,1fr)}
-  .cast-grid{grid-template-columns:repeat(2,1fr)}
-}
+.day-cast{font-size:.62rem;color:var(--w);background:rgba(184,152,106,.2);border:1px solid rgba(184,152,106,.3);padding:.22rem .4rem;margin-bottom:.3rem}
+@media(max-width:768px){.sidebar{width:60px}.sidebar-logo h1,.sidebar-logo span,.nav-item span{display:none}.main{margin-left:60px}.stats-grid{grid-template-columns:repeat(2,1fr)}.cast-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
-
-<!-- SIDEBAR -->
 <aside class="sidebar">
   <div class="sidebar-logo">
     <h1>Massage Tokyo</h1>
     <span>Admin Dashboard</span>
   </div>
   <nav class="sidebar-nav">
-    <div class="nav-item active" onclick="showTab('cast')">
-      <span class="icon">👤</span><span>キャスト管理</span>
-    </div>
-    <div class="nav-item" onclick="showTab('schedule')">
-      <span class="icon">📅</span><span>出勤スケジュール</span>
-    </div>
-    <div class="nav-item" onclick="showTab('lp')">
-      <span class="icon">🌐</span><span>LP プレビュー</span>
-    </div>
-    <div class="nav-item" onclick="showTab('settings')">
-      <span class="icon">⚙️</span><span>設定</span>
-    </div>
+    <div class="nav-item active" onclick="showTab('cast',this)"><span class="icon">👤</span><span>キャスト管理</span></div>
+    <div class="nav-item" onclick="showTab('schedule',this)"><span class="icon">📅</span><span>出勤スケジュール</span></div>
+    <div class="nav-item" onclick="showTab('lp',this)"><span class="icon">🌐</span><span>LP プレビュー</span></div>
+    <div class="nav-item" onclick="showTab('settings',this)"><span class="icon">⚙️</span><span>設定</span></div>
   </nav>
-  <div class="sidebar-footer">
-    <a href="https://c-t0922.github.io/happyend-lp/" target="_blank">← LP を見る</a>
-  </div>
+  <div class="sidebar-footer"><a href="https://c-t0922.github.io/happyend-lp/" target="_blank">← LP を見る</a></div>
 </aside>
 
-<!-- MAIN -->
 <main class="main">
-
-  <!-- TOPBAR -->
   <div class="topbar">
     <div class="topbar-title" id="topbar-title">キャスト管理</div>
     <div class="topbar-actions">
-      <button class="btn btn-outline btn-sm" onclick="refreshCast()">↻ 更新</button>
+      <button class="btn btn-outline btn-sm" onclick="showToast('更新しました')">↻ 更新</button>
       <button class="btn btn-gold btn-sm" onclick="openAddModal()">＋ キャスト追加</button>
     </div>
   </div>
 
   <div class="content">
-
-    <!-- === CAST TAB === -->
+    <!-- CAST TAB -->
     <div class="tab-panel active" id="tab-cast">
-
-      <!-- STATS -->
       <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-num" id="stat-total">20</div>
-          <div class="stat-label">総キャスト</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num" id="stat-active" style="color:#4caf50">20</div>
-          <div class="stat-label">出勤中</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num" style="color:var(--gold)" id="stat-premium">8</div>
-          <div class="stat-label">PREMIUM</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num" style="color:#9c27b0" id="stat-special">1</div>
-          <div class="stat-label">SPECIAL</div>
-        </div>
+        <div class="stat-card"><div class="stat-num" id="stat-total">20</div><div class="stat-label">総キャスト</div></div>
+        <div class="stat-card"><div class="stat-num" id="stat-active" style="color:#4caf50">20</div><div class="stat-label">出勤中</div></div>
+        <div class="stat-card"><div class="stat-num" id="stat-premium" style="color:var(--gold)">8</div><div class="stat-label">PREMIUM</div></div>
+        <div class="stat-card"><div class="stat-num" id="stat-special" style="color:#9c27b0">1</div><div class="stat-label">SPECIAL</div></div>
       </div>
-
-      <!-- CONTROLS -->
       <div class="cast-controls">
         <input type="text" class="search-box" placeholder="🔍 キャスト名で検索..." oninput="filterCast(this.value)">
         <button class="filter-btn active" onclick="filterRank('ALL',this)">全員</button>
@@ -197,398 +121,37 @@ a{color:inherit;text-decoration:none}
         <button class="filter-btn" onclick="filterRank('SPECIAL',this)">SPECIAL</button>
         <button class="filter-btn" onclick="filterRank('active',this)">出勤中のみ</button>
       </div>
-
-      <!-- CAST GRID -->
-      <div class="cast-grid" id="castGrid">
-        
-    <div class="cast-card" data-rank="NEW FACE" data-name="Airis">
-      <div class="cast-img-wrap">
-        <span class="cast-rank nf">NEW FACE</span>
-        <img src="https://best-massage-tokyo.com/wp-content/uploads/2026/04/1775374488393.jpg" alt="Airis" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/b8986a?text=Airis'">
-        <div class="cast-overlay">
-          <button class="cast-edit-btn" onclick="editCast(this)" data-name="Airis" data-age="26" data-height="163" data-cup="D" data-rank="NEW FACE" data-img="https://best-massage-tokyo.com/wp-content/uploads/2026/04/1775374488393.jpg">✏ 編集</button>
-          <button class="cast-toggle-btn" onclick="toggleActive(this)">✓ 出勤中</button>
-        </div>
-      </div>
-      <div class="cast-info">
-        <div class="cast-name-row">
-          <strong class="cast-name">Airis</strong>
-          <span class="cast-active on">● 出勤中</span>
-        </div>
-        <div class="cast-meta">AGE 26 · T163 (D)</div>
-      </div>
-    </div>
-    <div class="cast-card" data-rank="NEW FACE" data-name="Paypay">
-      <div class="cast-img-wrap">
-        <span class="cast-rank nf">NEW FACE</span>
-        <img src="https://best-massage-tokyo.com/wp-content/uploads/2026/01/1769063443347.webp" alt="Paypay" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/b8986a?text=Paypay'">
-        <div class="cast-overlay">
-          <button class="cast-edit-btn" onclick="editCast(this)" data-name="Paypay" data-age="24" data-height="153" data-cup="D" data-rank="NEW FACE" data-img="https://best-massage-tokyo.com/wp-content/uploads/2026/01/1769063443347.webp">✏ 編集</button>
-          <button class="cast-toggle-btn" onclick="toggleActive(this)">✓ 出勤中</button>
-        </div>
-      </div>
-      <div class="cast-info">
-        <div class="cast-name-row">
-          <strong class="cast-name">Paypay</strong>
-          <span class="cast-active on">● 出勤中</span>
-        </div>
-        <div class="cast-meta">AGE 24 · T153 (D)</div>
-      </div>
-    </div>
-    <div class="cast-card" data-rank="NEW FACE" data-name="Margaret">
-      <div class="cast-img-wrap">
-        <span class="cast-rank nf">NEW FACE</span>
-        <img src="https://estemax.net/happy-end/wp-content/uploads/2025/05/1745092578220.webp" alt="Margaret" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/b8986a?text=Margaret'">
-        <div class="cast-overlay">
-          <button class="cast-edit-btn" onclick="editCast(this)" data-name="Margaret" data-age="21" data-height="155" data-cup="D" data-rank="NEW FACE" data-img="https://estemax.net/happy-end/wp-content/uploads/2025/05/1745092578220.webp">✏ 編集</button>
-          <button class="cast-toggle-btn" onclick="toggleActive(this)">✓ 出勤中</button>
-        </div>
-      </div>
-      <div class="cast-info">
-        <div class="cast-name-row">
-          <strong class="cast-name">Margaret</strong>
-          <span class="cast-active on">● 出勤中</span>
-        </div>
-        <div class="cast-meta">AGE 21 · T155 (D)</div>
-      </div>
-    </div>
-    <div class="cast-card" data-rank="PREMIUM" data-name="Lilian">
-      <div class="cast-img-wrap">
-        <span class="cast-rank pm">PREMIUM</span>
-        <img src="https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250324_190124806.webp" alt="Lilian" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/b8986a?text=Lilian'">
-        <div class="cast-overlay">
-          <button class="cast-edit-btn" onclick="editCast(this)" data-name="Lilian" data-age="22" data-height="159" data-cup="H" data-rank="PREMIUM" data-img="https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250324_190124806.webp">✏ 編集</button>
-          <button class="cast-toggle-btn" onclick="toggleActive(this)">✓ 出勤中</button>
-        </div>
-      </div>
-      <div class="cast-info">
-        <div class="cast-name-row">
-          <strong class="cast-name">Lilian</strong>
-          <span class="cast-active on">● 出勤中</span>
-        </div>
-        <div class="cast-meta">AGE 22 · T159 (H)</div>
-      </div>
-    </div>
-    <div class="cast-card" data-rank="NEW FACE" data-name="Casablanca">
-      <div class="cast-img-wrap">
-        <span class="cast-rank nf">NEW FACE</span>
-        <img src="https://estemax.net/happy-end/wp-content/uploads/2025/05/17386327067432.webp" alt="Casablanca" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/b8986a?text=Casablanca'">
-        <div class="cast-overlay">
-          <button class="cast-edit-btn" onclick="editCast(this)" data-name="Casablanca" data-age="25" data-height="156" data-cup="F" data-rank="NEW FACE" data-img="https://estemax.net/happy-end/wp-content/uploads/2025/05/17386327067432.webp">✏ 編集</button>
-          <button class="cast-toggle-btn" onclick="toggleActive(this)">✓ 出勤中</button>
-        </div>
-      </div>
-      <div class="cast-info">
-        <div class="cast-name-row">
-          <strong class="cast-name">Casablanca</strong>
-          <span class="cast-active on">● 出勤中</span>
-        </div>
-        <div class="cast-meta">AGE 25 · T156 (F)</div>
-      </div>
-    </div>
-    <div class="cast-card" data-rank="PREMIUM" data-name="Salamander">
-      <div class="cast-img-wrap">
-        <span class="cast-rank pm">PREMIUM</span>
-        <img src="https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_203010978.webp" alt="Salamander" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/b8986a?text=Salamander'">
-        <div class="cast-overlay">
-          <button class="cast-edit-btn" onclick="editCast(this)" data-name="Salamander" data-age="20" data-height="159" data-cup="B" data-rank="PREMIUM" data-img="https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_203010978.webp">✏ 編集</button>
-          <button class="cast-toggle-btn" onclick="toggleActive(this)">✓ 出勤中</button>
-        </div>
-      </div>
-      <div class="cast-info">
-        <div class="cast-name-row">
-          <strong class="cast-name">Salamander</strong>
-          <span class="cast-active on">● 出勤中</span>
-        </div>
-        <div class="cast-meta">AGE 20 · T159 (B)</div>
-      </div>
-    </div>
-    <div class="cast-card" data-rank="NEW FACE" data-name="Murasaki">
-      <div class="cast-img-wrap">
-        <span class="cast-rank nf">NEW FACE</span>
-        <img src="https://estemax.net/happy-end/wp-content/uploads/2025/05/17412255138022.webp" alt="Murasaki" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/b8986a?text=Murasaki'">
-        <div class="cast-overlay">
-          <button class="cast-edit-btn" onclick="editCast(this)" data-name="Murasaki" data-age="24" data-height="163" data-cup="E" data-rank="NEW FACE" data-img="https://estemax.net/happy-end/wp-content/uploads/2025/05/17412255138022.webp">✏ 編集</button>
-          <button class="cast-toggle-btn" onclick="toggleActive(this)">✓ 出勤中</button>
-        </div>
-      </div>
-      <div class="cast-info">
-        <div class="cast-name-row">
-          <strong class="cast-name">Murasaki</strong>
-          <span class="cast-active on">● 出勤中</span>
-        </div>
-        <div class="cast-meta">AGE 24 · T163 (E)</div>
-      </div>
-    </div>
-    <div class="cast-card" data-rank="PREMIUM" data-name="Blair">
-      <div class="cast-img-wrap">
-        <span class="cast-rank pm">PREMIUM</span>
-        <img src="https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_203010978.webp" alt="Blair" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/b8986a?text=Blair'">
-        <div class="cast-overlay">
-          <button class="cast-edit-btn" onclick="editCast(this)" data-name="Blair" data-age="26" data-height="153" data-cup="C" data-rank="PREMIUM" data-img="https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_203010978.webp">✏ 編集</button>
-          <button class="cast-toggle-btn" onclick="toggleActive(this)">✓ 出勤中</button>
-        </div>
-      </div>
-      <div class="cast-info">
-        <div class="cast-name-row">
-          <strong class="cast-name">Blair</strong>
-          <span class="cast-active on">● 出勤中</span>
-        </div>
-        <div class="cast-meta">AGE 26 · T153 (C)</div>
-      </div>
-    </div>
-    <div class="cast-card" data-rank="SPECIAL" data-name="❦Suzanne❦">
-      <div class="cast-img-wrap">
-        <span class="cast-rank sp">SPECIAL</span>
-        <img src="https://estemax.net/happy-end/wp-content/uploads/2025/05/1735052534887.webp" alt="❦Suzanne❦" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/b8986a?text=%E2%9D%A6Suzanne%E2%9D%A6'">
-        <div class="cast-overlay">
-          <button class="cast-edit-btn" onclick="editCast(this)" data-name="❦Suzanne❦" data-age="26" data-height="162" data-cup="E" data-rank="SPECIAL" data-img="https://estemax.net/happy-end/wp-content/uploads/2025/05/1735052534887.webp">✏ 編集</button>
-          <button class="cast-toggle-btn" onclick="toggleActive(this)">✓ 出勤中</button>
-        </div>
-      </div>
-      <div class="cast-info">
-        <div class="cast-name-row">
-          <strong class="cast-name">❦Suzanne❦</strong>
-          <span class="cast-active on">● 出勤中</span>
-        </div>
-        <div class="cast-meta">AGE 26 · T162 (E)</div>
-      </div>
-    </div>
-    <div class="cast-card" data-rank="PREMIUM" data-name="Sophia">
-      <div class="cast-img-wrap">
-        <span class="cast-rank pm">PREMIUM</span>
-        <img src="https://estemax.net/happy-end/wp-content/uploads/2025/05/1731254097017.webp" alt="Sophia" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/b8986a?text=Sophia'">
-        <div class="cast-overlay">
-          <button class="cast-edit-btn" onclick="editCast(this)" data-name="Sophia" data-age="27" data-height="159" data-cup="H" data-rank="PREMIUM" data-img="https://estemax.net/happy-end/wp-content/uploads/2025/05/1731254097017.webp">✏ 編集</button>
-          <button class="cast-toggle-btn" onclick="toggleActive(this)">✓ 出勤中</button>
-        </div>
-      </div>
-      <div class="cast-info">
-        <div class="cast-name-row">
-          <strong class="cast-name">Sophia</strong>
-          <span class="cast-active on">● 出勤中</span>
-        </div>
-        <div class="cast-meta">AGE 27 · T159 (H)</div>
-      </div>
-    </div>
-    <div class="cast-card" data-rank="NEW FACE" data-name="Nicola">
-      <div class="cast-img-wrap">
-        <span class="cast-rank nf">NEW FACE</span>
-        <img src="https://estemax.net/happy-end/wp-content/uploads/2025/05/1737710418647.webp" alt="Nicola" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/b8986a?text=Nicola'">
-        <div class="cast-overlay">
-          <button class="cast-edit-btn" onclick="editCast(this)" data-name="Nicola" data-age="22" data-height="152" data-cup="D" data-rank="NEW FACE" data-img="https://estemax.net/happy-end/wp-content/uploads/2025/05/1737710418647.webp">✏ 編集</button>
-          <button class="cast-toggle-btn" onclick="toggleActive(this)">✓ 出勤中</button>
-        </div>
-      </div>
-      <div class="cast-info">
-        <div class="cast-name-row">
-          <strong class="cast-name">Nicola</strong>
-          <span class="cast-active on">● 出勤中</span>
-        </div>
-        <div class="cast-meta">AGE 22 · T152 (D)</div>
-      </div>
-    </div>
-    <div class="cast-card" data-rank="PREMIUM" data-name="Juliana">
-      <div class="cast-img-wrap">
-        <span class="cast-rank pm">PREMIUM</span>
-        <img src="https://estemax.net/happy-end/wp-content/uploads/2025/05/1738632706743.webp" alt="Juliana" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/b8986a?text=Juliana'">
-        <div class="cast-overlay">
-          <button class="cast-edit-btn" onclick="editCast(this)" data-name="Juliana" data-age="28" data-height="170" data-cup="G" data-rank="PREMIUM" data-img="https://estemax.net/happy-end/wp-content/uploads/2025/05/1738632706743.webp">✏ 編集</button>
-          <button class="cast-toggle-btn" onclick="toggleActive(this)">✓ 出勤中</button>
-        </div>
-      </div>
-      <div class="cast-info">
-        <div class="cast-name-row">
-          <strong class="cast-name">Juliana</strong>
-          <span class="cast-active on">● 出勤中</span>
-        </div>
-        <div class="cast-meta">AGE 28 · T170 (G)</div>
-      </div>
-    </div>
-    <div class="cast-card" data-rank="PREMIUM" data-name="Rosemary">
-      <div class="cast-img-wrap">
-        <span class="cast-rank pm">PREMIUM</span>
-        <img src="https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250324_190124806.webp" alt="Rosemary" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/b8986a?text=Rosemary'">
-        <div class="cast-overlay">
-          <button class="cast-edit-btn" onclick="editCast(this)" data-name="Rosemary" data-age="28" data-height="160" data-cup="C" data-rank="PREMIUM" data-img="https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250324_190124806.webp">✏ 編集</button>
-          <button class="cast-toggle-btn" onclick="toggleActive(this)">✓ 出勤中</button>
-        </div>
-      </div>
-      <div class="cast-info">
-        <div class="cast-name-row">
-          <strong class="cast-name">Rosemary</strong>
-          <span class="cast-active on">● 出勤中</span>
-        </div>
-        <div class="cast-meta">AGE 28 · T160 (C)</div>
-      </div>
-    </div>
-    <div class="cast-card" data-rank="PREMIUM" data-name="Alexander">
-      <div class="cast-img-wrap">
-        <span class="cast-rank pm">PREMIUM</span>
-        <img src="https://estemax.net/happy-end/wp-content/uploads/2025/05/17386327067432.webp" alt="Alexander" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/b8986a?text=Alexander'">
-        <div class="cast-overlay">
-          <button class="cast-edit-btn" onclick="editCast(this)" data-name="Alexander" data-age="23" data-height="168" data-cup="C" data-rank="PREMIUM" data-img="https://estemax.net/happy-end/wp-content/uploads/2025/05/17386327067432.webp">✏ 編集</button>
-          <button class="cast-toggle-btn" onclick="toggleActive(this)">✓ 出勤中</button>
-        </div>
-      </div>
-      <div class="cast-info">
-        <div class="cast-name-row">
-          <strong class="cast-name">Alexander</strong>
-          <span class="cast-active on">● 出勤中</span>
-        </div>
-        <div class="cast-meta">AGE 23 · T168 (C)</div>
-      </div>
-    </div>
-    <div class="cast-card" data-rank="NEW FACE" data-name="Coco">
-      <div class="cast-img-wrap">
-        <span class="cast-rank nf">NEW FACE</span>
-        <img src="https://estemax.net/happy-end/wp-content/uploads/2025/05/1737710418647.webp" alt="Coco" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/b8986a?text=Coco'">
-        <div class="cast-overlay">
-          <button class="cast-edit-btn" onclick="editCast(this)" data-name="Coco" data-age="28" data-height="165" data-cup="G" data-rank="NEW FACE" data-img="https://estemax.net/happy-end/wp-content/uploads/2025/05/1737710418647.webp">✏ 編集</button>
-          <button class="cast-toggle-btn" onclick="toggleActive(this)">✓ 出勤中</button>
-        </div>
-      </div>
-      <div class="cast-info">
-        <div class="cast-name-row">
-          <strong class="cast-name">Coco</strong>
-          <span class="cast-active on">● 出勤中</span>
-        </div>
-        <div class="cast-meta">AGE 28 · T165 (G)</div>
-      </div>
-    </div>
-    <div class="cast-card" data-rank="NEW FACE" data-name="Christina">
-      <div class="cast-img-wrap">
-        <span class="cast-rank nf">NEW FACE</span>
-        <img src="https://estemax.net/happy-end/wp-content/uploads/2025/05/1745092578220.webp" alt="Christina" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/b8986a?text=Christina'">
-        <div class="cast-overlay">
-          <button class="cast-edit-btn" onclick="editCast(this)" data-name="Christina" data-age="22" data-height="158" data-cup="D" data-rank="NEW FACE" data-img="https://estemax.net/happy-end/wp-content/uploads/2025/05/1745092578220.webp">✏ 編集</button>
-          <button class="cast-toggle-btn" onclick="toggleActive(this)">✓ 出勤中</button>
-        </div>
-      </div>
-      <div class="cast-info">
-        <div class="cast-name-row">
-          <strong class="cast-name">Christina</strong>
-          <span class="cast-active on">● 出勤中</span>
-        </div>
-        <div class="cast-meta">AGE 22 · T158 (D)</div>
-      </div>
-    </div>
-    <div class="cast-card" data-rank="NEW FACE" data-name="Milky">
-      <div class="cast-img-wrap">
-        <span class="cast-rank nf">NEW FACE</span>
-        <img src="https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_203010978.webp" alt="Milky" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/b8986a?text=Milky'">
-        <div class="cast-overlay">
-          <button class="cast-edit-btn" onclick="editCast(this)" data-name="Milky" data-age="25" data-height="160" data-cup="F" data-rank="NEW FACE" data-img="https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_203010978.webp">✏ 編集</button>
-          <button class="cast-toggle-btn" onclick="toggleActive(this)">✓ 出勤中</button>
-        </div>
-      </div>
-      <div class="cast-info">
-        <div class="cast-name-row">
-          <strong class="cast-name">Milky</strong>
-          <span class="cast-active on">● 出勤中</span>
-        </div>
-        <div class="cast-meta">AGE 25 · T160 (F)</div>
-      </div>
-    </div>
-    <div class="cast-card" data-rank="PREMIUM" data-name="Linda">
-      <div class="cast-img-wrap">
-        <span class="cast-rank pm">PREMIUM</span>
-        <img src="https://estemax.net/happy-end/wp-content/uploads/2025/05/1738632706743.webp" alt="Linda" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/b8986a?text=Linda'">
-        <div class="cast-overlay">
-          <button class="cast-edit-btn" onclick="editCast(this)" data-name="Linda" data-age="27" data-height="163" data-cup="G" data-rank="PREMIUM" data-img="https://estemax.net/happy-end/wp-content/uploads/2025/05/1738632706743.webp">✏ 編集</button>
-          <button class="cast-toggle-btn" onclick="toggleActive(this)">✓ 出勤中</button>
-        </div>
-      </div>
-      <div class="cast-info">
-        <div class="cast-name-row">
-          <strong class="cast-name">Linda</strong>
-          <span class="cast-active on">● 出勤中</span>
-        </div>
-        <div class="cast-meta">AGE 27 · T163 (G)</div>
-      </div>
-    </div>
-    <div class="cast-card" data-rank="PREMIUM" data-name="Tenga">
-      <div class="cast-img-wrap">
-        <span class="cast-rank pm">PREMIUM</span>
-        <img src="https://estemax.net/happy-end/wp-content/uploads/2025/05/17412255138022.webp" alt="Tenga" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/b8986a?text=Tenga'">
-        <div class="cast-overlay">
-          <button class="cast-edit-btn" onclick="editCast(this)" data-name="Tenga" data-age="24" data-height="157" data-cup="D" data-rank="PREMIUM" data-img="https://estemax.net/happy-end/wp-content/uploads/2025/05/17412255138022.webp">✏ 編集</button>
-          <button class="cast-toggle-btn" onclick="toggleActive(this)">✓ 出勤中</button>
-        </div>
-      </div>
-      <div class="cast-info">
-        <div class="cast-name-row">
-          <strong class="cast-name">Tenga</strong>
-          <span class="cast-active on">● 出勤中</span>
-        </div>
-        <div class="cast-meta">AGE 24 · T157 (D)</div>
-      </div>
-    </div>
-    <div class="cast-card" data-rank="PREMIUM" data-name="Saki">
-      <div class="cast-img-wrap">
-        <span class="cast-rank pm">PREMIUM</span>
-        <img src="https://estemax.net/happy-end/wp-content/uploads/2025/05/1731254097017.webp" alt="Saki" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/b8986a?text=Saki'">
-        <div class="cast-overlay">
-          <button class="cast-edit-btn" onclick="editCast(this)" data-name="Saki" data-age="26" data-height="161" data-cup="E" data-rank="PREMIUM" data-img="https://estemax.net/happy-end/wp-content/uploads/2025/05/1731254097017.webp">✏ 編集</button>
-          <button class="cast-toggle-btn" onclick="toggleActive(this)">✓ 出勤中</button>
-        </div>
-      </div>
-      <div class="cast-info">
-        <div class="cast-name-row">
-          <strong class="cast-name">Saki</strong>
-          <span class="cast-active on">● 出勤中</span>
-        </div>
-        <div class="cast-meta">AGE 26 · T161 (E)</div>
-      </div>
-    </div>
-      </div>
+      <div class="cast-grid" id="castGrid"></div>
     </div>
 
-    <!-- === SCHEDULE TAB === -->
+    <!-- SCHEDULE TAB -->
     <div class="tab-panel" id="tab-schedule">
       <h2 style="font-size:1rem;letter-spacing:.15em;font-weight:400;color:var(--gold);margin-bottom:1.5rem">今週の出勤スケジュール</h2>
       <div class="schedule-grid" id="scheduleGrid"></div>
-      <p style="font-size:.75rem;color:var(--g);margin-top:1rem">※ 各日付をクリックしてキャストを追加できます</p>
     </div>
 
-    <!-- === LP TAB === -->
+    <!-- LP TAB -->
     <div class="tab-panel" id="tab-lp">
       <div class="preview-wrap">
-        <div>
-          <p style="font-size:.65rem;letter-spacing:.3em;color:var(--g);margin-bottom:.5rem">LIVE LP URL</p>
-          <a class="lp-url" href="https://c-t0922.github.io/happyend-lp/" target="_blank">https://c-t0922.github.io/happyend-lp/ ↗</a>
-        </div>
+        <div><p style="font-size:.65rem;letter-spacing:.3em;color:var(--g);margin-bottom:.5rem">LIVE LP URL</p><a class="lp-url" href="https://c-t0922.github.io/happyend-lp/" target="_blank">https://c-t0922.github.io/happyend-lp/ ↗</a></div>
         <button class="btn btn-outline btn-sm" onclick="window.open('https://c-t0922.github.io/happyend-lp/','_blank')">プレビュー</button>
       </div>
       <iframe src="https://c-t0922.github.io/happyend-lp/" style="width:100%;height:70vh;border:1px solid rgba(255,255,255,.1)" title="LP Preview"></iframe>
     </div>
 
-    <!-- === SETTINGS TAB === -->
+    <!-- SETTINGS TAB -->
     <div class="tab-panel" id="tab-settings">
       <div style="max-width:500px">
         <h2 style="font-size:1rem;letter-spacing:.15em;font-weight:400;color:var(--gold);margin-bottom:1.5rem">基本設定</h2>
         <div style="display:flex;flex-direction:column;gap:1rem">
-          <div class="form-group">
-            <label>サイト名</label>
-            <input type="text" value="Massage Tokyo">
-          </div>
-          <div class="form-group">
-            <label>メールアドレス</label>
-            <input type="email" value="ginza.esthe@gmail.com">
-          </div>
-          <div class="form-group">
-            <label>LINE ID</label>
-            <input type="text" value="@happyend_ginza">
-          </div>
-          <div class="form-group">
-            <label>営業時間</label>
-            <input type="text" value="12:00〜29:00">
-          </div>
-          <button class="btn btn-gold" style="width:fit-content">設定を保存</button>
+          <div class="form-group"><label>サイト名</label><input type="text" value="Massage Tokyo"></div>
+          <div class="form-group"><label>メールアドレス</label><input type="email" value="ginza.esthe@gmail.com"></div>
+          <div class="form-group"><label>LINE ID</label><input type="text" value="@happyend_ginza"></div>
+          <div class="form-group"><label>営業時間</label><input type="text" value="12:00〜29:00"></div>
+          <button class="btn btn-gold" style="width:fit-content" onclick="showToast('設定を保存しました')">設定を保存</button>
         </div>
       </div>
     </div>
-
   </div>
 </main>
 
@@ -601,48 +164,19 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="modal-body">
       <div class="modal-preview">
-        <img id="modal-img-preview" src="" alt="">
+        <div class="prev-img" id="prev-img"></div>
       </div>
-      <div class="form-group">
-        <label>プロフィール画像 URL</label>
-        <input type="text" id="edit-img" oninput="updatePreview(this.value)">
-      </div>
-      <div class="form-group">
-        <label>名前</label>
-        <input type="text" id="edit-name">
+      <div class="form-group"><label>プロフィール画像 URL</label><input type="text" id="edit-img" oninput="updatePreview(this.value)"></div>
+      <div class="form-group"><label>名前</label><input type="text" id="edit-name"></div>
+      <div class="form-row">
+        <div class="form-group"><label>年齢</label><input type="number" id="edit-age" min="18" max="50"></div>
+        <div class="form-group"><label>身長 (cm)</label><input type="number" id="edit-height" min="140" max="185"></div>
       </div>
       <div class="form-row">
-        <div class="form-group">
-          <label>年齢</label>
-          <input type="number" id="edit-age" min="18" max="50">
-        </div>
-        <div class="form-group">
-          <label>身長 (cm)</label>
-          <input type="number" id="edit-height" min="140" max="180">
-        </div>
+        <div class="form-group"><label>カップ数</label><select id="edit-cup"><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
+        <div class="form-group"><label>ランク</label><select id="edit-rank"><option value="NEW FACE">NEW FACE</option><option value="PREMIUM">PREMIUM</option><option value="SPECIAL">SPECIAL</option></select></div>
       </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>カップ数</label>
-          <select id="edit-cup">
-            <option>A</option><option>B</option><option>C</option>
-            <option>D</option><option>E</option><option>F</option>
-            <option>G</option><option>H</option><option>I</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>ランク</label>
-          <select id="edit-rank">
-            <option value="NEW FACE">NEW FACE</option>
-            <option value="PREMIUM">PREMIUM</option>
-            <option value="SPECIAL">SPECIAL</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>一言コメント</label>
-        <textarea id="edit-comment" rows="3"></textarea>
-      </div>
+      <div class="form-group"><label>一言コメント</label><textarea id="edit-comment" rows="3"></textarea></div>
     </div>
     <div class="modal-foot">
       <button class="btn btn-outline btn-sm" onclick="closeModal()">キャンセル</button>
@@ -652,202 +186,190 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
 <script>
+// ===== 全20名キャストデータ =====
+const CAST_DATA = [
+  {rank:"NEW FACE",name:"Airis",age:"26",height:"163",cup:"D",desc:"Irresistibly cute with maximum charm and a sexy edge.",img:"https://best-massage-tokyo.com/wp-content/uploads/2026/04/1775374488393.jpg",active:true},
+  {rank:"NEW FACE",name:"Paypay",age:"24",height:"153",cup:"D",desc:"So charming you can't help but feel completely healed.",img:"https://best-massage-tokyo.com/wp-content/uploads/2026/01/1769063443347.webp",active:true},
+  {rank:"NEW FACE",name:"Margaret",age:"21",height:"155",cup:"D",desc:"Fresh and cute — a new face you won't forget.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/1745092578220.webp",active:true},
+  {rank:"PREMIUM",name:"Lilian",age:"22",height:"159",cup:"H",desc:"Premium-class beauty with captivating presence.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250324_190124806.webp",active:true},
+  {rank:"NEW FACE",name:"Casablanca",age:"25",height:"156",cup:"F",desc:"Glamorous and cute — an unforgettable combination.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/17386327067432.webp",active:true},
+  {rank:"PREMIUM",name:"Salamander",age:"20",height:"159",cup:"B",desc:"Fresh, youthful energy with premium-level skill.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_203010978.webp",active:true},
+  {rank:"NEW FACE",name:"Murasaki",age:"24",height:"163",cup:"E",desc:"Elegant and mysterious — a fresh face with deep charm.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/17412255138022.webp",active:true},
+  {rank:"PREMIUM",name:"Blair",age:"26",height:"153",cup:"C",desc:"Glamorous and fresh — premium quality guaranteed.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/1737710418647.webp",active:true},
+  {rank:"SPECIAL",name:"Suzanne",age:"26",height:"162",cup:"E",desc:"The Perfect Mixed-Beauty with Looks, Aura, and Style in One.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/1735052534887.webp",active:true},
+  {rank:"PREMIUM",name:"Sophia",age:"27",height:"159",cup:"H",desc:"Glamorous premium beauty — sophisticated and sensual.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/1731254097017.webp",active:true},
+  {rank:"NEW FACE",name:"Nicola",age:"22",height:"152",cup:"D",desc:"Cute and fresh — a new face full of energy.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/1738632706743.webp",active:true},
+  {rank:"PREMIUM",name:"Juliana",age:"28",height:"170",cup:"G",desc:"Tall, glamorous and fresh — premium elegance.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250324_190124806.webp",active:true},
+  {rank:"PREMIUM",name:"Rosemary",age:"28",height:"160",cup:"C",desc:"Warm and refined — premium-level skill with a gentle touch.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/17386327067432.webp",active:true},
+  {rank:"PREMIUM",name:"Alexander",age:"23",height:"168",cup:"C",desc:"Glamorous and hot — a premium experience awaits.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/1745092578220.webp",active:true},
+  {rank:"NEW FACE",name:"Coco",age:"28",height:"165",cup:"G",desc:"Glamorous new face — stunning looks and warm charm.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/17412255138022.webp",active:true},
+  {rank:"NEW FACE",name:"Christina",age:"22",height:"158",cup:"D",desc:"Fresh and cute — a wonderful new addition to our team.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/1738632706743.webp",active:true},
+  {rank:"NEW FACE",name:"Amagifu",age:"25",height:"160",cup:"F",desc:"Beautiful and charming — fresh energy you will love.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_203010978.webp",active:true},
+  {rank:"NEW FACE",name:"Marcy",age:"23",height:"157",cup:"D",desc:"Cute and fresh — ready to make your experience special.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/1731254097017.webp",active:true},
+  {rank:"NEW FACE",name:"Mountain Dew",age:"24",height:"162",cup:"E",desc:"A unique presence — fresh and full of surprises.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/1735052534887.webp",active:true},
+  {rank:"NEW FACE",name:"Andrew",age:"22",height:"163",cup:"D",desc:"Charming new face bringing a fresh spark to every session.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/1737710418647.webp",active:true}
+];
+
 let currentEditCard = null;
 
-// Tab switching
-function showTab(name) {
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  document.getElementById('tab-' + name).classList.add('active');
-  event.currentTarget.classList.add('active');
-  const titles = {cast:'キャスト管理',schedule:'出勤スケジュール',lp:'LP プレビュー',settings:'設定'};
-  document.getElementById('topbar-title').textContent = titles[name] || name;
+function renderGrid(data) {
+  const grid = document.getElementById('castGrid');
+  grid.innerHTML = data.map((c, i) => {
+    const rc = c.rank==='PREMIUM'?'pm':c.rank==='SPECIAL'?'sp':'nf';
+    return '<div class="cast-card'+(c.active?'':' inactive')+'" data-rank="'+c.rank+'" data-name="'+c.name+'" data-idx="'+i+'">'+
+      '<div class="cast-img-wrap">'+
+        '<span class="cast-rank '+rc+'">'+c.rank+'</span>'+
+        '<div class="cbgi" style="background-image:url(''+c.img+'')"></div>'+
+        '<div class="cast-overlay">'+
+          '<button class="cast-edit-btn" onclick="editCast('+i+')">✏ 編集</button>'+
+          '<button class="cast-toggle-btn" onclick="toggleActive(this,'+i+')">'+( c.active?'✓ 出勤中':'○ 休み')+'</button>'+
+        '</div>'+
+      '</div>'+
+      '<div class="cast-info">'+
+        '<div class="cast-name-row">'+
+          '<strong class="cast-name">'+c.name+'</strong>'+
+          '<span class="cast-active '+(c.active?'on':'off')+'">'+( c.active?'● 出勤中':'○ 休み')+'</span>'+
+        '</div>'+
+        '<div class="cast-meta">AGE '+c.age+' · T'+c.height+' ('+c.cup+')</div>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+  updateStats();
 }
 
-// Filter
-function filterCast(query) {
-  document.querySelectorAll('.cast-card').forEach(card => {
-    const name = card.dataset.name.toLowerCase();
-    card.style.display = name.includes(query.toLowerCase()) ? '' : 'none';
+function showTab(name, el) {
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  if(el) el.classList.add('active');
+  const titles={cast:'キャスト管理',schedule:'出勤スケジュール',lp:'LP プレビュー',settings:'設定'};
+  document.getElementById('topbar-title').textContent=titles[name]||name;
+}
+
+function filterCast(q) {
+  document.querySelectorAll('.cast-card').forEach(c=>{
+    c.style.display=c.dataset.name.toLowerCase().includes(q.toLowerCase())?'':'none';
   });
 }
 
 function filterRank(rank, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.cast-card').forEach(card => {
-    if (rank === 'ALL') card.style.display = '';
-    else if (rank === 'active') card.style.display = !card.classList.contains('inactive') ? '' : 'none';
-    else card.style.display = card.dataset.rank === rank ? '' : 'none';
+  document.querySelectorAll('.cast-card').forEach(c=>{
+    if(rank==='ALL') c.style.display='';
+    else if(rank==='active') c.style.display=!c.classList.contains('inactive')?'':'none';
+    else c.style.display=c.dataset.rank===rank?'':'none';
   });
 }
 
-// Toggle active status
-function toggleActive(btn) {
+function toggleActive(btn, idx) {
+  CAST_DATA[idx].active = !CAST_DATA[idx].active;
   const card = btn.closest('.cast-card');
   card.classList.toggle('inactive');
   const statusEl = card.querySelector('.cast-active');
-  if (card.classList.contains('inactive')) {
-    statusEl.textContent = '● 休み';
-    statusEl.className = 'cast-active off';
-    btn.textContent = '○ 休み中';
-    showToast('休みに変更しました');
-  } else {
-    statusEl.textContent = '● 出勤中';
-    statusEl.className = 'cast-active on';
-    btn.textContent = '✓ 出勤中';
-    showToast('出勤中に変更しました');
-  }
+  const active = CAST_DATA[idx].active;
+  statusEl.textContent = active?'● 出勤中':'○ 休み';
+  statusEl.className = 'cast-active '+(active?'on':'off');
+  btn.textContent = active?'✓ 出勤中':'○ 休み中';
+  showToast((active?'出勤中':'休み')+'に変更しました');
   updateStats();
 }
 
-// Edit modal
-function editCast(btn) {
-  currentEditCard = btn.closest('.cast-card');
-  document.getElementById('modal-title').textContent = btn.dataset.name + ' を編集';
-  document.getElementById('edit-img').value = btn.dataset.img;
-  document.getElementById('edit-name').value = btn.dataset.name;
-  document.getElementById('edit-age').value = btn.dataset.age;
-  document.getElementById('edit-height').value = btn.dataset.height;
-  document.getElementById('edit-cup').value = btn.dataset.cup;
-  document.getElementById('edit-rank').value = btn.dataset.rank;
-  document.getElementById('edit-comment').value = '';
-  document.getElementById('modal-img-preview').src = btn.dataset.img;
+function editCast(idx) {
+  const c = CAST_DATA[idx];
+  currentEditCard = idx;
+  document.getElementById('modal-title').textContent = c.name+' を編集';
+  document.getElementById('edit-img').value = c.img;
+  document.getElementById('edit-name').value = c.name;
+  document.getElementById('edit-age').value = c.age;
+  document.getElementById('edit-height').value = c.height;
+  document.getElementById('edit-cup').value = c.cup;
+  document.getElementById('edit-rank').value = c.rank;
+  document.getElementById('edit-comment').value = c.desc;
+  document.getElementById('prev-img').style.backgroundImage = "url('"+c.img+"')";
   document.getElementById('editModal').classList.add('show');
 }
 
 function openAddModal() {
   currentEditCard = null;
   document.getElementById('modal-title').textContent = '新規キャスト追加';
-  document.getElementById('edit-img').value = '';
-  document.getElementById('edit-name').value = '';
-  document.getElementById('edit-age').value = '';
-  document.getElementById('edit-height').value = '';
-  document.getElementById('edit-cup').value = 'D';
-  document.getElementById('edit-rank').value = 'NEW FACE';
-  document.getElementById('edit-comment').value = '';
-  document.getElementById('modal-img-preview').src = '';
+  ['edit-img','edit-name','edit-age','edit-height','edit-comment'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('edit-cup').value='D';
+  document.getElementById('edit-rank').value='NEW FACE';
+  document.getElementById('prev-img').style.backgroundImage='';
   document.getElementById('editModal').classList.add('show');
 }
 
-function updatePreview(url) {
-  document.getElementById('modal-img-preview').src = url;
-}
+function updatePreview(url){document.getElementById('prev-img').style.backgroundImage="url('"+url+"')";}
 
-function closeModal() {
-  document.getElementById('editModal').classList.remove('show');
-  currentEditCard = null;
-}
+function closeModal(){document.getElementById('editModal').classList.remove('show');currentEditCard=null;}
 
 function saveCast() {
-  const name = document.getElementById('edit-name').value;
-  const age = document.getElementById('edit-age').value;
-  const height = document.getElementById('edit-height').value;
-  const cup = document.getElementById('edit-cup').value;
-  const rank = document.getElementById('edit-rank').value;
-  const img = document.getElementById('edit-img').value;
-
-  if (currentEditCard) {
-    // Update existing
-    currentEditCard.querySelector('.cast-name').textContent = name;
-    currentEditCard.querySelector('.cast-meta').textContent = 'AGE ' + age + ' · T' + height + ' (' + cup + ')';
-    currentEditCard.querySelector('img').src = img;
-    const rankEl = currentEditCard.querySelector('.cast-rank');
-    rankEl.textContent = rank;
-    rankEl.className = 'cast-rank ' + (rank==='PREMIUM'?'pm':rank==='SPECIAL'?'sp':'nf');
-    const editBtn = currentEditCard.querySelector('.cast-edit-btn');
-    editBtn.dataset.name = name; editBtn.dataset.age = age;
-    editBtn.dataset.height = height; editBtn.dataset.cup = cup;
-    editBtn.dataset.rank = rank; editBtn.dataset.img = img;
-    currentEditCard.dataset.name = name; currentEditCard.dataset.rank = rank;
-    showToast(name + ' を更新しました');
+  const name=document.getElementById('edit-name').value;
+  const age=document.getElementById('edit-age').value;
+  const height=document.getElementById('edit-height').value;
+  const cup=document.getElementById('edit-cup').value;
+  const rank=document.getElementById('edit-rank').value;
+  const img=document.getElementById('edit-img').value;
+  const desc=document.getElementById('edit-comment').value;
+  if(currentEditCard!==null){
+    CAST_DATA[currentEditCard]={...CAST_DATA[currentEditCard],name,age,height,cup,rank,img,desc};
+    showToast(name+' を更新しました');
   } else {
-    // Add new
-    const rankClass = rank==='PREMIUM'?'pm':rank==='SPECIAL'?'sp':'nf';
-    const newCard = document.createElement('div');
-    newCard.className = 'cast-card';
-    newCard.dataset.rank = rank; newCard.dataset.name = name;
-    newCard.innerHTML = `
-      <div class="cast-img-wrap">
-        <span class="cast-rank ${rankClass}">${rank}</span>
-        <img src="${img}" alt="${name}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/b8986a?text=${encodeURIComponent(name)}'">
-        <div class="cast-overlay">
-          <button class="cast-edit-btn" onclick="editCast(this)" data-name="${name}" data-age="${age}" data-height="${height}" data-cup="${cup}" data-rank="${rank}" data-img="${img}">✏ 編集</button>
-          <button class="cast-toggle-btn" onclick="toggleActive(this)">✓ 出勤中</button>
-        </div>
-      </div>
-      <div class="cast-info">
-        <div class="cast-name-row">
-          <strong class="cast-name">${name}</strong>
-          <span class="cast-active on">● 出勤中</span>
-        </div>
-        <div class="cast-meta">AGE ${age} · T${height} (${cup})</div>
-      </div>`;
-    document.getElementById('castGrid').appendChild(newCard);
-    showToast(name + ' を追加しました');
+    CAST_DATA.push({rank,name,age,height,cup,img,desc,active:true});
+    showToast(name+' を追加しました');
   }
-  updateStats();
+  renderGrid(CAST_DATA);
   closeModal();
 }
 
 function deleteCast() {
-  if (currentEditCard && confirm('本当に削除しますか？')) {
-    const name = currentEditCard.dataset.name;
-    currentEditCard.remove();
-    updateStats();
-    showToast(name + ' を削除しました');
+  if(currentEditCard!==null && confirm('本当に削除しますか？')){
+    const name=CAST_DATA[currentEditCard].name;
+    CAST_DATA.splice(currentEditCard,1);
+    renderGrid(CAST_DATA);
+    showToast(name+' を削除しました');
     closeModal();
   }
 }
 
-function updateStats() {
-  const all = document.querySelectorAll('.cast-card');
-  const active = document.querySelectorAll('.cast-card:not(.inactive)');
-  const premium = document.querySelectorAll('.cast-card[data-rank="PREMIUM"]');
-  const special = document.querySelectorAll('.cast-card[data-rank="SPECIAL"]');
-  document.getElementById('stat-total').textContent = all.length;
-  document.getElementById('stat-active').textContent = active.length;
-  document.getElementById('stat-premium').textContent = premium.length;
-  document.getElementById('stat-special').textContent = special.length;
+function updateStats(){
+  const all=CAST_DATA.length;
+  const active=CAST_DATA.filter(c=>c.active).length;
+  const premium=CAST_DATA.filter(c=>c.rank==='PREMIUM').length;
+  const special=CAST_DATA.filter(c=>c.rank==='SPECIAL').length;
+  document.getElementById('stat-total').textContent=all;
+  document.getElementById('stat-active').textContent=active;
+  document.getElementById('stat-premium').textContent=premium;
+  document.getElementById('stat-special').textContent=special;
 }
 
-function refreshCast() {
-  showToast('キャスト情報を更新しました');
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
 }
 
-// Toast
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2500);
-}
-
-// Schedule
-function buildSchedule() {
-  const days = ['月','火','水','木','金','土','日'];
-  const grid = document.getElementById('scheduleGrid');
-  const today = new Date();
-  grid.innerHTML = days.map((d, i) => {
-    const date = new Date(today);
-    date.setDate(today.getDate() - today.getDay() + 1 + i);
-    return `<div class="day-col">
-      <div class="day-label">${d} ${date.getMonth()+1}/${date.getDate()}</div>
-      <div class="day-cast-name">Airis</div>
-      <div class="day-cast-name">Lilian</div>
-    </div>`;
+function buildSchedule(){
+  const days=['月','火','水','木','金','土','日'];
+  const grid=document.getElementById('scheduleGrid');
+  const today=new Date();
+  grid.innerHTML=days.map((d,i)=>{
+    const date=new Date(today);
+    date.setDate(today.getDate()-today.getDay()+1+i);
+    const cast=CAST_DATA.filter(c=>c.active).slice(i*2,(i+1)*2);
+    return '<div class="day-col"><div class="day-label">'+d+'<br>'+(date.getMonth()+1)+'/'+(date.getDate())+'</div>'+
+      cast.map(c=>'<div class="day-cast">'+c.name+'</div>').join('')+'</div>';
   }).join('');
 }
-buildSchedule();
 
-// Close modal on backdrop click
-document.getElementById('editModal').addEventListener('click', e => {
-  if (e.target === document.getElementById('editModal')) closeModal();
-});
+document.getElementById('editModal').addEventListener('click',e=>{if(e.target===document.getElementById('editModal'))closeModal();});
+
+renderGrid(CAST_DATA);
+buildSchedule();
 </script>
 </body>
 </html>
