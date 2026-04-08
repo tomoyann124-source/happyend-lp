@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<meta name="description" content="Massage Tokyo - Cast | 今夜の仲間たち。銀座メンズエステのセラピスト一覧。English speaking, foreigner friendly.">
+<title>Cast | Massage Tokyo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--w:#fff;--b:#1a1a1a;--g:#555;--gl:#888;--bg:#faf9f7;--gold:#b8986a;--bd:#eee}
+html{scroll-behavior:smooth}body{font-family:'Noto Sans JP',sans-serif;color:var(--b);background:var(--bg);overflow-x:hidden;padding-bottom:60px;max-width:100vw}
+a{text-decoration:none;color:inherit}
+header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border-bottom:1px solid var(--bd);height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;backdrop-filter:blur(8px)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;letter-spacing:.12em;line-height:1.2}
+.logo span{display:block;font-size:.5rem;letter-spacing:.4em;color:var(--gl);margin-top:.2rem;text-transform:uppercase}
+.hback{display:flex;align-items:center;gap:.5rem;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--g);cursor:pointer;transition:color .3s}.hback:hover{color:var(--gold)}
+.hback svg{width:16px;height:16px;flex-shrink:0}
+.btnr{background:var(--b);color:var(--w);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;padding:.65rem 1.4rem;transition:background .3s;white-space:nowrap}.btnr:hover{background:var(--gold)}
+.page-hero{background:var(--b);color:var(--w);padding:4.5rem 1.5rem 3.5rem;text-align:center}
+.page-hero .sen{font-size:.58rem;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;display:block}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:300;letter-spacing:.05em;margin-bottom:.85rem}
+.page-hero p{font-size:.82rem;color:rgba(255,255,255,.58);letter-spacing:.05em}
+.filter-bar{background:var(--w);border-bottom:1px solid var(--bd);padding:.85rem 1.5rem;display:flex;align-items:center;gap:.65rem;flex-wrap:wrap;position:sticky;top:72px;z-index:99}
+.filter-btn{padding:.45rem 1.1rem;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;border:1px solid var(--bd);background:transparent;color:var(--g);font-family:inherit;transition:all .2s}
+.filter-btn.active,.filter-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(184,152,106,.06)}
+.cast-section{max-width:1200px;margin:0 auto;padding:2.5rem 1.5rem}
+.cast-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.cast-card{cursor:pointer;overflow:hidden;position:relative;transition:transform .3s}.cast-card:hover{transform:translateY(-4px)}.cast-card:hover .cbgi{transform:scale(1.06)}
+.cbgi{width:100%;aspect-ratio:3/4;background-size:cover;background-position:center top;transition:transform .6s;display:block}
+.crnk{position:absolute;top:.65rem;left:.65rem;font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;padding:.28rem .62rem;color:var(--w);font-weight:600;z-index:1}
+.crnk.nf{background:#4caf50}.crnk.pm{background:var(--gold)}.crnk.sp{background:#9c27b0}
+.ctap-hint{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.72));padding:2rem 1rem .75rem;color:var(--w);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;text-align:center;opacity:0;transition:opacity .3s}
+.cast-card:hover .ctap-hint{opacity:1}
+.cinfo{padding:.85rem 0}
+.cname{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;display:block;margin-bottom:.2rem}
+.cmeta{font-size:.68rem;color:var(--gl);letter-spacing:.08em}
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:2000;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(6px)}
+.modal-bg.show{display:flex}
+.modal{background:var(--b);color:var(--w);width:min(760px,100%);max-height:92vh;overflow-y:auto;display:grid;grid-template-columns:1fr 1fr;position:relative}
+.modal-img{background-size:cover;background-position:center top;min-height:360px}
+.modal-body{padding:2.5rem 2rem;display:flex;flex-direction:column;justify-content:center;gap:1.5rem}
+.mrb{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;display:inline-block;padding:.32rem .75rem;color:var(--w);margin-bottom:.2rem}
+.mrb.nf{background:#4caf50}.mrb.pm{background:var(--gold)}.mrb.sp{background:#9c27b0}
+.mname{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;letter-spacing:.06em;line-height:1.1}
+.mdiv{width:30px;height:1px;background:var(--gold)}
+.mstats{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.mstat{border:1px solid rgba(255,255,255,.1);padding:.8rem .9rem}
+.mstatlbl{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem;display:block}
+.mstatval{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:300}
+.mdesc{font-size:.8rem;color:rgba(255,255,255,.65);line-height:2;font-style:italic}
+.mbtns{display:flex;flex-direction:column;gap:.65rem}
+.btn-line{background:#06c755;color:#fff;text-align:center;padding:.9rem;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;display:block;transition:filter .3s}.btn-line:hover{filter:brightness(1.1)}
+.btn-close{background:rgba(255,255,255,.07);color:rgba(255,255,255,.55);text-align:center;padding:.8rem;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;border:1px solid rgba(255,255,255,.1)}.btn-close:hover{background:rgba(255,255,255,.15)}
+.modal-x{position:absolute;top:.9rem;right:.9rem;width:34px;height:34px;background:rgba(255,255,255,.1);color:var(--w);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;z-index:10;transition:background .3s}.modal-x:hover{background:var(--gold)}
+.bar{position:fixed;bottom:0;left:0;right:0;z-index:999;display:flex}
+.bi{flex:1;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.95rem;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;transition:filter .3s}.bi:hover{filter:brightness(1.1)}
+.bln{background:#06c755;color:#fff}.bml{background:#333;color:#fff}.brv{background:var(--gold);color:#fff}
+@media(max-width:1000px){.cast-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){
+  html,body{width:100%;max-width:100vw;overflow-x:hidden}
+  .cast-grid{grid-template-columns:repeat(2,1fr);gap:.85rem}
+  .cast-section{padding:1.75rem 1rem}
+  .modal{grid-template-columns:1fr}.modal-img{min-height:220px;aspect-ratio:4/3}.modal-body{padding:1.25rem}
+  .mstats{grid-template-columns:1fr 1fr}.mname{font-size:1.5rem}
+  header{padding:0 1rem}.filter-bar{padding:.65rem 1rem;gap:.4rem}.filter-btn{padding:.35rem .85rem;font-size:.58rem}
+}
+@media(max-width:400px){.cast-grid{grid-template-columns:repeat(2,1fr);gap:.65rem}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Massage Tokyo<span>Best Massage in Ginza</span></div>
+  <div style="display:flex;align-items:center;gap:1.25rem">
+    <a href="index.html" class="hback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>トップに戻る</a>
+    <a href="https://line.me/R/ti/p/@happyend_ginza" class="btnr" target="_blank">RESERVE</a>
+  </div>
+</header>
+<section class="page-hero">
+  <span class="sen">Tonight's Cast</span>
+  <h1>今夜の仲間たち</h1>
+  <p>写真をタップするとプロフィールが見れます · 毎日更新</p>
+</section>
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterCast('ALL',this)">ALL</button>
+  <button class="filter-btn" onclick="filterCast('NEW FACE',this)">NEW FACE</button>
+  <button class="filter-btn" onclick="filterCast('PREMIUM',this)">PREMIUM</button>
+  <button class="filter-btn" onclick="filterCast('SPECIAL',this)">SPECIAL</button>
+</div>
+<section class="cast-section"><div class="cast-grid" id="castGrid"></div></section>
+<div class="modal-bg" id="modalBg">
+  <div class="modal" id="modal">
+    <span class="modal-x" onclick="closeModal()">&#10005;</span>
+    <div class="modal-img" id="modalImg"></div>
+    <div class="modal-body">
+      <div><span class="mrb" id="mRank"></span><div class="mname" id="mName"></div></div>
+      <div class="mdiv"></div>
+      <div class="mstats">
+        <div class="mstat"><span class="mstatlbl">Age</span><div class="mstatval" id="mAge"></div></div>
+        <div class="mstat"><span class="mstatlbl">Height</span><div class="mstatval" id="mHeight"></div></div>
+        <div class="mstat"><span class="mstatlbl">Cup</span><div class="mstatval" id="mCup"></div></div>
+        <div class="mstat"><span class="mstatlbl">Rank</span><div class="mstatval" id="mRankVal" style="font-size:.82rem"></div></div>
+      </div>
+      <p class="mdesc" id="mDesc"></p>
+      <div class="mbtns">
+        <a href="https://line.me/R/ti/p/@happyend_ginza" class="btn-line" target="_blank">LINEで予約する</a>
+        <div class="btn-close" onclick="closeModal()">閉じる</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bar"><a href="https://line.me/R/ti/p/@happyend_ginza" class="bi bln" target="_blank">LINE</a><a href="mailto:ginza.esthe@gmail.com" class="bi bml">MAIL</a><a href="https://line.me/R/ti/p/@happyend_ginza" class="bi brv" target="_blank">今すぐ予約</a></div>
+<script>
+const CAST=[
+  {rank:"NEW FACE",name:"Airis",age:"26",height:"163",cup:"D",desc:"Irresistibly cute with maximum charm and a sexy edge.",img:"https://best-massage-tokyo.com/wp-content/uploads/2026/04/1775374488393.jpg"},
+  {rank:"NEW FACE",name:"Paypay",age:"24",height:"153",cup:"D",desc:"So charming you can't help but feel completely healed.",img:"https://best-massage-tokyo.com/wp-content/uploads/2026/01/1769063443347.webp"},
+  {rank:"NEW FACE",name:"Margaret",age:"21",height:"155",cup:"D",desc:"Fresh and cute — a new face you won't forget.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/1745092578220.webp"},
+  {rank:"PREMIUM",name:"Lilian",age:"22",height:"159",cup:"H",desc:"Premium-class beauty with captivating presence.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250324_190124806.webp"},
+  {rank:"NEW FACE",name:"Casablanca",age:"25",height:"156",cup:"F",desc:"Glamorous and cute — an unforgettable combination.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/17386327067432.webp"},
+  {rank:"PREMIUM",name:"Salamander",age:"20",height:"159",cup:"B",desc:"Fresh, youthful energy with premium-level skill.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_203010978.webp"},
+  {rank:"NEW FACE",name:"Murasaki",age:"24",height:"163",cup:"E",desc:"Elegant and mysterious — a fresh face with deep charm.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/17412255138022.webp"},
+  {rank:"PREMIUM",name:"Blair",age:"26",height:"153",cup:"C",desc:"Glamorous and fresh — premium quality guaranteed.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/1737710418647.webp"},
+  {rank:"SPECIAL",name:"Suzanne",age:"26",height:"162",cup:"E",desc:"The Perfect Mixed-Beauty with Looks, Aura, and Style in One.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/1735052534887.webp"},
+  {rank:"PREMIUM",name:"Sophia",age:"27",height:"159",cup:"H",desc:"Glamorous premium beauty — sophisticated and sensual.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/1731254097017.webp"},
+  {rank:"NEW FACE",name:"Nicola",age:"22",height:"152",cup:"D",desc:"Cute and fresh — a new face full of energy.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/1738632706743.webp"},
+  {rank:"PREMIUM",name:"Juliana",age:"28",height:"170",cup:"G",desc:"Tall, glamorous and fresh — premium elegance.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250324_190124806.webp"},
+  {rank:"PREMIUM",name:"Rosemary",age:"28",height:"160",cup:"C",desc:"Warm and refined — premium-level skill with a gentle touch.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/17386327067432.webp"},
+  {rank:"PREMIUM",name:"Alexander",age:"23",height:"168",cup:"C",desc:"Glamorous and hot — a premium experience awaits.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/1745092578220.webp"},
+  {rank:"NEW FACE",name:"Coco",age:"28",height:"165",cup:"G",desc:"Glamorous new face — stunning looks and warm charm.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/17412255138022.webp"},
+  {rank:"NEW FACE",name:"Christina",age:"22",height:"158",cup:"D",desc:"Fresh and cute — a wonderful new addition to our team.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/1738632706743.webp"},
+  {rank:"NEW FACE",name:"Amagifu",age:"25",height:"160",cup:"F",desc:"Beautiful and charming — fresh energy you will love.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_203010978.webp"},
+  {rank:"NEW FACE",name:"Marcy",age:"23",height:"157",cup:"D",desc:"Cute and fresh — ready to make your experience special.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/1731254097017.webp"},
+  {rank:"NEW FACE",name:"Mountain Dew",age:"24",height:"162",cup:"E",desc:"A unique presence — fresh and full of surprises.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/1735052534887.webp"},
+  {rank:"NEW FACE",name:"Andrew",age:"22",height:"163",cup:"D",desc:"Charming new face bringing a fresh spark to every session.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/1737710418647.webp"}
+];
+function renderCast(filter){
+  const grid=document.getElementById('castGrid');
+  const list=filter==='ALL'?CAST:CAST.filter(c=>c.rank===filter);
+  grid.innerHTML=list.map((c)=>{
+    const rc=c.rank==='PREMIUM'?'pm':c.rank==='SPECIAL'?'sp':'nf';
+    const idx=CAST.indexOf(c);
+    return '<div class="cast-card" onclick="openModal('+idx+')"><span class="crnk '+rc+'">'+c.rank+'</span><div class="cbgi" style="background-image:url(''+c.img+'')"></div><div class="ctap-hint">プロフィールを見る</div><div class="cinfo"><span class="cname">'+c.name+'</span><span class="cmeta">AGE '+c.age+' T'+c.height+' ('+c.cup+')</span></div></div>';
+  }).join('');
+  if('ontouchstart' in window)document.querySelectorAll('.ctap-hint').forEach(el=>el.style.opacity='1');
+}
+function filterCast(rank,btn){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderCast(rank);}
+function openModal(idx){
+  const c=CAST[idx],rc=c.rank==='PREMIUM'?'pm':c.rank==='SPECIAL'?'sp':'nf';
+  document.getElementById('modalImg').style.backgroundImage="url('"+c.img+"')";
+  const rb=document.getElementById('mRank');rb.textContent=c.rank;rb.className='mrb '+rc;
+  document.getElementById('mName').textContent=c.name;
+  document.getElementById('mAge').textContent=c.age;
+  document.getElementById('mHeight').textContent=c.height+'cm';
+  document.getElementById('mCup').textContent='('+c.cup+')';
+  document.getElementById('mRankVal').textContent=c.rank;
+  document.getElementById('mDesc').textContent=c.desc;
+  const bg=document.getElementById('modalBg');bg.classList.add('show');document.body.style.overflow='hidden';
+  bg.onclick=function(e){if(e.target===bg)closeModal();};
+}
+function closeModal(){document.getElementById('modalBg').classList.remove('show');document.body.style.overflow='';}
+renderCast('ALL');
+</script>
+</body>
+</html>
