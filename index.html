@@ -13,148 +13,156 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--w:#fff;--b:#1a1a1a;--g:#555;--gl:#888;--bg:#faf9f7;--s:#f2ddd8;--gold:#b8986a;--glt:#d4b98a;--bd:#eee;--sh:rgba(0,0,0,.08)}
 html{scroll-behavior:smooth}
-body{font-family:'Noto Sans JP',sans-serif;color:var(--b);background:var(--bg);line-height:1.7;overflow-x:hidden;padding-bottom:60px}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--b);background:var(--bg);line-height:1.7;overflow-x:hidden;padding-bottom:60px;max-width:100vw}
 a{text-decoration:none;color:inherit}
-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);border-bottom:1px solid var(--bd);height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;backdrop-filter:blur(8px)}
-.logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;letter-spacing:.15em;line-height:1.2}
-.logo span{display:block;font-size:.55rem;letter-spacing:.5em;color:var(--gl);margin-top:.2rem;text-transform:uppercase}
-.hctr{display:flex;flex-direction:column;align-items:center;font-size:.65rem;color:var(--g);line-height:1.8}.hctr a{color:var(--b);font-weight:500}
-.hrgt{display:flex;align-items:center;gap:1rem}
-.btnr{background:var(--b);color:var(--w);font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;padding:.7rem 1.6rem;transition:background .3s}.btnr:hover{background:var(--gold)}
-.ham{cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:.5rem}.ham span{display:block;width:24px;height:1.5px;background:var(--b)}
-.haml{font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:var(--g);text-align:center;margin-top:2px}
+header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);border-bottom:1px solid var(--bd);height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;backdrop-filter:blur(8px)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;letter-spacing:.12em;line-height:1.2}
+.logo span{display:block;font-size:.5rem;letter-spacing:.4em;color:var(--gl);margin-top:.2rem;text-transform:uppercase}
+.hctr{display:flex;flex-direction:column;align-items:center;font-size:.62rem;color:var(--g);line-height:1.8}.hctr a{color:var(--b);font-weight:500}
+.hrgt{display:flex;align-items:center;gap:.75rem}
+.btnr{background:var(--b);color:var(--w);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;padding:.65rem 1.4rem;transition:background .3s;white-space:nowrap}.btnr:hover{background:var(--gold)}
+.ham{cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:.5rem}.ham span{display:block;width:22px;height:1.5px;background:var(--b)}
+.haml{font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:var(--g);text-align:center;margin-top:2px}
 .ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1999}.ov.on{display:block}
-.mob{position:fixed;top:0;right:-100%;width:min(360px,100%);height:100vh;background:var(--b);z-index:2000;padding:5rem 3rem 3rem;transition:right .4s;display:flex;flex-direction:column;gap:2rem}.mob.on{right:0}
-.mobx{position:absolute;top:1.5rem;right:1.5rem;color:var(--w);font-size:1.5rem;cursor:pointer}
-.mob nav{display:flex;flex-direction:column;gap:1.5rem}.mob nav a{color:var(--w);font-size:1rem;letter-spacing:.15em;font-family:'Cormorant Garamond',serif;font-weight:300;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:1rem}
+.mob{position:fixed;top:0;right:-100%;width:min(320px,100%);height:100vh;background:var(--b);z-index:2000;padding:5rem 2.5rem 3rem;transition:right .4s;display:flex;flex-direction:column;gap:2rem}.mob.on{right:0}
+.mobx{position:absolute;top:1.5rem;right:1.5rem;color:var(--w);font-size:1.4rem;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center}
+.mob nav{display:flex;flex-direction:column;gap:1.25rem}.mob nav a{color:var(--w);font-size:.95rem;letter-spacing:.15em;font-family:'Cormorant Garamond',serif;font-weight:300;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:.85rem}
 .mobsoc{display:flex;gap:1.5rem}.mobsoc a{color:var(--w);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase}
-.mobr{background:var(--gold);color:var(--w);text-align:center;padding:1rem;font-size:.75rem;letter-spacing:.3em;text-transform:uppercase}
-.hero{position:relative;height:100svh;min-height:600px;overflow:hidden;margin-top:72px}
+.mobr{background:var(--gold);color:var(--w);text-align:center;padding:.9rem;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase}
+.hero{position:relative;height:100svh;min-height:560px;overflow:hidden;margin-top:72px}
 .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;display:flex;align-items:flex-end}.slide.on{opacity:1;z-index:1}
 .sbg{position:absolute;inset:0;background-size:cover;background-position:center top;transform:scale(1.07);transition:transform 8s ease}.slide.on .sbg{transform:scale(1)}
 .sov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.15) 0%,rgba(0,0,0,0) 40%,rgba(0,0,0,.65) 100%)}
-.sc{position:relative;z-index:2;padding:0 3rem 5rem;color:var(--w)}
-.slbl{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}.slbl::before{content:'';width:28px;height:1px;background:var(--gold)}
-.slbl span{font-size:.55rem;letter-spacing:.5em;text-transform:uppercase;color:rgba(255,255,255,.8)}
-.sc h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:300;line-height:1.15;margin-bottom:2rem}
-.sbtns{display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
-.bw{background:var(--w);color:var(--b);font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;padding:.85rem 2rem;transition:all .3s}.bw:hover{background:var(--gold);color:var(--w)}
-.bow{color:var(--w);font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.5);padding-bottom:.2rem}
-.sarr{position:absolute;bottom:2rem;right:2rem;z-index:5;display:flex;gap:.5rem}
-.abtn{width:44px;height:44px;background:rgba(255,255,255,.15);color:var(--w);border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;transition:background .3s}.abtn:hover{background:var(--gold);border-color:var(--gold)}
-.sdots{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:5;display:flex;gap:.5rem}
-.dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:all .3s}.dot.on{background:var(--w);transform:scale(1.3)}
-.mq{background:var(--b);color:var(--w);padding:.85rem 0;overflow:hidden;white-space:nowrap}
-.mqi{display:inline-flex;gap:3rem;animation:mq 30s linear infinite}
-.mqi span{font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.75)}.mqi .sp{color:var(--gold)}
+.sc{position:relative;z-index:2;padding:0 2rem 4.5rem;color:var(--w)}
+.slbl{display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem}.slbl::before{content:'';width:24px;height:1px;background:var(--gold)}
+.slbl span{font-size:.5rem;letter-spacing:.5em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.sc h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,6vw,5rem);font-weight:300;line-height:1.15;margin-bottom:1.75rem}
+.sbtns{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.bw{background:var(--w);color:var(--b);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;padding:.8rem 1.75rem;transition:all .3s;white-space:nowrap}.bw:hover{background:var(--gold);color:var(--w)}
+.bow{color:var(--w);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.5);padding-bottom:.2rem;white-space:nowrap}
+.sarr{position:absolute;bottom:1.75rem;right:1.5rem;z-index:5;display:flex;gap:.5rem}
+.abtn{width:40px;height:40px;background:rgba(255,255,255,.15);color:var(--w);border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.9rem;transition:background .3s}.abtn:hover{background:var(--gold);border-color:var(--gold)}
+.sdots{position:absolute;bottom:2.2rem;left:50%;transform:translateX(-50%);z-index:5;display:flex;gap:.5rem}
+.dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:all .3s}.dot.on{background:var(--w);transform:scale(1.3)}
+.mq{background:var(--b);color:var(--w);padding:.8rem 0;overflow:hidden;white-space:nowrap}
+.mqi{display:inline-flex;gap:2.5rem;animation:mq 30s linear infinite}
+.mqi span{font-size:.58rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.75)}.mqi .sp{color:var(--gold)}
 @keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.nsec{background:var(--w);padding:1.5rem 0;border-bottom:1px solid var(--bd)}
-.nin{max-width:1100px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;gap:2rem}
-.nlbl{font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;color:var(--w);background:var(--gold);padding:.4rem 1rem;white-space:nowrap}
-.ntxt{font-size:.8rem;color:var(--g)}.ntxt a{color:var(--b);font-weight:500}.ntxt a:hover{color:var(--gold)}
-.sec{padding:6rem 0}.si{max-width:1100px;margin:0 auto;padding:0 2rem}
-.sh{text-align:center;margin-bottom:4rem}
-.sen{font-size:.6rem;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;display:block}
-.sja{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;letter-spacing:.05em;line-height:1.3}
-.ssub{font-size:.85rem;color:var(--g);margin-top:1rem}
-.dv{width:40px;height:1px;background:var(--gold);margin:1.5rem auto}
-/* ABOUT + VIDEO */
+.nsec{background:var(--w);padding:1.25rem 0;border-bottom:1px solid var(--bd)}
+.nin{max-width:1100px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;gap:1.5rem;overflow:hidden}
+.nlbl{font-size:.58rem;letter-spacing:.35em;text-transform:uppercase;color:var(--w);background:var(--gold);padding:.35rem .9rem;white-space:nowrap;flex-shrink:0}
+.ntxt{font-size:.78rem;color:var(--g);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ntxt a{color:var(--b);font-weight:500}
+.sec{padding:5rem 0}.si{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+.sh{text-align:center;margin-bottom:3.5rem}
+.sen{font-size:.58rem;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;display:block}
+.sja{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:300;letter-spacing:.05em;line-height:1.3}
+.ssub{font-size:.82rem;color:var(--g);margin-top:.75rem}
+.dv{width:36px;height:1px;background:var(--gold);margin:1.25rem auto}
 .vsec{background:var(--w)}
-.vlay{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.vtxt h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:300;line-height:1.4;margin-bottom:1.5rem}
-.vtxt p{font-size:.9rem;color:var(--g);line-height:2;margin-bottom:1.5rem}
-/* YouTube 埋め込み (16:9) */
+.vlay{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.vtxt h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;line-height:1.4;margin-bottom:1.25rem}
+.vtxt p{font-size:.88rem;color:var(--g);line-height:2;margin-bottom:1.25rem}
 .vwp{position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;background:var(--b)}
 .vwp iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
-/* INTRO SEO - SVGピクトグラム */
 .intro-sec{background:var(--b);color:var(--w);padding:5rem 0}
-.intro-inner{max-width:960px;margin:0 auto;padding:0 2rem;text-align:center}
-.intro-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;line-height:1.5;margin-bottom:1rem}
-.sub{font-size:.75rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;display:block}
-.desc{font-size:.95rem;color:rgba(255,255,255,.85);line-height:2;margin-bottom:3rem;max-width:680px;margin-left:auto;margin-right:auto}
-.if{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:3rem}
-.if-item{display:flex;flex-direction:column;align-items:center;text-align:center;padding:2rem 1.5rem;border:1px solid rgba(255,255,255,.12);transition:border-color .3s}
+.intro-inner{max-width:960px;margin:0 auto;padding:0 1.5rem;text-align:center}
+.intro-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2.3rem);font-weight:300;line-height:1.5;margin-bottom:1rem}
+.sub{font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;display:block}
+.desc{font-size:.92rem;color:rgba(255,255,255,.82);line-height:2;margin-bottom:2.5rem;max-width:640px;margin-left:auto;margin-right:auto}
+.if{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:2.5rem}
+.if-item{display:flex;flex-direction:column;align-items:center;text-align:center;padding:1.75rem 1.25rem;border:1px solid rgba(255,255,255,.1);transition:border-color .3s}
 .if-item:hover{border-color:rgba(184,152,106,.5)}
-.if-icon{width:48px;height:48px;color:var(--gold);margin-bottom:1.25rem;flex-shrink:0}
+.if-icon{width:44px;height:44px;color:var(--gold);margin-bottom:1rem;flex-shrink:0}
 .if-icon svg{width:100%;height:100%}
-.if-item h4{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--w);margin-bottom:.5rem;font-weight:400}
-.if-item p{font-size:.78rem;color:rgba(255,255,255,.65);line-height:1.8}
-.ctatxt{font-size:.85rem;color:rgba(255,255,255,.6);margin-bottom:1.5rem;line-height:1.8}
-/* FEATURES */
+.if-item h4{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--w);margin-bottom:.4rem;font-weight:400}
+.if-item p{font-size:.75rem;color:rgba(255,255,255,.6);line-height:1.8}
+.ctatxt{font-size:.82rem;color:rgba(255,255,255,.55);margin-bottom:1.5rem;line-height:1.8}
 .fsec{background:var(--bg)}
-.fg{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-.fc{background:var(--w);padding:2.5rem 2rem;text-align:center;border:1px solid var(--bd);transition:transform .3s,box-shadow .3s}.fc:hover{transform:translateY(-4px);box-shadow:0 12px 40px var(--sh)}
-.fn{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:1rem}
-.fc h3{font-size:.9rem;letter-spacing:.15em;margin-bottom:1rem;font-weight:500}.fc p{font-size:.8rem;color:var(--g);line-height:1.9}
-/* CONCEPT */
-.csec{position:relative;overflow:hidden;background:var(--b);color:var(--w);padding:8rem 0}
+.fg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.fc{background:var(--w);padding:2.25rem 1.75rem;text-align:center;border:1px solid var(--bd);transition:transform .3s,box-shadow .3s}.fc:hover{transform:translateY(-4px);box-shadow:0 12px 40px var(--sh)}
+.fn{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:.85rem}
+.fc h3{font-size:.82rem;letter-spacing:.15em;margin-bottom:.85rem;font-weight:500}.fc p{font-size:.78rem;color:var(--g);line-height:1.9}
+.csec{position:relative;overflow:hidden;background:var(--b);color:var(--w);padding:7rem 0}
 .cbg2{position:absolute;inset:0;background-image:url('https://best-massage-tokyo.com/wp-content/uploads/2025/03/a1-.jpg');background-size:cover;background-position:center;opacity:.35}
-.cin{position:relative;z-index:1;max-width:700px;margin:0 auto;padding:0 2rem;text-align:center}
-.cin h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.5;margin-bottom:2rem}
-.cin p{font-size:.9rem;line-height:2.2;color:rgba(255,255,255,.85);margin-bottom:2rem}
-/* CAST */
+.cin{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:0 1.5rem;text-align:center}
+.cin h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:300;line-height:1.5;margin-bottom:1.75rem}
+.cin p{font-size:.88rem;line-height:2.2;color:rgba(255,255,255,.82);margin-bottom:2rem}
 .castsec{background:var(--w)}
-.cg{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-.cc{overflow:hidden;position:relative}
-.cbgi{width:100%;aspect-ratio:3/4;background-size:cover;background-position:center top;transition:transform .6s;display:block}.cc:hover .cbgi{transform:scale(1.04)}
-.crnk{position:absolute;top:.75rem;left:.75rem;font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;padding:.3rem .7rem;color:var(--w);font-weight:600;z-index:1}
+.cg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.cc{overflow:hidden;position:relative;cursor:pointer;transition:transform .3s}.cc:hover{transform:translateY(-3px)}.cc:hover .cbgi{transform:scale(1.05)}
+.cbgi{width:100%;aspect-ratio:3/4;background-size:cover;background-position:center top;transition:transform .6s;display:block}
+.ctap-hint{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.72));padding:2rem 1rem .75rem;color:var(--w);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;text-align:center;opacity:0;transition:opacity .3s}
+.cc:hover .ctap-hint{opacity:1}
+.crnk{position:absolute;top:.65rem;left:.65rem;font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;padding:.28rem .62rem;color:var(--w);font-weight:600;z-index:1}
 .crnk.nf{background:#4caf50}.crnk.pm{background:var(--gold)}.crnk.sp{background:#9c27b0}
-.cinfo{padding:1rem 0}
-.cname{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;display:block;margin-bottom:.25rem}
-.cmeta{font-size:.7rem;color:var(--gl);letter-spacing:.1em}
-.ccta{text-align:center;margin-top:3rem}
-.bgold{display:inline-block;background:var(--gold);color:var(--w);font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;padding:.9rem 2.5rem;transition:background .3s}.bgold:hover{background:var(--b)}
-.bblk{display:inline-block;background:var(--b);color:var(--w);font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;padding:.9rem 2.5rem;transition:background .3s}.bblk:hover{background:var(--gold)}
-.bwh{display:inline-block;background:var(--w);color:var(--b);font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;padding:.85rem 2rem;transition:all .3s}.bwh:hover{background:var(--gold);color:var(--w)}
-/* PRICE */
+.cinfo{padding:.85rem 0}
+.cname{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;display:block;margin-bottom:.2rem}
+.cmeta{font-size:.68rem;color:var(--gl);letter-spacing:.08em}
+.ccta{text-align:center;margin-top:2.5rem}
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:3000;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(6px)}
+.modal-bg.show{display:flex}
+.modal{background:var(--b);color:var(--w);width:min(760px,100%);max-height:92vh;overflow-y:auto;display:grid;grid-template-columns:1fr 1fr;position:relative}
+.modal-img{background-size:cover;background-position:center top;min-height:360px}
+.modal-body{padding:2.5rem 2rem;display:flex;flex-direction:column;justify-content:center;gap:1.5rem}
+.modal-rank-badge{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;display:inline-block;padding:.32rem .75rem;color:var(--w);margin-bottom:.2rem}
+.modal-rank-badge.nf{background:#4caf50}.modal-rank-badge.pm{background:var(--gold)}.modal-rank-badge.sp{background:#9c27b0}
+.modal-name{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;letter-spacing:.06em;line-height:1.1}
+.modal-divider{width:30px;height:1px;background:var(--gold)}
+.modal-stats{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.modal-stat{border:1px solid rgba(255,255,255,.1);padding:.8rem .9rem}
+.modal-stat-label{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem;display:block}
+.modal-stat-value{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:300}
+.modal-desc{font-size:.8rem;color:rgba(255,255,255,.65);line-height:2;font-style:italic}
+.modal-btns{display:flex;flex-direction:column;gap:.65rem}
+.btn-line-modal{background:#06c755;color:#fff;text-align:center;padding:.9rem;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;transition:filter .3s;display:block}.btn-line-modal:hover{filter:brightness(1.1)}
+.btn-close-modal{background:rgba(255,255,255,.07);color:rgba(255,255,255,.55);text-align:center;padding:.8rem;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;border:1px solid rgba(255,255,255,.1)}.btn-close-modal:hover{background:rgba(255,255,255,.15)}
+.modal-x{position:absolute;top:.9rem;right:.9rem;width:34px;height:34px;background:rgba(255,255,255,.1);color:var(--w);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;z-index:10;transition:background .3s}.modal-x:hover{background:var(--gold)}
 .psec{background:var(--bg)}
-.pg{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;max-width:800px;margin:0 auto}
-.pc{background:var(--w);border:1px solid var(--bd);padding:2.5rem 2rem;text-align:center;transition:transform .3s,box-shadow .3s}
-.pc.ft{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}.pc:hover{transform:translateY(-4px);box-shadow:0 12px 40px var(--sh)}
-.pbdg{font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;background:var(--gold);color:var(--w);padding:.3rem .8rem;display:inline-block;margin-bottom:1rem}
-.pn{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;margin-bottom:.5rem}
-.pt{font-size:.75rem;color:var(--gl);letter-spacing:.1em;margin-bottom:1.5rem}
-.pa{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--gold);line-height:1}
-.pu{font-size:.7rem;color:var(--gl);margin-top:.3rem}.pnote{font-size:.75rem;color:var(--g);margin-top:1.5rem;line-height:2;text-align:left}
-.pnf{max-width:800px;margin:3rem auto 0;background:var(--w);border:1px solid var(--bd);padding:1.5rem 2rem;font-size:.8rem;color:var(--g);line-height:2}
-/* FLOW */
+.pg{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;max-width:780px;margin:0 auto}
+.pc{background:var(--w);border:1px solid var(--bd);padding:2rem 1.5rem;text-align:center;transition:transform .3s,box-shadow .3s}
+.pc.ft{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}.pc:hover{transform:translateY(-3px);box-shadow:0 10px 32px var(--sh)}
+.pbdg{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;background:var(--gold);color:var(--w);padding:.28rem .75rem;display:inline-block;margin-bottom:.85rem}
+.pn{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;margin-bottom:.4rem}
+.pt{font-size:.72rem;color:var(--gl);letter-spacing:.1em;margin-bottom:1.25rem}
+.pa{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;color:var(--gold);line-height:1}
+.pu{font-size:.68rem;color:var(--gl);margin-top:.3rem}.pnote{font-size:.72rem;color:var(--g);margin-top:1.25rem;line-height:1.9;text-align:left}
+.pnf{max-width:780px;margin:2.5rem auto 0;background:var(--w);border:1px solid var(--bd);padding:1.25rem 1.5rem;font-size:.78rem;color:var(--g);line-height:2}
 .flsec{background:var(--w)}
 .flst{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
-.flst::before{content:'';position:absolute;top:2.5rem;left:10%;right:10%;height:1px;background:var(--gold);z-index:0}
-.step{text-align:center;padding:0 1rem;position:relative;z-index:1}
-.snum{width:50px;height:50px;border-radius:50%;background:var(--gold);color:var(--w);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;margin:0 auto 1.5rem}
-.step h3{font-size:.85rem;letter-spacing:.1em;margin-bottom:.75rem;font-weight:500}.step p{font-size:.75rem;color:var(--g);line-height:1.8}
-/* FAQ */
+.flst::before{content:'';position:absolute;top:2.4rem;left:10%;right:10%;height:1px;background:var(--gold);z-index:0}
+.step{text-align:center;padding:0 .75rem;position:relative;z-index:1}
+.snum{width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--w);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;margin:0 auto 1.25rem}
+.step h3{font-size:.82rem;letter-spacing:.1em;margin-bottom:.65rem;font-weight:500}.step p{font-size:.72rem;color:var(--g);line-height:1.8}
 .faqsec{background:var(--bg)}
-.faql{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:1rem}
+.faql{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:.85rem}
 .faqi{background:var(--w);border:1px solid var(--bd)}
-.faqq{padding:1.25rem 1.5rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:.85rem;font-weight:500;user-select:none}
-.faqq::after{content:'+';font-size:1.2rem;font-weight:300;color:var(--gold);transition:transform .3s;flex-shrink:0;margin-left:1rem}
+.faqq{padding:1.1rem 1.25rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:.82rem;font-weight:500;user-select:none;gap:1rem}
+.faqq::after{content:'+';font-size:1.1rem;font-weight:300;color:var(--gold);transition:transform .3s;flex-shrink:0}
 .faqi.on .faqq::after{transform:rotate(45deg)}
-.faqa{display:none;padding:0 1.5rem 1.25rem;font-size:.8rem;color:var(--g);line-height:2;border-top:1px solid var(--bd)}.faqi.on .faqa{display:block}
-/* CONTACT */
+.faqa{display:none;padding:0 1.25rem 1.1rem;font-size:.78rem;color:var(--g);line-height:2;border-top:1px solid var(--bd)}.faqi.on .faqa{display:block}
 .ctsec{background:var(--s)}.ctin{text-align:center}
-.hgrid{display:flex;gap:3rem;justify-content:center;margin:2rem 0;font-size:.8rem;color:var(--g)}
-.hi{display:flex;flex-direction:column;align-items:center;gap:.3rem}.hlbl{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
-.ctbtns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
-.ctitem{display:flex;align-items:center;gap:.75rem;background:var(--w);padding:1rem 2rem;font-size:.8rem;transition:background .3s,color .3s}.ctitem:hover{background:var(--b);color:var(--w)}
-/* FOOTER */
-footer{background:var(--b);color:var(--w);padding:4rem 0 2rem}
-.fi{max-width:1100px;margin:0 auto;padding:0 2rem}
-.ftop{display:grid;grid-template-columns:1fr 2fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.1)}
-.flogo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;letter-spacing:.15em;line-height:1.2}
-.flogo span{display:block;font-size:.5rem;letter-spacing:.5em;color:rgba(255,255,255,.5);margin-top:.3rem}
-.fnav{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-.fnavt{font-size:.55rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1rem}
-.fnav ul{display:flex;flex-direction:column;gap:.75rem;list-style:none}.fnav a{font-size:.75rem;color:rgba(255,255,255,.65)}.fnav a:hover{color:var(--gold)}
-.fbot{padding-top:2rem;display:flex;justify-content:space-between;align-items:center;font-size:.65rem;color:rgba(255,255,255,.35)}
-.fsoc{display:flex;gap:1.5rem}.fsoc a{color:rgba(255,255,255,.5);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase}.fsoc a:hover{color:var(--gold)}
-/* BOT BAR */
+.hgrid{display:flex;gap:2.5rem;justify-content:center;margin:1.75rem 0;font-size:.78rem;color:var(--g);flex-wrap:wrap}
+.hi{display:flex;flex-direction:column;align-items:center;gap:.3rem}.hlbl{font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+.ctbtns{display:flex;gap:.85rem;justify-content:center;flex-wrap:wrap;margin-top:1.75rem}
+.ctitem{display:flex;align-items:center;gap:.65rem;background:var(--w);padding:.9rem 1.75rem;font-size:.78rem;transition:background .3s,color .3s;white-space:nowrap}.ctitem:hover{background:var(--b);color:var(--w)}
+footer{background:var(--b);color:var(--w);padding:3.5rem 0 2rem}
+.fi{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+.ftop{display:grid;grid-template-columns:1fr 2fr;gap:3.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.1)}
+.flogo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;letter-spacing:.12em;line-height:1.2}
+.flogo span{display:block;font-size:.48rem;letter-spacing:.45em;color:rgba(255,255,255,.45);margin-top:.3rem}
+.fnav{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem}
+.fnavt{font-size:.52rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.85rem}
+.fnav ul{display:flex;flex-direction:column;gap:.65rem;list-style:none}.fnav a{font-size:.72rem;color:rgba(255,255,255,.6)}.fnav a:hover{color:var(--gold)}
+.fbot{padding-top:1.75rem;display:flex;justify-content:space-between;align-items:center;font-size:.62rem;color:rgba(255,255,255,.3);flex-wrap:wrap;gap:.75rem}
+.fsoc{display:flex;gap:1.25rem}.fsoc a{color:rgba(255,255,255,.45);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase}.fsoc a:hover{color:var(--gold)}
 .bar{position:fixed;bottom:0;left:0;right:0;z-index:999;display:flex}
-.bi{flex:1;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:1rem;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;transition:filter .3s}.bi:hover{filter:brightness(1.1)}
+.bi{flex:1;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.95rem;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;transition:filter .3s}.bi:hover{filter:brightness(1.1)}
 .bln{background:#06c755;color:#fff}.bml{background:#333;color:#fff}.brv{background:var(--gold);color:#fff}
-@media(max-width:900px){.fg,.fnav{grid-template-columns:1fr 1fr}.vlay,.ftop{grid-template-columns:1fr}.cg{grid-template-columns:repeat(2,1fr)}.flst{grid-template-columns:repeat(2,1fr);gap:2rem}.flst::before{display:none}.pg{grid-template-columns:1fr 1fr}.hctr{display:none}.if{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.fg,.pg,.flst{grid-template-columns:1fr 1fr}.cg{grid-template-columns:1fr 1fr}.if{grid-template-columns:1fr}.sc{padding:0 1.5rem 5rem}.sc h1{font-size:2.4rem}header{padding:0 1rem}.sec{padding:4rem 0}.fnav{grid-template-columns:1fr}.hgrid{flex-direction:column;gap:1.5rem}}
+.bgold{display:inline-block;background:var(--gold);color:var(--w);font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;padding:.85rem 2.25rem;transition:background .3s}.bgold:hover{background:var(--b)}
+.bblk{display:inline-block;background:var(--b);color:var(--w);font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;padding:.85rem 2.25rem;transition:background .3s}.bblk:hover{background:var(--gold)}
+.bwh{display:inline-block;background:var(--w);color:var(--b);font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;padding:.8rem 1.9rem;transition:all .3s}.bwh:hover{background:var(--gold);color:var(--w)}
+@media(max-width:900px){.fg,.fnav{grid-template-columns:1fr 1fr}.vlay,.ftop{grid-template-columns:1fr}.cg{grid-template-columns:repeat(2,1fr)}.flst{grid-template-columns:repeat(2,1fr);gap:1.5rem}.flst::before{display:none}.pg{grid-template-columns:1fr 1fr}.hctr{display:none}.if{grid-template-columns:repeat(2,1fr)}.modal{grid-template-columns:1fr}.modal-img{min-height:260px;aspect-ratio:16/9}.modal-body{padding:1.5rem}}
+@media(max-width:600px){html,body{width:100%;max-width:100vw;overflow-x:hidden}.sec{padding:3.5rem 0}.si{padding:0 1rem}header{padding:0 1rem}.logo{font-size:1.1rem}.sc{padding:0 1rem 4rem}.sc h1{font-size:2.1rem}.sbtns{gap:.85rem}.cg{grid-template-columns:repeat(2,1fr);gap:.85rem}.fg{grid-template-columns:1fr}.pg{grid-template-columns:1fr;max-width:100%}.pc{padding:1.75rem 1.25rem}.pa{font-size:2rem}.flst{grid-template-columns:repeat(2,1fr);gap:1rem}.if{grid-template-columns:1fr}.fnav,.ftop{grid-template-columns:1fr}.ftop{gap:2rem}.modal{width:100%;max-height:95vh}.modal-img{min-height:200px;aspect-ratio:4/3}.modal-body{padding:1.25rem}.modal-stats{grid-template-columns:1fr 1fr}.modal-name{font-size:1.5rem}.hgrid{gap:1.25rem}.ctbtns{flex-direction:column;align-items:center}.ctitem{width:100%;max-width:300px;justify-content:center}}
 </style>
 </head>
 <body>
@@ -178,178 +186,89 @@ footer{background:var(--b);color:var(--w);padding:4rem 0 2rem}
 </nav>
 <header>
   <div class="logo">Massage Tokyo<span>Best Massage in Ginza</span></div>
-  <div class="hctr">
-    <a href="mailto:ginza.esthe@gmail.com">ginza.esthe@gmail.com</a>
-    <span>OPEN 12:00〜29:00 受付 10:00〜29:00</span>
-  </div>
+  <div class="hctr"><a href="mailto:ginza.esthe@gmail.com">ginza.esthe@gmail.com</a><span>OPEN 12:00〜29:00 受付 10:00〜29:00</span></div>
   <div class="hrgt">
     <a href="https://line.me/R/ti/p/@happyend_ginza" class="btnr" target="_blank">RESERVE</a>
-    <div onclick="om()" style="cursor:pointer">
-      <div class="ham"><span></span><span></span><span></span></div>
-      <div class="haml">Menu</div>
-    </div>
+    <div onclick="om()" style="cursor:pointer"><div class="ham"><span></span><span></span><span></span></div><div class="haml">Menu</div></div>
   </div>
 </header>
 <section class="hero" id="top">
-  <div class="slide on">
-    <div class="sbg" style="background-image:url('https://best-massage-tokyo.com/wp-content/uploads/2025/03/a3aa.jpg')"></div>
-    <div class="sov"></div>
-    <div class="sc">
-      <div class="slbl"><span>Tokyo Ginza</span></div>
-      <h1>喜びが<br>さらに高まる。</h1>
-      <div class="sbtns">
-        <a href="https://line.me/R/ti/p/@happyend_ginza" class="bw" target="_blank">セッションを予約する</a>
-        <a href="#about" class="bow">もっと詳しく見る</a>
-      </div>
-    </div>
-  </div>
-  <div class="slide">
-    <div class="sbg" style="background-image:url('https://best-massage-tokyo.com/wp-content/uploads/2025/03/a1-.jpg')"></div>
-    <div class="sov"></div>
-    <div class="sc">
-      <div class="slbl"><span>English Speaking Private</span></div>
-      <h1>今夜の<br>仲間たち。</h1>
-      <div class="sbtns">
-        <a href="#cast" class="bw">今夜の出演者を見る</a>
-        <a href="https://line.me/R/ti/p/@happyend_ginza" class="bow" target="_blank">今すぐ予約</a>
-      </div>
-    </div>
-  </div>
-  <div class="slide">
-    <div class="sbg" style="background-image:url('https://best-massage-tokyo.com/wp-content/uploads/2026/04/1775374488393.jpg')"></div>
-    <div class="sov"></div>
-    <div class="sc">
-      <div class="slbl"><span>Open Until 29:00</span></div>
-      <h1>さあ、<br>旅を始めましょう。</h1>
-      <div class="sbtns">
-        <a href="https://line.me/R/ti/p/@happyend_ginza" class="bw" target="_blank">今すぐ予約</a>
-        <a href="#flow" class="bow">仕組み</a>
-      </div>
-    </div>
-  </div>
-  <div class="sarr">
-    <button class="abtn" onclick="ps()">&#8592;</button>
-    <button class="abtn" onclick="ns()">&#8594;</button>
-  </div>
+  <div class="slide on"><div class="sbg" style="background-image:url('https://best-massage-tokyo.com/wp-content/uploads/2025/03/a3aa.jpg')"></div><div class="sov"></div><div class="sc"><div class="slbl"><span>Tokyo Ginza</span></div><h1>喜びが<br>さらに高まる。</h1><div class="sbtns"><a href="https://line.me/R/ti/p/@happyend_ginza" class="bw" target="_blank">セッションを予約する</a><a href="#about" class="bow">もっと詳しく見る</a></div></div></div>
+  <div class="slide"><div class="sbg" style="background-image:url('https://best-massage-tokyo.com/wp-content/uploads/2025/03/a1-.jpg')"></div><div class="sov"></div><div class="sc"><div class="slbl"><span>English Speaking Private</span></div><h1>今夜の<br>仲間たち。</h1><div class="sbtns"><a href="cast.html" class="bw">今夜の出演者を見る</a><a href="https://line.me/R/ti/p/@happyend_ginza" class="bow" target="_blank">今すぐ予約</a></div></div></div>
+  <div class="slide"><div class="sbg" style="background-image:url('https://best-massage-tokyo.com/wp-content/uploads/2026/04/1775374488393.jpg')"></div><div class="sov"></div><div class="sc"><div class="slbl"><span>Open Until 29:00</span></div><h1>さあ、<br>旅を始めましょう。</h1><div class="sbtns"><a href="https://line.me/R/ti/p/@happyend_ginza" class="bw" target="_blank">今すぐ予約</a><a href="#flow" class="bow">仕組み</a></div></div></div>
+  <div class="sarr"><button class="abtn" onclick="ps()">&#8592;</button><button class="abtn" onclick="ns()">&#8594;</button></div>
   <div class="sdots" id="sdots"></div>
 </section>
-<div class="mq"><div class="mqi">
-  <span>英語を話せる</span><span class="sp">✦</span><span>外国人歓迎</span><span class="sp">✦</span><span>100%プライベート</span><span class="sp">✦</span><span>29時まで営業</span><span class="sp">✦</span><span>当日予約</span><span class="sp">✦</span><span>出張サービス可能</span><span class="sp">✦</span><span>English Spoken</span><span class="sp">✦</span><span>Foreigner Friendly</span><span class="sp">✦</span><span>100% Private</span><span class="sp">✦</span><span>Open Until 29:00</span><span class="sp">✦</span><span>Same-Day Booking</span><span class="sp">✦</span><span>Outcall Available</span><span class="sp">✦</span><span>英語を話せる</span><span class="sp">✦</span><span>外国人歓迎</span><span class="sp">✦</span><span>100%プライベート</span><span class="sp">✦</span><span>29時まで営業</span><span class="sp">✦</span><span>当日予約</span><span class="sp">✦</span><span>出張サービス可能</span><span class="sp">✦</span><span>English Spoken</span><span class="sp">✦</span><span>Foreigner Friendly</span><span class="sp">✦</span><span>100% Private</span><span class="sp">✦</span><span>Open Until 29:00</span><span class="sp">✦</span><span>Same-Day Booking</span><span class="sp">✦</span><span>Outcall Available</span><span class="sp">✦</span>
-</div></div>
-<section class="nsec"><div class="nin"><span class="nlbl">NEWS</span><div class="ntxt"><a href="https://best-massage-tokyo.com/news/" target="_blank">NEW OPEN - Ultimate Tokyo Sensual Massage - 銀座の新体験エステ、グランドオープン！</a></div></div></section>
-
-<!-- ABOUT + YouTube動画（正しいiframe） -->
+<div class="mq"><div class="mqi"><span>英語を話せる</span><span class="sp">✦</span><span>外国人歓迎</span><span class="sp">✦</span><span>100%プライベート</span><span class="sp">✦</span><span>29時まで営業</span><span class="sp">✦</span><span>当日予約</span><span class="sp">✦</span><span>出張サービス可能</span><span class="sp">✦</span><span>English Spoken</span><span class="sp">✦</span><span>Foreigner Friendly</span><span class="sp">✦</span><span>100% Private</span><span class="sp">✦</span><span>Open Until 29:00</span><span class="sp">✦</span><span>Same-Day Booking</span><span class="sp">✦</span><span>Outcall Available</span><span class="sp">✦</span><span>英語を話せる</span><span class="sp">✦</span><span>外国人歓迎</span><span class="sp">✦</span><span>100%プライベート</span><span class="sp">✦</span><span>29時まで営業</span><span class="sp">✦</span><span>当日予約</span><span class="sp">✦</span><span>出張サービス可能</span><span class="sp">✦</span><span>English Spoken</span><span class="sp">✦</span><span>Foreigner Friendly</span><span class="sp">✦</span><span>100% Private</span><span class="sp">✦</span><span>Open Until 29:00</span><span class="sp">✦</span><span>Same-Day Booking</span><span class="sp">✦</span><span>Outcall Available</span><span class="sp">✦</span></div></div>
+<section class="nsec"><div class="nin"><span class="nlbl">NEWS</span><div class="ntxt"><a href="https://best-massage-tokyo.com/news/" target="_blank">NEW OPEN — Ultimate Tokyo Sensual Massage — 銀座の新体験エステ、グランドオープン！</a></div></div></section>
 <section class="sec vsec" id="about">
-  <div class="si">
-    <div class="vlay">
-      <div class="vtxt">
-        <span class="sen">Our Story</span>
-        <h2>東京で最高の<br>マッサージを体験しよう</h2>
-        <div class="dv" style="margin-left:0"></div>
-        <p>Massage Tokyoは、銀座の中心に位置する完全プライベートなメンズエステサロンです。英語対応のセラピストが、あなたの最高のリラクゼーション体験をサポートします。</p>
-        <p>外国人のお客様も安心してご利用いただけます。完全個室・カメラなし・完全秘密厳守。銀座で最も信頼されるプライベートサロンをご体験ください。</p>
-        <a href="https://line.me/R/ti/p/@happyend_ginza" class="bblk" target="_blank" style="margin-top:.5rem">LINEで予約する</a>
-      </div>
-      <div>
-        <div class="vwp">
-          <iframe
-            src="https://www.youtube.com/embed/YObRbE9LYSY?rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
-            title="Massage Tokyo - HAPPY END Best Massage in Ginza"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy">
-          </iframe>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="si"><div class="vlay">
+    <div class="vtxt"><span class="sen">Our Story</span><h2>東京で最高の<br>マッサージを体験しよう</h2><div class="dv" style="margin-left:0"></div><p>Massage Tokyoは、銀座の中心に位置する完全プライベートなメンズエステサロンです。英語対応のセラピストが、あなたの最高のリラクゼーション体験をサポートします。</p><p>外国人のお客様も安心してご利用いただけます。完全個室・カメラなし・完全秘密厳守。銀座で最も信頼されるプライベートサロンをご体験ください。</p><a href="https://line.me/R/ti/p/@happyend_ginza" class="bblk" target="_blank" style="margin-top:.5rem">LINEで予約する</a></div>
+    <div><div class="vwp"><iframe src="https://www.youtube.com/embed/YObRbE9LYSY?rel=0&modestbranding=1&playsinline=1" title="Massage Tokyo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div></div>
+  </div></div>
 </section>
-
-<!-- INTRO SEO（SVGピクトグラム） -->
 <section class="intro-sec">
   <div class="intro-inner">
     <span class="sub">Massage Tokyo — Ginza Secret</span>
     <h2>Tokyo's Most Luxurious<br>Happy Ending Massage</h2>
     <div class="dv"></div>
-    <p class="desc">Discover the most luxurious sensual massage in Tokyo, delivered by the most beautiful Japanese women. Perfect for travelers and expats seeking ultimate relaxation in the heart of the city.</p>
+    <p class="desc">Discover the most luxurious sensual massage in Tokyo, delivered by the most beautiful Japanese women. Perfect for travelers and expats seeking ultimate relaxation.</p>
     <div class="if">
-      <div class="if-item">
-        <div class="if-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="24" cy="11" rx="5" ry="6"/><path d="M14 48V34a10 10 0 0 1 20 0v14"/><path d="M10 26c0 0 3-4 14-4s14 4 14 4"/><line x1="24" y1="30" x2="24" y2="48"/></svg></div>
-        <h4>Sensual Massage</h4>
-        <p>Traditional Japanese massage &amp; erotic body-to-body experience</p>
-      </div>
-      <div class="if-item">
-        <div class="if-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><path d="M24 6c-4 3-8 9-8 18s4 15 8 18"/><path d="M24 6c4 3 8 9 8 18s-4 15-8 18"/><line x1="6" y1="24" x2="42" y2="24"/><path d="M8 15h32M8 33h32"/></svg></div>
-        <h4>English Speaking</h4>
-        <p>English-speaking staff — Foreigners welcome!</p>
-      </div>
-      <div class="if-item">
-        <div class="if-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="40" height="30" rx="2"/><path d="M4 20h40"/><path d="M14 12V8M34 12V8"/><rect x="16" y="26" width="16" height="10" rx="1"/><circle cx="24" cy="31" r="1.5"/></svg></div>
-        <h4>Outcall Available</h4>
-        <p>In-room massage available — Hotels &amp; Private Residences</p>
-      </div>
-      <div class="if-item">
-        <div class="if-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 4C16.3 4 10 10.3 10 18c0 10.5 14 26 14 26s14-15.5 14-26C38 10.3 31.7 4 24 4z"/><circle cx="24" cy="18" r="5"/></svg></div>
-        <h4>Prime Location</h4>
-        <p>Conveniently located in Ginza, Shinjuku &amp; Roppongi</p>
-      </div>
-      <div class="if-item">
-        <div class="if-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><polyline points="24,13 24,24 32,30"/><line x1="24" y1="6" x2="24" y2="9"/><line x1="24" y1="39" x2="24" y2="42"/><line x1="6" y1="24" x2="9" y2="24"/><line x1="39" y1="24" x2="42" y2="24"/></svg></div>
-        <h4>Open Until 29:00</h4>
-        <p>Open late — Same-day booking available</p>
-      </div>
-      <div class="if-item">
-        <div class="if-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="22" width="28" height="22" rx="2"/><path d="M16 22v-7a8 8 0 0 1 16 0v7"/><circle cx="24" cy="33" r="2.5"/><line x1="24" y1="35.5" x2="24" y2="39"/></svg></div>
-        <h4>100% Private</h4>
-        <p>Private, Discreet &amp; Foreigner-Friendly</p>
-      </div>
+      <div class="if-item"><div class="if-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="24" cy="11" rx="5" ry="6"/><path d="M14 48V34a10 10 0 0 1 20 0v14"/><path d="M10 26c0 0 3-4 14-4s14 4 14 4"/><line x1="24" y1="30" x2="24" y2="48"/></svg></div><h4>Sensual Massage</h4><p>Traditional Japanese massage &amp; erotic body-to-body experience</p></div>
+      <div class="if-item"><div class="if-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><path d="M24 6c-4 3-8 9-8 18s4 15 8 18"/><path d="M24 6c4 3 8 9 8 18s-4 15-8 18"/><line x1="6" y1="24" x2="42" y2="24"/><path d="M8 15h32M8 33h32"/></svg></div><h4>English Speaking</h4><p>English-speaking staff — Foreigners welcome!</p></div>
+      <div class="if-item"><div class="if-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="40" height="30" rx="2"/><path d="M4 20h40M14 12V8M34 12V8"/><rect x="16" y="26" width="16" height="10" rx="1"/><circle cx="24" cy="31" r="1.5"/></svg></div><h4>Outcall Available</h4><p>In-room massage — Hotels &amp; Private Residences</p></div>
+      <div class="if-item"><div class="if-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 4C16.3 4 10 10.3 10 18c0 10.5 14 26 14 26s14-15.5 14-26C38 10.3 31.7 4 24 4z"/><circle cx="24" cy="18" r="5"/></svg></div><h4>Prime Location</h4><p>Ginza, Shinjuku &amp; Roppongi</p></div>
+      <div class="if-item"><div class="if-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><polyline points="24,13 24,24 32,30"/><line x1="24" y1="6" x2="24" y2="9"/><line x1="24" y1="39" x2="24" y2="42"/><line x1="6" y1="24" x2="9" y2="24"/><line x1="39" y1="24" x2="42" y2="24"/></svg></div><h4>Open Until 29:00</h4><p>Same-day booking available</p></div>
+      <div class="if-item"><div class="if-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="22" width="28" height="22" rx="2"/><path d="M16 22v-7a8 8 0 0 1 16 0v7"/><circle cx="24" cy="33" r="2.5"/><line x1="24" y1="35.5" x2="24" y2="39"/></svg></div><h4>100% Private</h4><p>Discreet &amp; Foreigner-Friendly</p></div>
     </div>
-    <p class="ctatxt">Indulge in an unforgettable Tokyo happy ending massage that will leave you completely relaxed and satisfied.</p>
+    <p class="ctatxt">Indulge in an unforgettable Tokyo happy ending massage — private, discreet, and foreigner-friendly!</p>
     <a href="https://line.me/R/ti/p/@happyend_ginza" class="bwh" target="_blank">Book Now — Reserve Your Session</a>
   </div>
 </section>
-
-<section class="sec fsec">
-  <div class="si">
-    <div class="sh"><span class="sen">Experience</span><h2 class="sja">もっと良いものを求める人々のために</h2><div class="dv"></div></div>
-    <div class="fg">
-      <div class="fc"><div class="fn">01</div><h3>英語を話す</h3><p>ご滞在中は英語でのサポートを全面的に提供いたします。日本語は一切不要です。</p></div>
-      <div class="fc"><div class="fn">02</div><h3>絶対的なプライバシー</h3><p>完全プライベートスイート。カメラ設置禁止。お客様のご滞在は私たちだけの秘密です。</p></div>
-      <div class="fc"><div class="fn">03</div><h3>エリートセラピスト</h3><p>美貌と技術を兼ね備えた厳選されたセラピスト。細心の注意を払って対応いたします。</p></div>
-      <div class="fc"><div class="fn">04</div><h3>柔軟な営業時間</h3><p>12:00〜29:00まで営業。当日予約もOK。深夜でもご利用いただけます。</p></div>
-      <div class="fc"><div class="fn">05</div><h3>出張サービス</h3><p>銀座近辺のホテルへの出張サービスも承ります。お気軽にご相談ください。</p></div>
-      <div class="fc"><div class="fn">06</div><h3>安心の品質保証</h3><p>厳格な衛生管理と品質チェックを実施。最高品質のサービスをお約束します。</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="csec">
-  <div class="cbg2"></div>
-  <div class="cin">
-    <span class="sen" style="color:var(--glt)">Ginza Secret</span>
-    <h2>Massage Tokyo —<br>Best Erotic Massage in Ginza</h2>
-    <div class="dv"></div>
-    <p>銀座の中心で、あなただけの特別な時間をご提供します。完全プライベートな空間で、英語対応のセラピストがあなたの心身を癒します。外国人のお客様も安心してお任せください。</p>
-    <a href="https://line.me/R/ti/p/@happyend_ginza" class="bwh" target="_blank">今すぐ予約する</a>
-  </div>
-</section>
-
+<section class="sec fsec"><div class="si"><div class="sh"><span class="sen">Experience</span><h2 class="sja">もっと良いものを求める人々のために</h2><div class="dv"></div></div><div class="fg">
+  <div class="fc"><div class="fn">01</div><h3>英語を話す</h3><p>ご滞在中は英語でのサポートを全面的に提供。日本語は一切不要です。</p></div>
+  <div class="fc"><div class="fn">02</div><h3>絶対的なプライバシー</h3><p>完全個室・カメラ設置禁止。お客様のご滞在は私たちだけの秘密です。</p></div>
+  <div class="fc"><div class="fn">03</div><h3>エリートセラピスト</h3><p>美貌と技術を兼ね備えた厳選セラピスト。細心の注意を払って対応します。</p></div>
+  <div class="fc"><div class="fn">04</div><h3>柔軟な営業時間</h3><p>12:00〜29:00まで営業。当日予約もOK。深夜でも対応いたします。</p></div>
+  <div class="fc"><div class="fn">05</div><h3>出張サービス</h3><p>銀座近辺のホテルへの出張も承ります。お気軽にご相談ください。</p></div>
+  <div class="fc"><div class="fn">06</div><h3>安心の品質保証</h3><p>厳格な衛生管理と品質チェックを実施。最高品質をお約束します。</p></div>
+</div></div></section>
+<section class="csec"><div class="cbg2"></div><div class="cin"><span class="sen" style="color:var(--glt)">Ginza Secret</span><h2>Massage Tokyo —<br>Best Erotic Massage in Ginza</h2><div class="dv"></div><p>銀座の中心で、あなただけの特別な時間をご提供します。完全プライベートな空間で、英語対応のセラピストがあなたの心身を癒します。</p><a href="https://line.me/R/ti/p/@happyend_ginza" class="bwh" target="_blank">今すぐ予約する</a></div></section>
 <section class="sec castsec" id="cast">
   <div class="si">
-    <div class="sh"><span class="sen">Tonight's Cast</span><h2 class="sja">今夜の仲間たち</h2><div class="dv"></div><p class="ssub">毎日更新・当日の出演者はLINEでご確認ください</p></div>
+    <div class="sh"><span class="sen">Tonight's Cast</span><h2 class="sja">今夜の仲間たち</h2><div class="dv"></div><p class="ssub">写真をタップするとプロフィールが見れます · 毎日更新</p></div>
     <div class="cg">
-      <div class="cc"><span class="crnk nf">NEW FACE</span><div class="cbgi" style="background-image:url('https://best-massage-tokyo.com/wp-content/uploads/2026/04/1775374488393.jpg')"></div><div class="cinfo"><span class="cname">Airis</span><span class="cmeta">AGE 26 · T163 (D)</span></div></div>
-      <div class="cc"><span class="crnk nf">NEW FACE</span><div class="cbgi" style="background-image:url('https://best-massage-tokyo.com/wp-content/uploads/2026/01/1769063443347.webp')"></div><div class="cinfo"><span class="cname">Paypay</span><span class="cmeta">AGE 24 · T153 (D)</span></div></div>
-      <div class="cc"><span class="crnk nf">NEW FACE</span><div class="cbgi" style="background-image:url('https://estemax.net/happy-end/wp-content/uploads/2025/05/1745092578220.webp')"></div><div class="cinfo"><span class="cname">Margaret</span><span class="cmeta">AGE 21 · T155 (D)</span></div></div>
-      <div class="cc"><span class="crnk pm">PREMIUM</span><div class="cbgi" style="background-image:url('https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250324_190124806.webp')"></div><div class="cinfo"><span class="cname">Lilian</span><span class="cmeta">AGE 22 · T159 (H)</span></div></div>
-      <div class="cc"><span class="crnk nf">NEW FACE</span><div class="cbgi" style="background-image:url('https://estemax.net/happy-end/wp-content/uploads/2025/05/17386327067432.webp')"></div><div class="cinfo"><span class="cname">Casablanca</span><span class="cmeta">AGE 25 · T156 (F)</span></div></div>
-      <div class="cc"><span class="crnk pm">PREMIUM</span><div class="cbgi" style="background-image:url('https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_203010978.webp')"></div><div class="cinfo"><span class="cname">Salamander</span><span class="cmeta">AGE 20 · T159 (B)</span></div></div>
+      <div class="cc" onclick="openModal(0)"><span class="crnk nf">NEW FACE</span><div class="cbgi" style="background-image:url('https://best-massage-tokyo.com/wp-content/uploads/2026/04/1775374488393.jpg')"></div><div class="ctap-hint">プロフィールを見る</div><div class="cinfo"><span class="cname">Airis</span><span class="cmeta">AGE 26 · T163 (D)</span></div></div>
+      <div class="cc" onclick="openModal(1)"><span class="crnk nf">NEW FACE</span><div class="cbgi" style="background-image:url('https://best-massage-tokyo.com/wp-content/uploads/2026/01/1769063443347.webp')"></div><div class="ctap-hint">プロフィールを見る</div><div class="cinfo"><span class="cname">Paypay</span><span class="cmeta">AGE 24 · T153 (D)</span></div></div>
+      <div class="cc" onclick="openModal(2)"><span class="crnk nf">NEW FACE</span><div class="cbgi" style="background-image:url('https://estemax.net/happy-end/wp-content/uploads/2025/05/1745092578220.webp')"></div><div class="ctap-hint">プロフィールを見る</div><div class="cinfo"><span class="cname">Margaret</span><span class="cmeta">AGE 21 · T155 (D)</span></div></div>
+      <div class="cc" onclick="openModal(3)"><span class="crnk pm">PREMIUM</span><div class="cbgi" style="background-image:url('https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250324_190124806.webp')"></div><div class="ctap-hint">プロフィールを見る</div><div class="cinfo"><span class="cname">Lilian</span><span class="cmeta">AGE 22 · T159 (H)</span></div></div>
+      <div class="cc" onclick="openModal(4)"><span class="crnk nf">NEW FACE</span><div class="cbgi" style="background-image:url('https://estemax.net/happy-end/wp-content/uploads/2025/05/17386327067432.webp')"></div><div class="ctap-hint">プロフィールを見る</div><div class="cinfo"><span class="cname">Casablanca</span><span class="cmeta">AGE 25 · T156 (F)</span></div></div>
+      <div class="cc" onclick="openModal(5)"><span class="crnk pm">PREMIUM</span><div class="cbgi" style="background-image:url('https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_203010978.webp')"></div><div class="ctap-hint">プロフィールを見る</div><div class="cinfo"><span class="cname">Salamander</span><span class="cmeta">AGE 20 · T159 (B)</span></div></div>
     </div>
-    <div class="ccta"><a href="https://best-massage-tokyo.com/cast/" class="bgold" target="_blank">全キャストを見る</a></div>
+    <div class="ccta"><a href="cast.html" class="bgold">全キャストを見る（20名）</a></div>
   </div>
 </section>
-
+<div class="modal-bg" id="modalBg">
+  <div class="modal" id="modal">
+    <span class="modal-x" onclick="closeModal()">&#10005;</span>
+    <div class="modal-img" id="modalImg"></div>
+    <div class="modal-body">
+      <div><span class="modal-rank-badge" id="modalRank"></span><div class="modal-name" id="modalName"></div></div>
+      <div class="modal-divider"></div>
+      <div class="modal-stats">
+        <div class="modal-stat"><span class="modal-stat-label">Age</span><div class="modal-stat-value" id="modalAge"></div></div>
+        <div class="modal-stat"><span class="modal-stat-label">Height</span><div class="modal-stat-value" id="modalHeight"></div></div>
+        <div class="modal-stat"><span class="modal-stat-label">Cup</span><div class="modal-stat-value" id="modalCup"></div></div>
+        <div class="modal-stat"><span class="modal-stat-label">Rank</span><div class="modal-stat-value" id="modalRankVal" style="font-size:.82rem;letter-spacing:.05em"></div></div>
+      </div>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-btns">
+        <a href="https://line.me/R/ti/p/@happyend_ginza" class="btn-line-modal" target="_blank">LINEで予約する</a>
+        <div class="btn-close-modal" onclick="closeModal()">閉じる</div>
+      </div>
+    </div>
+  </div>
+</div>
 <section class="sec psec" id="price">
   <div class="si">
     <div class="sh"><span class="sen">Pricing</span><h2 class="sja">料金</h2><div class="dv"></div><p class="ssub">すべての料金に消費税込み・完全個室・プライベートサービス</p></div>
@@ -359,78 +278,73 @@ footer{background:var(--b);color:var(--w);padding:4rem 0 2rem}
       <div class="pc"><div class="pn">120分コース</div><div class="pt">120 minutes</div><div class="pa">¥35,000</div><div class="pu">税込</div><p class="pnote">✓ 完全個室<br>✓ 英語対応<br>✓ アメニティ完備</p></div>
       <div class="pc"><div class="pn">出張コース</div><div class="pt">Outcall 60min+</div><div class="pa">¥25,000〜</div><div class="pu">税込</div><p class="pnote">✓ 銀座周辺ホテル対応<br>✓ 英語対応<br>✓ 要事前予約</p></div>
     </div>
-    <div class="pnf"><strong>ご注意事項：</strong>料金はすべて消費税込みです。指名料・オプション料金が別途発生する場合があります。詳細はLINEまたはメールでお問い合わせください。</div>
+    <div class="pnf"><strong>ご注意事項：</strong>料金はすべて消費税込みです。指名料・オプション料金が別途発生する場合があります。</div>
   </div>
 </section>
-
 <section class="sec flsec" id="flow">
-  <div class="si">
-    <div class="sh"><span class="sen">How It Works</span><h2 class="sja">ご利用の流れ</h2><div class="dv"></div></div>
-    <div class="flst">
-      <div class="step"><div class="snum">1</div><h3>ご予約</h3><p>LINE・メール・WhatsAppにてご希望の日時・コースをお伝えください。</p></div>
-      <div class="step"><div class="snum">2</div><h3>ご来店</h3><p>銀座の店舗へお越しください。場所はご予約確定後にお知らせします。</p></div>
-      <div class="step"><div class="snum">3</div><h3>セッション</h3><p>完全個室でリラックスしてセッションをお楽しみください。</p></div>
-      <div class="step"><div class="snum">4</div><h3>お会計</h3><p>現金・カード・PayPayでお支払いいただけます。</p></div>
-    </div>
-  </div>
+  <div class="si"><div class="sh"><span class="sen">How It Works</span><h2 class="sja">ご利用の流れ</h2><div class="dv"></div></div>
+  <div class="flst">
+    <div class="step"><div class="snum">1</div><h3>ご予約</h3><p>LINE・メール・WhatsAppにてご希望の日時・コースをお伝えください。</p></div>
+    <div class="step"><div class="snum">2</div><h3>ご来店</h3><p>銀座の店舗へ。場所はご予約確定後にお知らせします。</p></div>
+    <div class="step"><div class="snum">3</div><h3>セッション</h3><p>完全個室でリラックスしてセッションをお楽しみください。</p></div>
+    <div class="step"><div class="snum">4</div><h3>お会計</h3><p>現金・カード・PayPayでお支払いいただけます。</p></div>
+  </div></div>
 </section>
-
 <section class="sec faqsec" id="faq">
-  <div class="si">
-    <div class="sh"><span class="sen">FAQ</span><h2 class="sja">よくある質問</h2><div class="dv"></div></div>
-    <div class="faql">
-      <div class="faqi"><div class="faqq" onclick="tf(this)">外国人でも利用できますか？ / Can foreigners visit?</div><div class="faqa">はい、外国人のお客様を大歓迎しております。英語を話すセラピストが対応いたします。<br>Yes, we warmly welcome foreign guests. Our therapists speak English.</div></div>
-      <div class="faqi"><div class="faqq" onclick="tf(this)">当日予約はできますか？ / Can I book same day?</div><div class="faqa">はい、当日予約も承っております。事前のご予約をお勧めします。<br>Yes, same-day bookings are available, subject to availability.</div></div>
-      <div class="faqi"><div class="faqq" onclick="tf(this)">完全に秘密は守られますか？ / Is complete privacy guaranteed?</div><div class="faqa">はい、完全個室で監視カメラは設置しておりません。<br>Yes, your privacy is completely protected. All sessions are 100% private.</div></div>
-      <div class="faqi"><div class="faqq" onclick="tf(this)">支払い方法は？ / What payment methods?</div><div class="faqa">現金、クレジットカード（VISA・Mastercard）、PayPayでお支払いいただけます。<br>We accept cash, credit cards (VISA/Mastercard), and PayPay.</div></div>
-      <div class="faqi"><div class="faqq" onclick="tf(this)">場所はどこですか？ / Where are you located?</div><div class="faqa">銀座エリアに位置しております。詳細はご予約確定後にお知らせします。<br>We are in the Ginza area. The exact address is provided upon confirmation.</div></div>
-    </div>
-  </div>
+  <div class="si"><div class="sh"><span class="sen">FAQ</span><h2 class="sja">よくある質問</h2><div class="dv"></div></div>
+  <div class="faql">
+    <div class="faqi"><div class="faqq" onclick="tf(this)">外国人でも利用できますか？ / Can foreigners visit?</div><div class="faqa">はい、外国人のお客様を大歓迎しております。英語を話すセラピストが対応いたします。<br>Yes, we warmly welcome foreign guests. Our therapists speak English.</div></div>
+    <div class="faqi"><div class="faqq" onclick="tf(this)">当日予約はできますか？ / Can I book same day?</div><div class="faqa">はい、当日予約も承っております。事前のご予約をお勧めします。<br>Yes, same-day bookings are available, subject to availability.</div></div>
+    <div class="faqi"><div class="faqq" onclick="tf(this)">完全に秘密は守られますか？ / Is complete privacy guaranteed?</div><div class="faqa">はい、完全個室で監視カメラは設置しておりません。<br>Yes, your privacy is completely protected. All sessions are 100% private.</div></div>
+    <div class="faqi"><div class="faqq" onclick="tf(this)">支払い方法は？ / What payment methods?</div><div class="faqa">現金、クレジットカード（VISA・Mastercard）、PayPayでお支払いいただけます。<br>We accept cash, credit cards (VISA/Mastercard), and PayPay.</div></div>
+    <div class="faqi"><div class="faqq" onclick="tf(this)">場所はどこですか？ / Where are you located?</div><div class="faqa">銀座エリアに位置しております。詳細はご予約確定後にお知らせします。<br>We are in the Ginza area. The exact address is provided upon confirmation.</div></div>
+  </div></div>
 </section>
-
 <section class="sec ctsec" id="contact">
-  <div class="si">
-    <div class="ctin">
-      <span class="sen">Contact &amp; Reserve</span><h2 class="sja">お問い合わせ・ご予約</h2><div class="dv"></div>
-      <div class="hgrid">
-        <div class="hi"><span class="hlbl">Open</span><span>12:00 〜 29:00</span></div>
-        <div class="hi"><span class="hlbl">Reception</span><span>10:00 〜 29:00</span></div>
-        <div class="hi"><span class="hlbl">Location</span><span>Ginza, Tokyo</span></div>
-      </div>
-      <div class="ctbtns">
-        <a href="https://line.me/R/ti/p/@happyend_ginza" class="ctitem" target="_blank">LINE で予約</a>
-        <a href="mailto:ginza.esthe@gmail.com" class="ctitem">ginza.esthe@gmail.com</a>
-        <a href="https://wa.me/818012345678" class="ctitem" target="_blank">WhatsApp</a>
-      </div>
-    </div>
-  </div>
+  <div class="si"><div class="ctin">
+    <span class="sen">Contact &amp; Reserve</span><h2 class="sja">お問い合わせ・ご予約</h2><div class="dv"></div>
+    <div class="hgrid"><div class="hi"><span class="hlbl">Open</span><span>12:00 〜 29:00</span></div><div class="hi"><span class="hlbl">Reception</span><span>10:00 〜 29:00</span></div><div class="hi"><span class="hlbl">Location</span><span>Ginza, Tokyo</span></div></div>
+    <div class="ctbtns"><a href="https://line.me/R/ti/p/@happyend_ginza" class="ctitem" target="_blank">LINE で予約</a><a href="mailto:ginza.esthe@gmail.com" class="ctitem">ginza.esthe@gmail.com</a><a href="https://wa.me/818012345678" class="ctitem" target="_blank">WhatsApp</a></div>
+  </div></div>
 </section>
-
 <footer>
   <div class="fi">
     <div class="ftop">
-      <div>
-        <div class="flogo">Massage Tokyo<span>Best Massage in Ginza</span></div>
-        <p style="margin-top:1.5rem;font-size:.75rem;color:rgba(255,255,255,.5);line-height:2">銀座メンズエステ HAPPY END<br>OPEN 12:00〜29:00<br>Reception 10:00〜29:00<br>ginza.esthe@gmail.com</p>
-      </div>
+      <div><div class="flogo">Massage Tokyo<span>Best Massage in Ginza</span></div><p style="margin-top:1.25rem;font-size:.72rem;color:rgba(255,255,255,.45);line-height:2">銀座メンズエステ HAPPY END<br>OPEN 12:00〜29:00<br>Reception 10:00〜29:00<br>ginza.esthe@gmail.com</p></div>
       <div class="fnav">
         <div><div class="fnavt">Menu</div><ul><li><a href="#about">About</a></li><li><a href="#cast">Cast</a></li><li><a href="#price">料金</a></li></ul></div>
         <div><div class="fnavt">Info</div><ul><li><a href="#flow">ご利用の流れ</a></li><li><a href="#faq">よくある質問</a></li><li><a href="#contact">お問い合わせ</a></li></ul></div>
-        <div><div class="fnavt">Follow</div><ul><li><a href="https://line.me/R/ti/p/@happyend_ginza" target="_blank">LINE</a></li><li><a href="https://twitter.com/happyend_ginza" target="_blank">X (Twitter)</a></li><li><a href="mailto:ginza.esthe@gmail.com">Email</a></li></ul></div>
+        <div><div class="fnavt">Follow</div><ul><li><a href="https://line.me/R/ti/p/@happyend_ginza" target="_blank">LINE</a></li><li><a href="https://twitter.com/happyend_ginza" target="_blank">Twitter</a></li><li><a href="mailto:ginza.esthe@gmail.com">Email</a></li></ul></div>
       </div>
     </div>
-    <div class="fbot">
-      <span>2025 Massage Tokyo / HAPPY END. All rights reserved.</span>
-      <div class="fsoc"><a href="https://line.me/R/ti/p/@happyend_ginza" target="_blank">LINE</a><a href="https://twitter.com/happyend_ginza" target="_blank">Twitter</a><a href="mailto:ginza.esthe@gmail.com">Email</a></div>
-    </div>
+    <div class="fbot"><span>2025 Massage Tokyo / HAPPY END. All rights reserved.</span><div class="fsoc"><a href="https://line.me/R/ti/p/@happyend_ginza" target="_blank">LINE</a><a href="https://twitter.com/happyend_ginza" target="_blank">Twitter</a><a href="mailto:ginza.esthe@gmail.com">Email</a></div></div>
   </div>
 </footer>
-<div class="bar">
-  <a href="https://line.me/R/ti/p/@happyend_ginza" class="bi bln" target="_blank">LINE</a>
-  <a href="mailto:ginza.esthe@gmail.com" class="bi bml">MAIL</a>
-  <a href="https://line.me/R/ti/p/@happyend_ginza" class="bi brv" target="_blank">今すぐ予約</a>
-</div>
+<div class="bar"><a href="https://line.me/R/ti/p/@happyend_ginza" class="bi bln" target="_blank">LINE</a><a href="mailto:ginza.esthe@gmail.com" class="bi bml">MAIL</a><a href="https://line.me/R/ti/p/@happyend_ginza" class="bi brv" target="_blank">今すぐ予約</a></div>
 <script>
+const CAST=[
+  {rank:"NEW FACE",name:"Airis",age:"26",height:"163",cup:"D",desc:"Irresistibly cute with maximum charm and a sexy edge.",img:"https://best-massage-tokyo.com/wp-content/uploads/2026/04/1775374488393.jpg"},
+  {rank:"NEW FACE",name:"Paypay",age:"24",height:"153",cup:"D",desc:"So charming you can't help but feel completely healed.",img:"https://best-massage-tokyo.com/wp-content/uploads/2026/01/1769063443347.webp"},
+  {rank:"NEW FACE",name:"Margaret",age:"21",height:"155",cup:"D",desc:"Fresh and cute — a new face you won't forget.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/1745092578220.webp"},
+  {rank:"PREMIUM",name:"Lilian",age:"22",height:"159",cup:"H",desc:"Premium-class beauty with captivating presence.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250324_190124806.webp"},
+  {rank:"NEW FACE",name:"Casablanca",age:"25",height:"156",cup:"F",desc:"Glamorous and cute — an unforgettable combination.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/17386327067432.webp"},
+  {rank:"PREMIUM",name:"Salamander",age:"20",height:"159",cup:"B",desc:"Fresh, youthful energy with premium-level skill.",img:"https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_203010978.webp"}
+];
+function openModal(idx){
+  const c=CAST[idx],rc=c.rank==='PREMIUM'?'pm':c.rank==='SPECIAL'?'sp':'nf';
+  document.getElementById('modalImg').style.backgroundImage="url('"+c.img+"')";
+  const rb=document.getElementById('modalRank');rb.textContent=c.rank;rb.className='modal-rank-badge '+rc;
+  document.getElementById('modalName').textContent=c.name;
+  document.getElementById('modalAge').textContent=c.age;
+  document.getElementById('modalHeight').textContent=c.height+'cm';
+  document.getElementById('modalCup').textContent='('+c.cup+')';
+  document.getElementById('modalRankVal').textContent=c.rank;
+  document.getElementById('modalDesc').textContent=c.desc;
+  const bg=document.getElementById('modalBg');bg.classList.add('show');document.body.style.overflow='hidden';
+  bg.onclick=function(e){if(e.target===bg)closeModal();};
+}
+function closeModal(){document.getElementById('modalBg').classList.remove('show');document.body.style.overflow='';}
+if('ontouchstart' in window){document.querySelectorAll('.ctap-hint').forEach(el=>el.style.opacity='1');}
 let c=0;const sl=document.querySelectorAll('.slide');const dt=document.getElementById('sdots');let tm;
 sl.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' on':'');d.onclick=()=>go(i);dt.appendChild(d);});
 function go(n){sl[c].classList.remove('on');dt.children[c].classList.remove('on');c=(n+sl.length)%sl.length;sl[c].classList.add('on');dt.children[c].classList.add('on');clearInterval(tm);tm=setInterval(()=>go(c+1),8000);}
