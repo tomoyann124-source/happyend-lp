@@ -60,8 +60,13 @@ header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,
 .vlay{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
 .vtxt h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;line-height:1.4;margin-bottom:1.25rem}
 .vtxt p{font-size:.88rem;color:var(--g);line-height:2;margin-bottom:1.25rem}
-.vwp{position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;background:var(--b)}
+.vwp{position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;background:var(--b);cursor:pointer;border-radius:4px;overflow:hidden}
 .vwp iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+.vthumb{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .4s}.vwp:hover .vthumb{transform:scale(1.03)}
+.vplay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.35);transition:background .3s}.vwp:hover .vplay{background:rgba(0,0,0,.5)}
+.vplay-btn{width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;transition:transform .3s;box-shadow:0 4px 20px rgba(0,0,0,.3)}.vwp:hover .vplay-btn{transform:scale(1.1)}
+.vplay-btn svg{width:28px;height:28px;fill:var(--b);margin-left:4px}
+.vplay-label{position:absolute;bottom:1.25rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.9);font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;white-space:nowrap}
 .intro-sec{background:var(--b);color:var(--w);padding:5rem 0}
 .intro-inner{max-width:960px;margin:0 auto;padding:0 1.5rem;text-align:center}
 .intro-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2.3rem);font-weight:300;line-height:1.5;margin-bottom:1rem}
@@ -207,7 +212,14 @@ footer{background:var(--b);color:var(--w);padding:3.5rem 0 2rem}
 <section class="sec vsec" id="about">
   <div class="si"><div class="vlay">
     <div class="vtxt"><span class="sen">Our Story</span><h2>Tokyo's Premier<br>Private Massage Studio</h2><div class="dv" style="margin-left:0"></div><p>Massage Tokyo is a fully private men's relaxation studio located in the heart of Ginza. Our English-speaking therapists are dedicated to delivering an unforgettable experience in a completely discreet setting.</p><p>Foreigners are warmly welcomed. No Japanese required. Private rooms, no cameras, 100% confidential — the most trusted private studio in Ginza.</p><a href="https://line.me/R/ti/p/@happyend_ginza" class="bblk" target="_blank" style="margin-top:.5rem">Book via LINE</a></div>
-    <div><div class="vwp"><iframe src="https://www.youtube.com/embed/YObRbE9LYSY?rel=0&modestbranding=1&playsinline=1" title="Massage Tokyo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div></div>
+    <div><div class="vwp" onclick="openVideo()" id="videoWrap">
+          <div class="vthumb" style="background-image:url('https://best-massage-tokyo.com/wp-content/uploads/2025/03/a3aa.jpg')"></div>
+          <div class="vplay">
+            <div class="vplay-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <span class="vplay-label">Watch Video</span>
+          </div>
+        </div>
+        <div class="vwp" id="videoFrame" style="display:none"><iframe id="ytIframe" src="" title="Massage Tokyo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></div>
   </div></div>
 </section>
 <section class="intro-sec">
@@ -324,6 +336,12 @@ footer{background:var(--b);color:var(--w);padding:3.5rem 0 2rem}
 </footer>
 <div class="bar"><a href="https://line.me/R/ti/p/@happyend_ginza" class="bi bln" target="_blank">LINE</a><a href="mailto:ginza.esthe@gmail.com" class="bi bml">Email</a><a href="https://line.me/R/ti/p/@happyend_ginza" class="bi brv" target="_blank">Book Now</a></div>
 <script>
+function openVideo(){
+  document.getElementById('videoWrap').style.display='none';
+  const f=document.getElementById('videoFrame');
+  f.style.display='block';
+  document.getElementById('ytIframe').src='https://www.youtube.com/embed/YObRbE9LYSY?rel=0&modestbranding=1&playsinline=1&autoplay=1';
+}
 const CAST=[
   {rank:"NEW FACE",name:"Airis",age:"26",height:"163",cup:"D",desc:"Irresistibly cute with maximum charm and a sexy edge.",img:"https://best-massage-tokyo.com/wp-content/uploads/2026/04/1775374488393.jpg"},
   {rank:"NEW FACE",name:"Paypay",age:"24",height:"153",cup:"D",desc:"So charming you can't help but feel completely healed.",img:"https://best-massage-tokyo.com/wp-content/uploads/2026/01/1769063443347.webp"},
