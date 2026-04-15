@@ -9,18 +9,29 @@
       "height": "163",
       "cup": "D",
       "img": "https://best-massage-tokyo.com/wp-content/uploads/2026/04/1775374488393.jpg",
-      "start": "12:00",
-      "end": "20:00"
+      "start": "19:30",
+      "end": "22:00"
     },
     {
-      "id": 4,
+      "id": 3,
+      "rank": "NEW FACE",
+      "name": "Margaret",
+      "age": "21",
+      "height": "155",
+      "cup": "D",
+      "img": "https://estemax.net/happy-end/wp-content/uploads/2025/05/1745092578220.webp",
+      "start": "19:30",
+      "end": "22:00"
+    },
+    {
+      "id": 6,
       "rank": "PREMIUM",
-      "name": "Lilian",
-      "age": "22",
+      "name": "Salamander",
+      "age": "20",
       "height": "159",
-      "cup": "H",
-      "img": "https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250324_190124806.webp",
-      "start": "14:00",
+      "cup": "B",
+      "img": "https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250123_203010978.webp",
+      "start": "19:30",
       "end": "22:00"
     }
   ]
