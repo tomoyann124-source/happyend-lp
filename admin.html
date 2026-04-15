@@ -381,7 +381,7 @@ async function publishToLP(){
 
   // トークン確認
   if(!getToken()){
-    var t=prompt("GitHubトークンを入力してください（設定画面で確認）:");
+    var t=prompt("GitHubトークンを入力してください:\n（管理者から受け取ったghp_から始まる文字列を貼り付け）");
     if(!t){return;}
     localStorage.setItem('mt_gh_token',t.trim());
   }
