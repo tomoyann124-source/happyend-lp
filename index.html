@@ -312,11 +312,22 @@ footer{background:var(--b);color:var(--w);padding:3.5rem 0 2rem}
   <div class="si"><div class="vlay">
     <div class="vtxt"><span class="sen">Our Story</span><h2>Tokyo's Premier<br>Private Massage Studio</h2><div class="dv" style="margin-left:0"></div><p>Massage Tokyo is a fully private men's relaxation studio located in Ginza and Kayabacho. Our English-speaking therapists are dedicated to delivering an unforgettable experience in a completely discreet setting.</p><p>Foreigners are warmly welcomed. No Japanese required. Private rooms, no cameras, 100% confidential.</p><a href="https://line.me/R/ti/p/@happyend_ginza" class="bblk" target="_blank" style="margin-top:.5rem">Book via LINE</a></div>
     <div>
-      <div class="vwp" id="videoWrap" onclick="openVideo()">
-        <div class="vthumb" style="background-image:url('https://img.youtube.com/vi/YObRbE9LYSY/hqdefault.jpg')"></div>
-        <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div><div class="vplay-label">Watch Video</div></div>
+      <div style="position:relative">
+        <div class="vwp" id="videoWrap">
+          <iframe id="ytIframe"
+            src="https://www.youtube.com/embed/YObRbE9LYSY?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=YObRbE9LYSY"
+            title="Massage Tokyo – Best Massage in Ginza"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+        <button id="unmuteBtn" onclick="unmuteVideo()" style="position:absolute;bottom:.75rem;right:.75rem;background:rgba(0,0,0,.7);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:4px;padding:.4rem .85rem;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:.4rem;font-family:inherit;transition:background .2s">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+          Muted — Tap to Unmute
+        </button>
       </div>
-      <div class="vwp" id="videoFrame" style="display:none"><iframe id="ytIframe" src="" title="Massage Tokyo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
     </div>
   </div></div>
 </section>
@@ -521,11 +532,16 @@ function openModal(idx){
   bg.onclick=function(e){if(e.target===bg)closeModal();};
 }
 function closeModal(){document.getElementById('modalBg').classList.remove('show');document.body.style.overflow='';}
-function openVideo(){
-  var wrap=document.getElementById('videoWrap');
-  var frame=document.getElementById('videoFrame');
-  wrap.style.display='none';frame.style.display='block';
-  document.getElementById('ytIframe').src='https://www.youtube.com/embed/YObRbE9LYSY?rel=0&modestbranding=1&playsinline=1&autoplay=1';
+function unmuteVideo(){
+  var iframe = document.getElementById('ytIframe');
+  // YouTube postMessage API でミュート解除
+  iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}','*');
+  var btn = document.getElementById('unmuteBtn');
+  if(btn){
+    btn.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg> Sound ON';
+    btn.style.background='rgba(184,152,106,.85)';
+    btn.style.borderColor='var(--gold)';
+  }
 }
 if('ontouchstart' in window){document.querySelectorAll('.ctap-hint').forEach(el=>el.style.opacity='1');}
 let c=0;const sl=document.querySelectorAll('.slide');const dt=document.getElementById('sdots');let tm;
