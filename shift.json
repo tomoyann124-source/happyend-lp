@@ -1,1 +1,27 @@
-{"date":"","cast":[]}
+{
+  "date": "2026-04-15",
+  "cast": [
+    {
+      "id": 1,
+      "rank": "NEW FACE",
+      "name": "Airis",
+      "age": "26",
+      "height": "163",
+      "cup": "D",
+      "img": "https://best-massage-tokyo.com/wp-content/uploads/2026/04/1775374488393.jpg",
+      "start": "12:00",
+      "end": "20:00"
+    },
+    {
+      "id": 4,
+      "rank": "PREMIUM",
+      "name": "Lilian",
+      "age": "22",
+      "height": "159",
+      "cup": "H",
+      "img": "https://estemax.net/happy-end/wp-content/uploads/2025/05/MEITU_20250324_190124806.webp",
+      "start": "14:00",
+      "end": "22:00"
+    }
+  ]
+}
