@@ -378,7 +378,7 @@ function rcColor(rank){return rank==="PREMIUM"?"#b8986a":rank==="SPECIAL"?"#8b5c
 function rcClass(rank){return rank==="PREMIUM"?"rb-pm":rank==="SPECIAL"?"rb-sp":"rb-nf";}
 
 /* ===== LP公開 (GitHub API) ===== */
-async function publishToLP(){
+async function publishToLP(silent){
   var btn=document.getElementById("publishBtn");
   var result=document.getElementById("publishResult");
 
@@ -392,15 +392,14 @@ async function publishToLP(){
   var key=todayKey();
   var entries=SHIFTS[key]||[];
 
-  if(!entries.length){
-    showToast("シフトが登録されていません","err");
-    return;
+  // 空のシフトでも公開（クリア用）
+  if(!silent){
+    if(!entries.length){showToast("シフトが登録されていません","err");return;}
+    btn.disabled=true;
+    btn.textContent="公開中...";
+    result.textContent="";
+    result.className="publish-result";
   }
-
-  btn.disabled=true;
-  btn.textContent="公開中...";
-  result.textContent="";
-  result.className="publish-result";
 
   // 公開するデータを構築
   var publishData={
@@ -431,9 +430,11 @@ async function publishToLP(){
     });
     var putData=await putRes.json();
     if(putData.commit){
-      result.textContent="LPへの公開が完了しました！（1〜2分で反映）";
-      result.className="publish-result ok";
-      showToast("LPに公開しました！","ok");
+      if(!silent){
+        result.textContent="LPへの公開が完了しました！（1〜2分で反映）";
+        result.className="publish-result ok";
+      }
+      showToast("LPに反映しました！","ok");
     }else{
       throw new Error(JSON.stringify(putData));
     }
@@ -443,8 +444,10 @@ async function publishToLP(){
     result.className="publish-result err";
     showToast("公開に失敗しました","err");
   }finally{
-    btn.disabled=false;
-    btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16,6 12,2 8,6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>今日の出勤をLPに公開する';
+    if(!silent){
+      btn.disabled=false;
+      btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16,6 12,2 8,6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>今日の出勤をLPに公開する';
+    }
   }
 }
 
@@ -563,15 +566,17 @@ function applyShift(){
   var existing=(SHIFTS[shiftDK]||[]).filter(function(e){return selIds.indexOf(e.id)<0;});
   SHIFTS[shiftDK]=existing.concat(selIds.map(function(id){return {id:id,start:start,end:end};}));
   saveSh();closeShiftSheet();renderShift();
-  if(shiftDK===todayKey()){renderToday();updatePublishPreview();}
-  showToast(selIds.length+"名を登録しました。今日タブから「LP公開」してください","ok");
+  var isToday=(shiftDK===todayKey());
+  if(isToday){renderToday();updatePublishPreview();}
+  showToast(selIds.length+"名を登録しました。LPに反映中...","ok");
+  if(isToday) publishToLP(true);
 }
 function rmShift(key,id){
   if(!SHIFTS[key])return;
   SHIFTS[key]=SHIFTS[key].filter(function(e){return e.id!==id;});
   if(!SHIFTS[key].length)delete SHIFTS[key];
   saveSh();renderShift();
-  if(key===todayKey()){renderToday();updatePublishPreview();}
+  if(key===todayKey()){renderToday();updatePublishPreview();publishToLP(true);}
 }
 
 /* ===== CAST ===== */
