@@ -82,10 +82,14 @@ header{position:fixed;top:0;left:0;right:0;z-index:1000;will-change:transform;tr
 .mqi span{font-size:.58rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.75)}.mqi .sp{color:var(--gold)}
 @keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 /* NEWS */
-.nsec{background:var(--w);padding:1.25rem 0;border-bottom:1px solid var(--bd)}
-.nin{max-width:1100px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;gap:1.5rem;overflow:hidden}
-.nlbl{font-size:.58rem;letter-spacing:.35em;text-transform:uppercase;color:var(--w);background:var(--gold);padding:.35rem .9rem;white-space:nowrap;flex-shrink:0}
-.ntxt{font-size:.78rem;color:var(--g);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ntxt a{color:var(--b);font-weight:500}
+.nsec{background:var(--w);padding:.75rem 0;border-bottom:1px solid var(--bd);overflow:hidden;display:flex;align-items:center;gap:0}
+.nlbl{font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:var(--w);background:var(--gold);padding:.4rem 1rem;white-space:nowrap;flex-shrink:0;z-index:2;position:relative}
+.nmq-wrap{overflow:hidden;flex:1;mask-image:linear-gradient(to right,transparent 0%,black 5%,black 95%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,black 5%,black 95%,transparent 100%)}
+.nmq{display:inline-flex;animation:nmq 18s linear infinite;white-space:nowrap;will-change:transform}
+.nmq-item{font-size:.75rem;color:var(--g);padding:0 2.5rem;display:inline-flex;align-items:center;gap:.75rem}
+.nmq-item strong{color:var(--b);font-weight:600}
+.nmq-dot{color:var(--gold);font-size:.8rem}
+@keyframes nmq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 /* SECTIONS */
 .sec{padding:5rem 0}.si{max-width:1100px;margin:0 auto;padding:0 1.5rem}
 .sh{text-align:center;margin-bottom:3.5rem}
@@ -352,7 +356,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div></div>
 
 <!-- NEWS -->
-<section class="nsec"><div class="nin"><span class="nlbl">Campaign</span><div class="ntxt">Google Review Coupon Now Available — Post a review &amp; get ¥2,000 OFF your next visit!</div></div></section>
+<section class="nsec">
+  <span class="nlbl">Campaign</span>
+  <div class="nmq-wrap">
+    <div class="nmq">
+      <span class="nmq-item"><strong>Google Review Coupon</strong> <span class="nmq-dot">✦</span> Post a review &amp; get ¥2,000 OFF your next visit!</span>
+      <span class="nmq-item"><strong>First Visit Welcome Coupon</strong> <span class="nmq-dot">✦</span> Show this screen at payment — ¥2,000 OFF!</span>
+      <span class="nmq-item"><strong>Cash Only</strong> <span class="nmq-dot">✦</span> Open 12:00 – 29:00 <span class="nmq-dot">✦</span> Ginza &amp; Kayabacho</span>
+      <span class="nmq-item"><strong>Google Review Coupon</strong> <span class="nmq-dot">✦</span> Post a review &amp; get ¥2,000 OFF your next visit!</span>
+      <span class="nmq-item"><strong>First Visit Welcome Coupon</strong> <span class="nmq-dot">✦</span> Show this screen at payment — ¥2,000 OFF!</span>
+      <span class="nmq-item"><strong>Cash Only</strong> <span class="nmq-dot">✦</span> Open 12:00 – 29:00 <span class="nmq-dot">✦</span> Ginza &amp; Kayabacho</span>
+    </div>
+  </div>
+</section>
 
 <!-- ABOUT + VIDEO -->
 <section class="sec vsec" id="about">
