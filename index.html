@@ -639,45 +639,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 var SHIFT_JSON_URL = 'https://c-t0922.github.io/happyend-lp/shift.json';
 
 function renderLineup(){
-  var grid = document.getElementById('lineupGrid');
-  var sub  = document.getElementById('lineupSub');
-  if(!grid) return;
+  var grid=document.getElementById('lineupGrid');
+  var sub=document.getElementById('lineupSub');
+  if(!grid)return;
 
-  fetch(SHIFT_JSON_URL + '?t=' + Date.now())
-    .then(function(r){ return r.json(); })
+  fetch(SHIFT_JSON_URL+'?t='+Date.now())
+    .then(function(r){return r.json();})
     .then(function(data){
-      var today = (function(){
-        var d=new Date();
-        return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
-      })();
+      var d=new Date();
+      var today=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 
-      if(!data || !data.cast || !data.cast.length || data.date !== today){
-        if(sub) sub.innerHTML = '';
-        grid.innerHTML = '<div class="lineup-grid"><div class="ln-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><p>Today\'s lineup is being updated.<br>Contact us via LINE for current availability.</p></div></div>';
+      if(!data||!data.cast||!data.cast.length||data.date!==today){
+        if(sub)sub.innerHTML='';
+        grid.innerHTML='<div class="lineup-grid"><div class="ln-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><p>Today\'s lineup is being updated.<br>Contact us via LINE for current availability.</p></div></div>';
         return;
       }
 
       if(sub){
-        sub.innerHTML = '<span class="ln-live-pill"><span class="ln-dot"></span>' + data.cast.length + ' therapists available today</span>';
+        sub.innerHTML='<span class="ln-live-pill"><span class="ln-dot"></span>'+data.cast.length+' therapists available today</span>';
       }
 
-      grid.innerHTML = '<div class="lineup-grid">' + data.cast.map(function(c){
-        var rankColor = c.rank==='PREMIUM' ? '#b8986a' : c.rank==='SPECIAL' ? '#8b5cf6' : '#34c759';
-        var timeStr   = (c.start && c.end) ? (c.start + ' – ' + c.end) : '';
-        var imgUrl = c.img ? c.img.replace(/\/g,'\\').replace(/'/g,"\'") : '';
+      var cards=data.cast.map(function(c){
+        var rankColor=c.rank==='PREMIUM'?'#b8986a':c.rank==='SPECIAL'?'#8b5cf6':'#34c759';
+        var timeStr=(c.start&&c.end)?(c.start+' – '+c.end):'';
+        var img=c.img||'';
         return '<div class="lineup-card">'
-          + '<div class="lineup-photo" style="background-image:url(\'' + imgUrl + '\')">'
-          + '<span class="ln-rank" style="background:' + rankColor + '">' + c.rank + '</span>'
-          + (timeStr ? '<div class="ln-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>' + timeStr + '</div>' : '')
-          + '</div>'
-          + '<span class="lineup-name">' + c.name + '</span>'
-          + '<div class="lineup-meta">Age ' + c.age + ' · ' + c.height + 'cm (' + c.cup + ')</div>'
-          + '</div>';
-      }).join('') + '</div>';
+          +'<div class="lineup-photo" style="background-image:url(\''+img+'\')">'
+          +'<span class="ln-rank" style="background:'+rankColor+'">'+c.rank+'</span>'
+          +(timeStr?'<div class="ln-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>'+timeStr+'</div>':'')
+          +'</div>'
+          +'<span class="lineup-name">'+c.name+'</span>'
+          +'<div class="lineup-meta">Age '+c.age+' · '+c.height+'cm ('+c.cup+')</div>'
+          +'</div>';
+      });
+      grid.innerHTML='<div class="lineup-grid">'+cards.join('')+'</div>';
     })
-    .catch(function(err){
-      console.warn('shift.json error:', err);
-    });
+    .catch(function(err){console.warn('shift.json error:',err);});
 }
 
 const CAST=[
